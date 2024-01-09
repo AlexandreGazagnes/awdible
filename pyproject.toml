@@ -9,6 +9,8 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "3.10.12"
 streamlit = "^1.29.0"
+requests = "^2.31.0"
+beautifulsoup4 = "^4.12.2"
 
 
 [tool.poetry.group.dev.dependencies]
