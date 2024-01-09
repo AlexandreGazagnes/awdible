@@ -1,4 +1,20 @@
+# folders
+data
 tests
 notebooks
 sandbox
 ressources
+utils
+.git
+.github
+
+# files
+LICENSE
+CHANGELOG.md
+README.md
+poetry.lock
+pyproject.toml
+requirements.dev.txt
+.gitignore
+*.pyc
+.venv
