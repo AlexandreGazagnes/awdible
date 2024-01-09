@@ -7,7 +7,7 @@ class Get:
     """Get the audio from the video"""
 
     @classmethod
-    def audio(url):
+    def audio(self, url):
         """Get the audio from the video"""
 
         yt = YouTube(url)
