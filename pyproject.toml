@@ -11,6 +11,8 @@ python = "3.10.12"
 streamlit = "^1.29.0"
 requests = "^2.31.0"
 beautifulsoup4 = "^4.12.2"
+pytube = "^15.0.0"
+youtube-transcript-api = "^0.6.2"
 
 
 [tool.poetry.group.dev.dependencies]
