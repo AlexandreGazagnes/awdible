@@ -6,6 +6,7 @@
 
 
 ## TODO
+- Add better UI / UX front end, fancy and care instructions for the user
 - Multi page app 
 - front feature for cropping video in n parts
 - front feature for takin a keyword screen and not the video url 
