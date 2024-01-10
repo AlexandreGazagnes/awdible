@@ -9,3 +9,6 @@
 - Multi page app 
 - front feature for cropping video in n parts
 - front feature for takin a keyword screen and not the video url 
+- clean deps 
+- add subtitles support feature
+- update test policy 
