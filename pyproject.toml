@@ -1,0 +1,38 @@
+[tool.poetry]
+name = "audible"
+version = "0.1.0"
+description = "Just a free version of Audible"
+authors = ["AlexGazagnes"]
+license = "GNU GPLv3"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "3.10.12"
+streamlit = "^1.29.0"
+requests = "^2.31.0"
+beautifulsoup4 = "^4.12.2"
+pytube = "^15.0.0"
+youtube-transcript-api = "^0.6.2"
+ffmpeg-python = "^0.2.0"
+pandas = "^2.1.4"
+
+
+[tool.poetry.group.dev.dependencies]
+black = {extras = ["jupyter"], version = "^23.12.1"}
+mypy = "^1.8.0"
+coverage = "^7.4.0"
+flake8 = "^7.0.0"
+pep8 = "^1.7.1"
+jupyter = "^1.0.0"
+notebook = "^7.0.6"
+jupyterlab = "^4.0.10"
+ipykernel = "^6.28.0"
+pytest = "^7.4.4"
+jupytext = "^1.16.0"
+ipywidgets = "^8.1.1"
+nbconvert = "^7.14.0"
+jupyter-contrib-nbextensions = "^0.7.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
