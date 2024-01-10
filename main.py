@@ -1,24 +1,11 @@
-import streamlit as st
-
-# import pandas as pd
-
-img = "./assets/img/image.png"
-
-st.image(img, caption="image header")
-
-st.write(
-    """
-# Free Audible App
-Hello *user!*
-"""
-)
+from audible.app import *
 
 
-pos_url = "https://www.youtube.com/watch?v=EesQolfp9gQ,EesQolfp9gQ"
+def main():
+    """Run the main function."""
 
-url = st.text_input("Youtube url", pos_url)
-st.write("video url is", url)
+    pass
 
 
-# df = pd.read_csv("my_data.csv")
-# st.line_chart(df)
+if __name__ == "__main__":
+    main()
