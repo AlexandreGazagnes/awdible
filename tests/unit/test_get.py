@@ -1,6 +1,6 @@
 import pytest
 
-from audible.download.get import Get
+from audible.get import Get
 
 
 class TestGet:
