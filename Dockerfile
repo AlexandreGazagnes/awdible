@@ -11,10 +11,7 @@ WORKDIR /app
 
 # RUN git clone https://github.com/streamlit/streamlit-example.git .
 
-
 COPY requirements.txt ./
-
-# RUN ls
 
 RUN pip install -r requirements.txt
 
