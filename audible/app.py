@@ -5,38 +5,28 @@ import streamlit as st
 from audible.get import Get
 
 
+# header image
 img = "./assets/img/image.png"
+st.image(img, caption="Thanks to DALL-E for the image ;) ")
 
-st.image(img, caption="image header")
 
+# title
+st.title("The Best Free Audible App Ever Made")
 st.write(
     """
-# Free Audible App
-Hello *user!*
+Just paste the url of the video you want to download and click the button.
 """
 )
 
-
-# pos_url = "https://www.youtube.com/watch?v=EesQolfp9gQ,EesQolfp9gQ"
-
+# Text input
 pos_url = "https://youtube.com/shorts/fcCpXScFxfM?si=xVSQZWa7MgsWOl9E"
 url = st.text_input("Youtube url", pos_url)
-st.write("video url is", url)
 
 
-if st.button("Go"):
+# Button
+if st.button("Download"):
     title, video = Get.audio(url)
-    st.write(title)
-
+    # st.write(title)
     fn = Get.save(title, video)
-
-    # list_files = subprocess.run(["ls", "-l"])
-    # assert isinstance(list_files, subprocess.CompletedProcess)
-    # print("The exit code was: %d" % list_files.returncode)
-
     with open(fn, "rb") as f:
         st.download_button("Download", f, file_name=fn)  # mime="audio/mp4"
-
-
-# df = pd.read_csv("my_data.csv")
-# st.line_chart(df)
