@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "audible"
 version = "0.1.0"
-description = ""
+description = "Just a free version of Audible"
 authors = ["AlexGazagnes"]
 license = "GNU GPLv3"
 readme = "README.md"
