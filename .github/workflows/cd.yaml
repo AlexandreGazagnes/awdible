@@ -1,0 +1,24 @@
+name: CD
+
+on:
+  push:
+    branches: [ main, ]
+  pull_request:
+    branches: [ main,  ]
+
+jobs:
+
+  deploy:
+
+    runs-on: ubuntu-latest
+
+    needs: build-and-test
+
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Call webhook for deployment
+      # run: echo "Deploying to Render..."
+      run: wget -qO- 'https://api.render.com/deploy/srv-cli8tet8sstd7s73btpr70?key=ayFmYq0A1A0'
