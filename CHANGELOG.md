@@ -1,7 +1,9 @@
-# 2024-01-10 - 0.1.1 - Light UI/UX update
+# 2024-01-11 - 0.1.2 - Fix Streamlit 
 
 ## Updates
-- Added a more welcoming UI/UX
+- Fix streamlit problem
+- Update readme 
+- Clean the repo
 
 ## Todo
 - Add better UI / UX front end, fancy and care instructions for the user
@@ -11,6 +13,11 @@
 - Clean deps 
 - Add subtitles support feature
 - Update test policy and add more tests
+
+# 2024-01-10 - 0.1.1 - Light UI/UX update
+
+## Updates
+- Added a more welcoming UI/UX
 
 # 2024-01-10 - 0.1.0 - 1st release
 

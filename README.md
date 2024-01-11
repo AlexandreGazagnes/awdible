@@ -1,4 +1,12 @@
 ![image](./assets/img/image.png)
 
-# audible
-Just a free version of audible
+# Audible
+
+
+## Description
+
+Just a free version of audible.
+
+## Access
+
+Please visit [Audible on Streamlit]("https://audible.streamlit.app/") web app
