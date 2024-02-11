@@ -90,5 +90,3 @@ Please visit [Troubleshooting](https://alexandregazagnes.github.io/audible/TROUB
 Please visit [Contributing](https://alexandregazagnes.github.io/audible/CONTRIBUTING/) page.
 
 
-# Usage 
-
