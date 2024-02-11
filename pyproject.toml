@@ -39,17 +39,23 @@ include = ["docs/docs/CHANGELOG.md", "LICENCE"]
 "Changelog" = "https://alexandregazagnes.github.io/audible/CHANGELOG/"
 
 
+[tool.poetry.scripts]
+poetry = "audible.console.application:main"
+
+
 [tool.poetry.dependencies]
-python = ">=3.9,<3.9.7 || >3.9.7,<4"
-
-
-[tool.poetry.group.core.dependencies]
+# python = ">=3.9,<3.9.7 || >3.9.7,<4"
+python = "3.10.12"
+cleo = "^2.1.0"
 requests = "^2.31.0"
 pytube = "^15.0.0"
-youtube-transcript-api = "^0.6.2"
+beautifulsoup4 = "^4.12.2"
 ffmpeg-python = "^0.2.0"
-# pandas = ">=1.4.0"
-# beautifulsoup4 = "^4.12.2"
+
+
+# [tool.poetry.group.core.dependencies]
+# youtube-transcript-api = "^0.6.2"
+# # pandas = ">=1.4.0"
 
 
 [tool.poetry.group.front.dependencies]
