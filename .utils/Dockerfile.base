@@ -1,0 +1,9 @@
+FROM python:3.10.12-bullseye
+
+WORKDIR /app
+
+# RUN rm -f /etc/localtime  && ln -sf /usr/share/zoneinfo/Europe/Paris /etc/localtime
+# RUN apt update -y && apt upgrade -y && apt clean -y
+# RUN apt install htop nano python3-pip python3-venv -y
+
+RUN apt install python3-pip -y
