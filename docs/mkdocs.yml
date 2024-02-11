@@ -1,1 +1,32 @@
-site_name: My Docs
+site_name: Audible
+
+site_description:  Just a free version of Audible
+theme: readthedocs
+
+site_url: https://alexandregazagnes.github.io/audible/
+repo_name: 'AlexandreGazagnes/audible'
+repo_url: 'https://github.com/AlexandreGazagnes/audible'
+edit_uri: 'edit/master/docs/docs'
+
+extra:
+  repo_icon: 'github'
+
+nav:
+  - Home: index.md
+  # - About: about.md
+  - Installation : installation.md
+  - Usage : usage.md
+  # - API Reference : api-reference.md
+  - Contributing : CONTRIBUTING.md
+  - Changelog : CHANGELOG.md
+  # - Releases : releases.md
+  # - Troubleshooting : troubleshooting.md
+
+# markdown_extensions:
+#   - pymdownx.highlight:
+#       anchor_linenums: true
+#   - admonition
+#   - pymdownx.details
+#   - pymdownx.inlinehilite
+#   - pymdownx.snippets
+#   - pymdownx.superfences
