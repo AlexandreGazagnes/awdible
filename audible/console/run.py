@@ -3,27 +3,23 @@ import os
 from cleo.commands.command import Command
 from cleo.helpers import argument, option
 
+from audible.core.audible import Audible
+from audible.logger import logger
+
 
 class RunCommand(Command):
-    # """
-    # Run Audible session
-
-    # run
-    #     {video?="https://www.youtube.com/watch?v=9diaThxYnKA" : The video url to download from youtube. If you want to input a search query, use the --search option}
-    #     {--d|dest="./" : The destination directory of the file}
-    #     {--f|file="" : The input file With list of urls/videos}
-    #     {--o|output="mp3" : The output file name}
-    #     {--s|search : If set, you can pass a search query to download the video from youtube}
-    # """
+    """Run Audible session"""
 
     name = "run"
+
     description = "Run Audible session"
+
     arguments = [
         argument(
             "video",
-            description="The video url to download from youtube. If you want to input a search query, use the --search option",
+            description="The video url to download from youtube. \nIf you want to input a search query, use the --search option",
             optional=True,
-            default="https://www.youtube.com/watch?v=9diaThxYnKA",
+            default=Audible.DEFAULT_VIDEO,
         )
     ]
     options = [
@@ -32,26 +28,45 @@ class RunCommand(Command):
             "d",
             description="The destination directory of the file",
             flag=False,
-            default="./",
+            default=Audible.DEFAULT_DEST,
         ),
         option(
             "file",
             "f",
             description="The input file With list of urls/videos",
             flag=False,
-            default="",
         ),
         option(
             "output",
             "o",
             description="The output file name",
             flag=False,
-            default="mp4",
+            default=Audible.DEFAULT_OUTPUT,
+        ),
+        option(
+            "crop_limit",
+            "c",
+            description="The limit of duration of the video to download. If the video is longer than the limit, it will be cropped into smaller parts.",
+            flag=False,
+            default=Audible.DEFAULT_CROP_LIMIT,
         ),
         option(
             "search",
-            "y",
-            description="If set, the task will yell in uppercase letters",
+            "s",
+            description="If set, the video argument will be treated as a search query and the first result will be downloaded.",
+            flag=True,
+        ),
+        option(
+            "prefix",
+            "p",
+            description=f"If set, can ommit the url prefix '{Audible.VIDEO_PREFIX}' when passing the video url.",
+            flag=True,
+        ),
+        option(
+            "asynchronous",
+            "a",
+            description="If set, the download will be asynchronous.",
+            # This means that the download will be done in the background and the command will return immediately. The download progress can be checked using the `audible progress` command.
             flag=True,
         ),
     ]
@@ -59,11 +74,31 @@ class RunCommand(Command):
     def handle(self):
         """handle the command"""
 
+        # arguments
+        video = self.argument("video")
+
+        # no flags options
         dest = self.option("dest")
         file = self.option("file")
         output = self.option("output")
+        crop_limit = self.option("crop_limit")
+
+        # flags options
         search = self.option("search")
-        video = self.argument("video")
+        asynchronous = self.option("asynchronous")
+        prefix = self.option("prefix")
+
+        # useless logging
+        logger.debug(f"video: {video}")
+
+        logger.debug(f"dest: {dest}")
+        logger.debug(f"file: {file}")
+        logger.debug(f"output: {output}")
+        logger.debug(f"crop_limit: {crop_limit}")
+
+        logger.debug(f"search: {search}")
+        logger.debug(f"prefix: {prefix}")
+        logger.debug(f"asynchronous: {asynchronous}")
 
         # check if the dest is a valid directory
         if dest:
@@ -81,19 +116,21 @@ class RunCommand(Command):
                 "Invalid output file format : Only supports mp3 and mp4"
             )
 
-        # check incompatible options video args and file otions are not passed together
-        # unless default video is passed
-        if (
-            video and file
-        ) and video != "https://www.youtube.com/watch?v=9diaThxYnKA":
+        # check if the crop limit is a valid number
+        try:
+            crop_limit = int(crop_limit)
+        except ValueError:
+            raise Exception("Invalid crop limit. Should be a number")
+        if crop_limit < 0 or crop_limit > 3600 * 10:
             raise Exception(
-                "You can only pass either a video url or a file with list of urls"
+                "Invalid crop limit. Should be between 0 and 36 000 seconds (10 hours)"
             )
 
-        # validate video url
-        if not "https://www.youtube.com/watch?v=" in video:
-            raise Exception(
-                "Invalid youtube video url. Should be in the format 'https://www.youtube.com/watch?v=...'\n...or consier using the --search option to search for the video"
+        # check incompatible options video args and file otions are not passed together
+        # unless default video is passed
+        if (video and file) and (video != Audible.DEFAULT_VIDEO):
+            raise AttributeError(
+                "You can only pass either a video url or a file with list of urls"
             )
 
         # if file: make a liste of videos
@@ -107,11 +144,25 @@ class RunCommand(Command):
         # strip items in the list
         video_list = [v.strip() for v in video_list]
 
+        # if prefix is set, add the prefix to the video list
+        if prefix:
+            video_list = [Audible.VIDEO_PREFIX + v for v in video_list]
+
         # check video list
         for v in video_list:
-            if not "https://www.youtube.com/watch?v=" in v:
-                raise Exception(
-                    "Invalid youtube video url. Should be in the format 'https://www.youtube.com/watch?v=...' \n...or consier using the --search option to search for the video"
+            if not v.startswith(Audible.VIDEO_PREFIX):
+                raise AttributeError(
+                    f"Invalid youtube video url. Should be in the format '{Audible.VIDEO_PREFIX}', recieved : '{v}'\n Consier using the --search option to search for the video url or add the --prefix option to add the prefix to the video url."
                 )
 
         self.line("Eh! I'm running the command")
+        Audible(
+            video=video_list,
+            dest=dest,
+            file=file,
+            output=output,
+            search=search,
+            asynchronous=asynchronous,
+            crop_limit=crop_limit,
+            streamlit=False,
+        ).run()
