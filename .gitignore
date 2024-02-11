@@ -162,3 +162,31 @@ cython_debug/
 
 
 data/
+
+*.mp3
+*.mp4
+*.wav
+*.flac
+*.ogg
+*.mid
+*.midi
+*.m4a
+*.opus
+*.webm
+*.mkv
+*.flv
+*.vob
+*.ogv
+*.avi
+*.mov
+*.wmv
+*.mpg
+*.mpeg
+*.m2v
+*.3gp
+*.3g2
+*.mxf
+*.roq
+*.txt
+*.list
+*.md
