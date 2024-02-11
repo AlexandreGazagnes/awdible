@@ -1,7 +1,7 @@
 import os
 import sys
 
-import logging
+from audible.logger import logger
 
 
 import ffmpeg
@@ -25,13 +25,13 @@ class Crop:
 
         # pattern
         replacer = (
-            fn.replace(".mp4", "_cut.mp4")
+            fn.replace(".mp3", "_cut.mp3")
             if not (n_item or total_items)
-            else fn.replace(".mp4", f"_cut_{n_item}_{total_items}.mp4")
+            else fn.replace(".mp3", f"_cut_{n_item}_{total_items}.mp3")
         )
 
         # update out
-        out = fn.replace(".mp4", replacer)
+        out = fn.replace(".mp3", replacer)
 
         # split
         ffmpeg.input(fn, ss=start, to=end).output(out).run()

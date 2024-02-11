@@ -5,11 +5,13 @@ import requests
 
 from bs4 import BeautifulSoup
 
+from audible.core.defaults import QUERY_PREFIX
+
 
 class Search:
     """Search for the video"""
 
-    BASE_URL = "https://www.youtube.com/results?search_query="
+    QUERY_PREFIX = QUERY_PREFIX
 
     @classmethod
     def find(self, keywords: str) -> list[str]:
@@ -17,7 +19,7 @@ class Search:
 
         keywords = keywords.replace(" ", "+")
 
-        url = self.BASE_URL + keywords
+        url = self.QUERY_PREFIX + keywords
 
         response = requests.get(url)
         response.raise_for_status()
