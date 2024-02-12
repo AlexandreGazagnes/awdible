@@ -1,8 +1,6 @@
+import ffmpeg
 
 from audible.logger import logger
-
-
-import ffmpeg
 
 
 class Crop:

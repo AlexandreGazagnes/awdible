@@ -1,14 +1,10 @@
-import os
 import logging
-
+import os
 import secrets
 
 from pytube import YouTube
 
-from audible.core.defaults import (
-    VIDEO_PREFIX,
-    DEFAULT_VIDEO_URL,
-)
+from audible.core.defaults import DEFAULT_VIDEO_URL, VIDEO_PREFIX
 
 
 class Video:

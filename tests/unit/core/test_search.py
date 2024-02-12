@@ -1,7 +1,5 @@
 from audible.core.search import Search
-
 from audible.logger import logger
-
 
 QUERY = "jo l'rigolo"
 

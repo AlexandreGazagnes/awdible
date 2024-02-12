@@ -4,9 +4,8 @@ Test the Audible class.
 
 import pytest
 
-from audible.logger import logger
 from audible.core.audible import Audible
-
+from audible.logger import logger
 
 VIDEO_URL = "https://www.youtube.com/watch?v=9diaThxYnKA"
 VIDEO_ID = "V62oKsHdsLU"

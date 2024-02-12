@@ -2,7 +2,6 @@ import streamlit as st
 
 from audible.get import Get
 
-
 # header image
 img = "./assets/img/image.png"
 st.image(img)  # caption="Thanks to DALL-E for the image ;) "
