@@ -64,11 +64,11 @@ repos:
         args : [--config=pyproject.toml]
         # language_version: python3.10
 
-# # pytest
-# -   repo: local
-#     hooks:
-#     -   id: run_tests
-#         language: script
-#         name: run_tests
-#         entry: .utils/pytest.sh
-#         stage: [commit]
+# pytest
+-   repo: local
+    hooks:
+    -   id: run_tests
+        language: script
+        name: run_tests
+        entry: .utils/pytest.sh
+        stage: [commit]
