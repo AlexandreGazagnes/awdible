@@ -67,7 +67,7 @@ As web app :
 
 
 
-* ```audible gui``` : lunch local streamlit 
+* ```audible gui``` : launch local streamlit 
 
 
 
@@ -78,7 +78,7 @@ Please visit [Documentation](https://alexandregazagnes.github.io/audible/) page.
 
 ## Changelog, Roadmap and Releases
 
-Please visit [Changelog, Roadmap and Releases](https://alexandregazagnes.github.io/audible/CHANGELOG/) page.
+Please visit [Changelog, Roadmap and Release](https://alexandregazagnes.github.io/audible/CHANGELOG/) page.
 
 ## Troubleshooting
 
