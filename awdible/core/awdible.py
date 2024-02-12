@@ -167,7 +167,6 @@ class Awdible:
             outs = self.run_synch()
 
     def run_synch(self):
-
         outs = [self.run_one(video) for video in self.video_list]
 
         if len(outs) == 1:
@@ -176,7 +175,6 @@ class Awdible:
         return outs
 
     def run_asynch(self):
-
         raise NotImplementedError("Sorry Bro! ")
 
     def run_one(self, video: str):
