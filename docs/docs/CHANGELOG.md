@@ -1,11 +1,21 @@
-# 2024-01-11 - 0.1.2 - Fix Streamlit 
+# Changelog
 
-## Updates
+## 2024-01-11 - 0.2.0 - 2nd release
+
+### Updates
+
+### Added
+
+### Todo
+
+## 2024-01-11 - 0.1.2 - Fix Streamlit 
+
+### Updates
 - Fix streamlit problem
 - Update readme 
 - Clean the repo
 
-## Todo
+### Todo
 - Add better UI / UX front end, fancy and care instructions for the user
 - Multi page app 
 - Front feature for cropping video in n parts
@@ -14,14 +24,14 @@
 - Add subtitles support feature
 - Update test policy and add more tests
 
-# 2024-01-10 - 0.1.1 - Light UI/UX update
+## 2024-01-10 - 0.1.1 - Light UI/UX update
 
-## Updates
+### Updates
 - Added a more welcoming UI/UX
 
-# 2024-01-10 - 0.1.0 - 1st release
+## 2024-01-10 - 0.1.0 - 1st release
 
-## Updates
+### Updates
 - First public version
 - Core features such as input video, and download video
 
