@@ -61,6 +61,21 @@ class Search:
 
         url = "https://youtube-data8.p.rapidapi.com/search/"
 
+        if config.get("X-RapidAPI-Key", None) is None:
+            raise ValueError(
+                f"No API Key found in the environment variables : {config.get('X-RapidAPI-Key', None)}"
+            )
+
+        if config.get("X-RapidAPI-Host", None) is None:
+            raise ValueError(
+                f"No API Host found in the environment variables : {config.get('X-RapidAPI-Host', None)}"
+            )
+
+        if config.get("X-RapidAPI-Host", None) != "youtube-data8.p.rapidapi.com":
+            raise ValueError(
+                f"No API Host found in the environment variables : {config.get('X-RapidAPI-Host', None)}"
+            )
+
         response = requests.get(url, headers=config, params=params)
 
         return response.json()
