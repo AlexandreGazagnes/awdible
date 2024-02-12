@@ -1,6 +1,9 @@
 # Changelog
 
-## 2024-01-12 - 0.2.1 - Fix readme and docs
+## 2024-01-12 - 0.2.3 - Fix readme and docs
+
+## BE CAREFUL, THE PACKAGE IS NOW NAMED `awdible` AND NOT `audible` ANYMORE
+
 
 ### Updates
 - Fix readme and docs
