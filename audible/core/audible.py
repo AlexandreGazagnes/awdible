@@ -29,13 +29,14 @@ from .defaults import (
     DEFAULT_DEST,
     DEFAULT_FILE,
     DEFAULT_OUTPUT,
+    DEFAULT_CROP_LIMIT,
+    DEFAULT_CONTEXT,
     DEFAULT_SEARCH,
     DEFAULT_PREFIX,
     DEFAULT_ASYNCHRONOUS,
     DEFAULT_TMP,
     DEFAULT_STREAMLIT,
     DEFAULT_PORT,
-    DEFAULT_CROP_LIMIT,
     DEFAULT_TEST_MODE,
 )
 
@@ -64,20 +65,26 @@ class Audible:
     """
 
     VIDEO_PREFIX = VIDEO_PREFIX
+
     DEFAULT_VIDEO_URL = DEFAULT_VIDEO_URL
     DEFAULT_VIDEO_ID = DEFAULT_VIDEO_ID
+
     DEFAULT_DEST = DEFAULT_DEST
     DEFAULT_FILE = DEFAULT_FILE
     DEFAULT_OUTPUT = DEFAULT_OUTPUT
+    DEFAULT_CROP_LIMIT = DEFAULT_CROP_LIMIT
+    DEFAULT_CONTEXT = DEFAULT_CONTEXT
+
     DEFAULT_SEARCH = DEFAULT_SEARCH
     DEFAULT_ASYNCHRONOUS = DEFAULT_ASYNCHRONOUS
     DEFAULT_PREFIX = DEFAULT_PREFIX
+
     DEFAULT_TMP = DEFAULT_TMP
+
     DEFAULT_STREAMLIT = DEFAULT_STREAMLIT
     DEFAULT_PORT = DEFAULT_PORT
-    DEFAULT_CROP_LIMIT = DEFAULT_CROP_LIMIT
+
     DEFAULT_TEST_MODE = DEFAULT_TEST_MODE
-    DEFAULT_VIDEO_ID = DEFAULT_VIDEO_ID
 
     def __init__(
         self,
@@ -86,8 +93,9 @@ class Audible:
         file: str = DEFAULT_FILE,
         output: str = DEFAULT_OUTPUT,
         crop_limit: int = DEFAULT_CROP_LIMIT,
+        context: str = DEFAULT_CONTEXT,
         search: bool = DEFAULT_SEARCH,
-        default_prefix: bool = DEFAULT_PREFIX,
+        prefix: bool = DEFAULT_PREFIX,
         asynchronous: bool = DEFAULT_ASYNCHRONOUS,
         streamlit: bool = DEFAULT_STREAMLIT,
         port: int = DEFAULT_PORT,
@@ -101,9 +109,10 @@ class Audible:
         self.file = file
         self.output = output
         self.crop_limit = crop_limit
+        self.context = context
 
         self.search = search
-        self.default_prefix = default_prefix
+        self.prefix = prefix
         self.asynchronous = asynchronous
 
         self.streamlit = streamlit
@@ -135,12 +144,17 @@ class Audible:
             out = self._get_stream_save_convert(video)
 
         # if not valid and search is True:
-        if not video.startswith(self.VIDEO_PREFIX) and self.search:
+        elif (not video.startswith(self.VIDEO_PREFIX)) and self.search:
             url = self._find_parse(video)[0]
             out = self._get_stream_save_convert(url)
 
+        # if not valid and search is True:
+        elif (not video.startswith(self.VIDEO_PREFIX)) and self.prefix:
+            video = self.VIDEO_PREFIX + video
+            out = self._get_stream_save_convert(video)
+
         # try  adding the prefix
-        if not video.startswith(self.VIDEO_PREFIX):  # and self.default_prefix
+        else:  # and self.default_prefix
             video = self.VIDEO_PREFIX + video
 
             try:
@@ -197,20 +211,20 @@ class Audible:
     def _find(self, keywords: str) -> list[str]:
         """Find the video"""
 
-        html = Search.find(keywords)
-        return html
+        json = Search.find(keywords, context=self.context)
+        return json
 
-    def _parse(self, html: str) -> list[str]:
+    def _parse(self, json: str) -> list[str]:
         """Parse the video"""
 
-        href_list = Search.parse(html)
+        href_list = Search.parse(json)
         return href_list
 
     def _find_parse(self, keywords: str) -> list[str]:
         """Find and parse the video"""
 
-        html = self._find(keywords)
-        href_list = self._parse(html)
+        json = self._find(keywords)
+        href_list = self._parse(json)
         return href_list
 
     def _convert_to_mp3(self, src: str) -> str:
