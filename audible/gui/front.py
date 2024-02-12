@@ -1,6 +1,7 @@
 import streamlit as st
 
-from audible.get import Get
+from audible.core.audible import Audible
+
 
 # header image
 img = "./assets/img/image.png"
@@ -22,8 +23,7 @@ url = st.text_input("Youtube url", pos_url)
 
 # Button
 if st.button("Submit"):
-    title, video = Get.audio(url)
-    st.write(f"Filename is : {title}")
-    fn = Get.save(title, video)
+    audible = Audible(video=url, test_mode=False, streamlit=True)
+    out = audible.run()
     with open(fn, "rb") as f:
         st.download_button("Download", f, file_name=fn)  # mime="audio/mp4"

@@ -8,7 +8,7 @@ from bs4 import BeautifulSoup
 from pytube import YouTube
 
 from audible.logger import logger
-
+from audible.config import config
 from .convert import Convert
 from .crop import Crop
 from .defaults import (
@@ -27,6 +27,7 @@ from .defaults import (
     DEFAULT_VIDEO_ID,
     DEFAULT_VIDEO_URL,
     VIDEO_PREFIX,
+    DEFAULT_CONFIG,
 )
 from .search import Search
 from .video import Video
@@ -82,6 +83,8 @@ class Audible:
 
     DEFAULT_TEST_MODE = DEFAULT_TEST_MODE
 
+    DEFAULT_CONFIG = DEFAULT_CONFIG
+
     def __init__(
         self,
         video: str | list = DEFAULT_VIDEO_URL,
@@ -96,6 +99,7 @@ class Audible:
         streamlit: bool = DEFAULT_STREAMLIT,
         port: int = DEFAULT_PORT,
         test_mode: bool = DEFAULT_TEST_MODE,
+        config: dict = config,
     ):
         """Init the Audible class"""
         self._audible = None
@@ -116,6 +120,8 @@ class Audible:
 
         self.test_mode = test_mode
 
+        self.config = config
+
     def run(self):
         """Run the audible session"""
 
@@ -127,8 +133,12 @@ class Audible:
 
             self.dest = self.DEFAULT_TMP
 
-        for video in self.video_list:
-            self.run_one(video)
+        outs = [self.run_one(video) for video in self.video_list]
+
+        if len(outs) == 1:
+            return outs[0]
+
+        return outs
 
     def run_one(self, video: str):
         """Run the audible session for one video"""
@@ -207,7 +217,7 @@ class Audible:
     def _find(self, keywords: str) -> list[str]:
         """Find the video"""
 
-        json = Search.find(keywords, context=self.context)
+        json = Search.find(keywords, context=self.context, config=self.config)
         return json
 
     def _parse(self, json: str) -> list[str]:

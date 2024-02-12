@@ -1,8 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
-from audible.config import config
-from audible.core.defaults import QUERY_PREFIX, VIDEO_PREFIX
+from audible.core.defaults import QUERY_PREFIX, VIDEO_PREFIX, DEFAULT_CONFIG
 from audible.logger import logger
 
 
@@ -11,6 +10,7 @@ class Search:
 
     QUERY_PREFIX = QUERY_PREFIX
     VIDEO_PREFIX = VIDEO_PREFIX
+    DEFAULT_CONFIG = DEFAULT_CONFIG
 
     # @classmethod
     # def find(self, keywords: str) -> list[str]:
@@ -38,28 +38,26 @@ class Search:
     #     return href_list
 
     @classmethod
-    def find(self, keywords: str, context: str = "fr") -> list[str]:
+    def find(
+        self,
+        keywords: str,
+        context: str = "fr",
+        config: dict = DEFAULT_CONFIG,
+    ) -> list[str]:
         """Get the list of videos"""
 
         context = context.lower().strip()[:2]
 
-        querystring = {"q": keywords}
+        params = {"q": keywords}
 
         if context == "fr":
-            querystring["hl"] = "fr"
-            querystring["gl"] = "FR"
-
-        if context == "en":
-            querystring["hl"] = "en"
-            querystring["gl"] = "US"
-
-        # import requests
+            params["hl"], params["gl"] = "fr", "FR"
+        else:
+            params["hl"], params["gl"] = "en", "US"
 
         url = "https://youtube-data8.p.rapidapi.com/search/"
 
-        headers = config
-
-        response = requests.get(url, headers=headers, params=querystring)
+        response = requests.get(url, headers=config, params=params)
 
         return response.json()
 

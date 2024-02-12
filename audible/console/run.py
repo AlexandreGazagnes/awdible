@@ -19,7 +19,7 @@ class RunCommand(Command):
             "video",
             description="The video url to download from youtube. \nIf you want to input a search query, use the --search option",
             optional=True,
-            default=Audible.DEFAULT_VIDEO,
+            default=Audible.DEFAULT_VIDEO_URL,
         )
     ]
     options = [
@@ -139,7 +139,7 @@ class RunCommand(Command):
 
         # check incompatible options video args and file otions are not passed together
         # unless default video is passed
-        if (video and file) and (video != Audible.DEFAULT_VIDEO):
+        if (video and file) and (video != Audible.DEFAULT_VIDEO_URL):
             raise AttributeError(
                 "You can only pass either a video url or a file with list of urls"
             )
