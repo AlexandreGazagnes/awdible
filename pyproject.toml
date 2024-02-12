@@ -44,8 +44,8 @@ poetry = "awdible.console.application:main"
 
 
 [tool.poetry.dependencies]
-# python = ">=3.9,<3.9.7 || >3.9.7,<4"
-python = "3.10.12"
+python = ">=3.9,<3.9.7 || >3.9.7,<4"
+# python = "3.10.12"
 cleo = "^2.1.0"
 requests = "^2.31.0"
 pytube = "^15.0.0"
