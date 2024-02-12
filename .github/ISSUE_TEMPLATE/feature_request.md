@@ -8,4 +8,4 @@ assignees: ''
 ---
 
 **Please write here what feature `awdible` is missing:**
-*Example: A new `awdible` API which is not (yet) supported by now.*
+*Example: A new `awdible` API which is not (yet) supported.*
