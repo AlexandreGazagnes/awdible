@@ -56,6 +56,7 @@ ffmpeg-python = "^0.2.0"
 # [tool.poetry.group.core.dependencies]
 # youtube-transcript-api = "^0.6.2"
 # # pandas = ">=1.4.0"
+python-dotenv = "^1.0.1"
 
 
 [tool.poetry.group.front.dependencies]
@@ -100,20 +101,15 @@ isort = "^5.13.2"
 [tool.poetry.group.test.dependencies]
 pytest = "^7.4.3"
 coverage = "^7.4.1"
+pytest-cov = "^4.1.0"
 coverage-badge = "^1.1.0"
-# pytest-cov
-
-# pytest-cov
-# coverage
-# coverage-badge
-
 
 [tool.poetry.group.doc.dependencies]
 mkdocs = ">=1.5.3"
 
 
 [tool.black]
-line-length = 79
+line-length = 88
 
 
 [tool.pycln]
@@ -121,7 +117,7 @@ all = true
 
 
 [tool.isort]
-line_length = 79
+line_length = 88
 multi_line_output = 3
 include_trailing_comma = true
 force_grid_wrap = 0

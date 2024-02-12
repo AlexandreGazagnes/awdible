@@ -1,6 +1,6 @@
 [flake8]
-max-line-length = 79
-max-doc-length = 79
+max-line-length = 88
+max-doc-length = 88
 eclude = conftest.py
 extend-ignore = E203, W503,F841
 ignore-names= *visit_*, *leave_*
