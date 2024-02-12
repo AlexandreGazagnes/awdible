@@ -1,3 +1,7 @@
+"""
+Logger module to log the messages
+"""
+
 import logging
 
 

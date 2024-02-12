@@ -1,3 +1,7 @@
+"""
+Convert the video to mp3
+"""
+
 import os
 
 import ffmpeg

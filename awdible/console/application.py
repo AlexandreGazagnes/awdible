@@ -1,3 +1,7 @@
+"""
+Console Application
+"""
+
 from cleo.application import Application
 
 from awdible.console.gui import GuiCommand

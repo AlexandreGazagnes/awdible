@@ -1,9 +1,29 @@
 # Changelog
 
-## 2024-01-12 - 0.2.3 - Fix readme and docs
+
+## -- NOT RELEASED -- 2024-01-13 - 0.2.4 - Fix ci / cd
 
 ## BE CAREFUL, THE PACKAGE IS NOW NAMED `awdible` AND NOT `audible` ANYMORE
 
+### Updates
+- Fix ci / cd
+- Fix secrets for api keys
+- fix and changes config call
+- add doctring to all module / submodules
+- delete useless files and code
+
+### Todo
+- manage crop video
+- fix dict error
+- fix list random error
+- clean files
+- drop useless comments
+- upgrade test policy
+- use ruff
+- align .pre-commit-config.yaml with ci cd
+
+
+## 2024-01-12 - 0.2.3 - Fix readme and docs
 
 ### Updates
 - Fix readme and docs
@@ -15,6 +35,7 @@
 - clean files
 - drop useless comments
 - upgrade test policy
+- use ruff
 
 ## 2024-01-11 - 0.2.0 - 2nd release
 
