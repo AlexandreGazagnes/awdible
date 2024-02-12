@@ -22,10 +22,7 @@ def get_config():
     elif os.path.exists(".env"):
         values = dotenv_values(".env")
     else:
-        values = {
-            "RAPID_API_KEY": no_api_key,
-            "RAPID_API_HOST": no_host_key,
-        }
+        values = {}
 
     config = {
         "X-RapidAPI-Key": values.get("RAPID_API_KEY", env_key),
