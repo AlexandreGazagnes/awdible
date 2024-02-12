@@ -1,43 +1,32 @@
-import numpy as np
-import pandas as pd
+"""
+Fixtures for the tests
+"""
+
+import os
+
 import pytest
 
-from sktransf.utils import get_titanic
+from audible.core.audible import Audible
 
 
 @pytest.fixture
-def X_y() -> tuple:
-    """Load the data"""
+def audible() -> Audible:
+    """Lod an Audible instance"""
 
-    return get_titanic()
-
-
-@pytest.fixture
-def X() -> pd.DataFrame:
-    """Load the data"""
-
-    X, _ = X_y = get_titanic()
-
-    return X
+    return Audible()
 
 
-@pytest.fixture
-def X_bool() -> pd.DataFrame:
-    """Load the data"""
+def pytest_sessionstart(session):
+    """
+    Called after the Session object has been created and
+    before performing collection and entering the run test loop.
+    """
 
-    X, _ = X_y = get_titanic()
+    if os.path.exists(Audible.DEFAULT_TMP):
 
-    X["bool_col"] = np.random.choice(["a", "b"], size=X.shape[0])
+        for file in os.listdir(Audible.DEFAULT_TMP):
+            os.remove(Audible.DEFAULT_TMP + file)
+        os.rmdir(Audible.DEFAULT_TMP)
 
-    return X
-
-
-@pytest.fixture
-def X_unique() -> pd.DataFrame:
-    """Load the data"""
-
-    X, _ = X_y = get_titanic()
-
-    X["unique_col"] = "hello"
-
-    return X
+    if not os.path.exists(Audible.DEFAULT_TMP):
+        os.makedirs(Audible.DEFAULT_TMP)
