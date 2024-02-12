@@ -7,7 +7,6 @@ from pytube import YouTube
 
 from audible.core.defaults import (
     VIDEO_PREFIX,
-    DEFAULT_VIDEO_ID,
     DEFAULT_VIDEO_URL,
 )
 

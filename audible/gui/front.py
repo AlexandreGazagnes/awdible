@@ -1,5 +1,3 @@
-import subprocess
-import sys
 import streamlit as st
 
 from audible.get import Get
