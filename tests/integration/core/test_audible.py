@@ -1,22 +1,22 @@
 """
-Test the Audible class.
+Test the Awdible class.
 """
 
 import pytest
 
-from audible.core.audible import Audible
-from audible.logger import logger
+from awdible.core.awdible import Awdible
+from awdible.logger import logger
 
 VIDEO_URL = "https://www.youtube.com/watch?v=9diaThxYnKA"
 VIDEO_ID = "V62oKsHdsLU"
 VIDEO_QUERY = "jo l'rigolo"
 
 
-class TestAudible:
-    """Test the Audible class."""
+class TestAwdible:
+    """Test the Awdible class."""
 
     def test___init__(self):
-        Audible(test_mode=True)
+        Awdible(test_mode=True)
 
     # def test_run_one(self):
     #     assert False  # TODO: implement your test here
@@ -34,32 +34,32 @@ class TestAudible:
     #     assert False  # TODO: implement your test here
 
     def test_one(self):
-        """Test the Audible class."""
+        """Test the Awdible class."""
 
         VIDEO_URL = "https://www.youtube.com/watch?v=9diaThxYnKA"
         video = VIDEO_URL
 
-        audible = Audible(video=video, test_mode=True)
-        assert audible
+        awdible = Awdible(video=video, test_mode=True)
+        assert awdible
 
-        audible.run()
+        awdible.run()
 
     def test_two(self):
-        """Test the Audible class."""
+        """Test the Awdible class."""
 
         video = VIDEO_ID
 
-        audible = Audible(video=video, test_mode=True, prefix=True)
-        assert audible
+        awdible = Awdible(video=video, test_mode=True, prefix=True)
+        assert awdible
 
-        audible.run()
+        awdible.run()
 
     def test_three(self):
-        """Test the Audible class."""
+        """Test the Awdible class."""
 
         video = VIDEO_QUERY
 
-        audible = Audible(video=video, test_mode=True, search=True)
-        assert audible
+        awdible = Awdible(video=video, test_mode=True, search=True)
+        assert awdible
 
-        audible.run()
+        awdible.run()

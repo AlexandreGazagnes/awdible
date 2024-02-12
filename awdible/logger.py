@@ -3,9 +3,9 @@ import logging
 
 def get_logger(name):
     logger = logging.getLogger(name)
-    logger.setLevel(logging.DEBUG)
+    logger.setLevel(logging.WARNING)
     formatter = logging.Formatter(
-        "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+        "%(asctime)s - %(name)s  - %(filename)s - %(levelname)s - %(message)s"
     )
     console_handler = logging.StreamHandler()
     console_handler.setFormatter(formatter)

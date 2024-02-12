@@ -15,7 +15,7 @@ It is recommended to use a virtual environment to install the package.
 Installing the package :
 
 ```bash
-pip install audible [--upgrade] [--user]
+pip install awdible [--upgrade] [--user]
 
 ```
 
@@ -26,7 +26,7 @@ It is recommended to use a virtual environment to install the package.
 ```bash
 pip install poetry
 poetry init
-poetry add audible
+poetry add awdible
 ```
 
 
@@ -36,11 +36,11 @@ poetry add audible
 You can check the installation by running the following command :
 
 ```bash
-pip show audible
+pip show awdible
 ```
 
 or
 
 ```bash
-pip list | grep audible
+pip list | grep awdible
 ```

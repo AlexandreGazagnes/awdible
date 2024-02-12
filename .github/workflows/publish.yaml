@@ -18,7 +18,7 @@ jobs:
       - name: Publish PyPi package
         uses: code-specialist/pypi-poetry-publish@v1
         with:
-          PACKAGE_DIRECTORY: "./audible/"
+          PACKAGE_DIRECTORY: "./awdible/"
           PYTHON_VERSION: "3.10.12"
           ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PUBLISH_REGISTRY_PASSWORD: ${{ secrets.PUBLISH_REGISTRY_PASSWORD }}
