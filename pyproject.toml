@@ -15,7 +15,7 @@ keywords=["python", "music", "tool", "utils", "youtube"]
 classifiers = [
     "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
     "Intended Audience :: Developers",
-    "Intended Audience :: Education", 
+    "Intended Audience :: Education",
     "Intended Audience :: Information Technology",
     "Environment :: Other Environment",
     "Development Status :: 5 - Production/Stable",
@@ -51,12 +51,10 @@ requests = "^2.31.0"
 pytube = "^15.0.0"
 beautifulsoup4 = "^4.12.2"
 ffmpeg-python = "^0.2.0"
+python-dotenv = "^1.0.1"
 
 
 # [tool.poetry.group.core.dependencies]
-# youtube-transcript-api = "^0.6.2"
-# # pandas = ">=1.4.0"
-python-dotenv = "^1.0.1"
 
 
 [tool.poetry.group.front.dependencies]
@@ -82,7 +80,7 @@ pre-commit = "^3.6.0"
 # jupyter-contrib-nbextensions = "^0.7.0"
 
 
-[tool.poetry.group.qa.dependencies]
+[tool.poetry.group.static.dependencies]
 black = {extras = ["jupyter"], version = "^23.12.1"}
 mypy = "^1.8.0"
 flake8 = "^7.0.0"
@@ -106,6 +104,8 @@ coverage-badge = "^1.1.0"
 
 [tool.poetry.group.doc.dependencies]
 mkdocs = ">=1.5.3"
+mkdocs-material = "^9.5.9"
+
 
 
 [tool.black]
