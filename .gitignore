@@ -214,3 +214,6 @@ build/
 
 *.log
 *.log.*
+
+
+list.py
