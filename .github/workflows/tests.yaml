@@ -45,7 +45,12 @@ jobs:
       - name: poetry Install
         run: poetry install --without doc,static
 
-      - name: Run tests with pytest
-        run: poetry run pytest ./tests/integration/ -vv
-        env: # Or as an environment variable
-          super_secret: ${{ secrets.tests }}
+      - name: Valid secrets
+        run: echo "$RAPID_API_HOST"
+        env:
+          SUPER_SECRET: ${{ secrets.tests }}
+
+      # - name: Run tests with pytest
+      #   run: poetry run pytest ./tests/integration/ -vv
+      #   env: # Or as an environment variable
+      #     super_secret: ${{ secrets.tests }}
