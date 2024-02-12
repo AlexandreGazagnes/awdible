@@ -7,8 +7,8 @@ import requests
 from bs4 import BeautifulSoup
 from pytube import YouTube
 
-from audible.logger import logger
-from audible.config import config
+from awdible.logger import logger
+from awdible.config import config
 from .convert import Convert
 from .crop import Crop
 from .defaults import (
@@ -48,8 +48,8 @@ from .video import Video
 # import logging
 
 
-class Audible:
-    """The Audible class is the core of the audible package. It is the main class that
+class Awdible:
+    """The Awdible class is the core of the awdible package. It is the main class that
     is used to download the audio from a youtube video. It can be used to download
 
     Agrs :
@@ -124,8 +124,8 @@ class Audible:
         test_mode: bool = DEFAULT_TEST_MODE,
         config: dict = config,
     ):
-        """Init the Audible class"""
-        self._audible = None
+        """Init the Awdible class"""
+        self._awdible = None
         self.video = video
         self.video_list = video if isinstance(video, list) else [video]
         self.dest = dest
@@ -146,7 +146,7 @@ class Audible:
         self.config = config
 
     def run(self):
-        """Run the audible session"""
+        """Run the awdible session"""
 
         # check default tmp do exist
 
@@ -179,7 +179,7 @@ class Audible:
         raise NotImplementedError("Sorry Bro! ")
 
     def run_one(self, video: str):
-        """Run the audible session for one video"""
+        """Run the awdible session for one video"""
 
         out = ""
 

@@ -6,14 +6,14 @@ import os
 
 import pytest
 
-from audible.core.audible import Audible
+from awdible.core.awdible import Awdible
 
 
 @pytest.fixture
-def audible() -> Audible:
-    """Lod an Audible instance"""
+def awdible() -> Awdible:
+    """Lod an Awdible instance"""
 
-    return Audible()
+    return Awdible()
 
 
 def pytest_sessionstart(session):
@@ -22,10 +22,10 @@ def pytest_sessionstart(session):
     before performing collection and entering the run test loop.
     """
 
-    if os.path.exists(Audible.DEFAULT_TMP):
-        for file in os.listdir(Audible.DEFAULT_TMP):
-            os.remove(Audible.DEFAULT_TMP + file)
-        os.rmdir(Audible.DEFAULT_TMP)
+    if os.path.exists(Awdible.DEFAULT_TMP):
+        for file in os.listdir(Awdible.DEFAULT_TMP):
+            os.remove(Awdible.DEFAULT_TMP + file)
+        os.rmdir(Awdible.DEFAULT_TMP)
 
-    if not os.path.exists(Audible.DEFAULT_TMP):
-        os.makedirs(Audible.DEFAULT_TMP)
+    if not os.path.exists(Awdible.DEFAULT_TMP):
+        os.makedirs(Awdible.DEFAULT_TMP)

@@ -1,7 +1,7 @@
 from cleo.application import Application
 
-from audible.console.gui import GuiCommand
-from audible.console.run import RunCommand
+from awdible.console.gui import GuiCommand
+from awdible.console.run import RunCommand
 
 # from cleo.commands.command import Command
 # from cleo.helpers import argument, option

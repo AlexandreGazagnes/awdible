@@ -1,8 +1,8 @@
 import requests
 from bs4 import BeautifulSoup
 
-from audible.core.defaults import QUERY_PREFIX, VIDEO_PREFIX, DEFAULT_CONFIG
-from audible.logger import logger
+from awdible.core.defaults import QUERY_PREFIX, VIDEO_PREFIX, DEFAULT_CONFIG
+from awdible.logger import logger
 
 
 class Search:

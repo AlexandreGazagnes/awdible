@@ -2,9 +2,9 @@ name: Tests
 
 on:
   push:
-    branches: [ main, dev ]
+    branches: [ main, dev,]
   pull_request:
-    branches: [ main, dev ]
+    branches: [ main, dev,]
 
 jobs:
 
@@ -40,10 +40,7 @@ jobs:
         run: poetry --help
 
       - name: poetry Install
-        run: poetry install
+        run: poetry install --without doc,static
 
       - name: Run tests with pytest
-        run: poetry run pytest --cov=./audible
-
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v3
+        run: poetry run pytest
