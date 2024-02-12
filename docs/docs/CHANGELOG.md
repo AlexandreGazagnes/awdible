@@ -1,6 +1,6 @@
 # Changelog
 
-## 2024-01-1 - 0.2.1 - Fix readme and docs
+## 2024-01-12 - 0.2.1 - Fix readme and docs
 
 ### Updates
 - Fix readme and docs
@@ -13,7 +13,7 @@
 - drop useless comments
 - upgrade test policy
 
-## 2024-01-1 - 0.2.0 - 2nd release
+## 2024-01-11 - 0.2.0 - 2nd release
 
 ### Updates
 - rename awdible from audible
