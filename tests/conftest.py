@@ -23,7 +23,6 @@ def pytest_sessionstart(session):
     """
 
     if os.path.exists(Audible.DEFAULT_TMP):
-
         for file in os.listdir(Audible.DEFAULT_TMP):
             os.remove(Audible.DEFAULT_TMP + file)
         os.rmdir(Audible.DEFAULT_TMP)

@@ -17,7 +17,6 @@ class TestAudible:
     """Test the Audible class."""
 
     def test___init__(self):
-
         Audible(test_mode=True)
 
     # def test_run_one(self):

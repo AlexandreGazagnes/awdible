@@ -7,7 +7,6 @@ QUERY = "jo l'rigolo"
 
 
 class TestSearch:
-
     def test_find(self) -> None:
         """Test the find method"""
 

@@ -5,7 +5,6 @@ from audible.logger import logger
 
 
 class Convert:
-
     @classmethod
     def to_mp3(cls, src: str) -> str:
         """Convert the video to mp3"""

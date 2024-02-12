@@ -20,7 +20,6 @@ from cleo.application import Application
 
 
 def main() -> int:
-
     application = Application()
 
     application.add(GuiCommand())
@@ -31,7 +30,6 @@ def main() -> int:
 
 
 if __name__ == "__main__":
-
     application = Application()
 
     application.add(GuiCommand())

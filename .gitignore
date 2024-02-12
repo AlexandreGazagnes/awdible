@@ -198,8 +198,10 @@ __pycache__/
 site/
 dist/
 build/
+
 *.egg-info/
 *.egg
+
 *.tar.gz
 *.whl
 *.zip

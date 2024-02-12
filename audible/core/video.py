@@ -32,7 +32,6 @@ class Video:
 
     @classmethod
     def stream(self, yt: YouTube) -> tuple:
-
         try:
             media = yt.streams.filter(only_audio=True).first()
             title = yt.title.replace(" ", "_")

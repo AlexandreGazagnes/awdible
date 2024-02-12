@@ -9,5 +9,4 @@ class GuiCommand(Command):
     description = "Launch Streamlit local Web App someone"
 
     def handle(self):
-
         self.line("Launching Streamlit Web App...")
