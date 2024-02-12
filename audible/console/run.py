@@ -45,10 +45,17 @@ class RunCommand(Command):
         ),
         option(
             "crop_limit",
-            "c",
+            "l",
             description="The limit of duration of the video to download. If the video is longer than the limit, it will be cropped into smaller parts.",
             flag=False,
             default=Audible.DEFAULT_CROP_LIMIT,
+        ),
+        option(
+            "context",
+            "c",
+            description="The context of the search query. Can be 'fr' or 'en'",
+            flag=False,
+            default=Audible.DEFAULT_CONTEXT,
         ),
         option(
             "search",
@@ -82,6 +89,7 @@ class RunCommand(Command):
         file = self.option("file")
         output = self.option("output")
         crop_limit = self.option("crop_limit")
+        context = self.option("context")
 
         # flags options
         search = self.option("search")
@@ -95,10 +103,15 @@ class RunCommand(Command):
         logger.debug(f"file: {file}")
         logger.debug(f"output: {output}")
         logger.debug(f"crop_limit: {crop_limit}")
+        logger.debug(f"context: {context}")
 
         logger.debug(f"search: {search}")
         logger.debug(f"prefix: {prefix}")
         logger.debug(f"asynchronous: {asynchronous}")
+
+        # check context
+        if context not in ["fr", "en"]:
+            raise Exception("Invalid context. Should be 'fr' or 'en'")
 
         # check if the dest is a valid directory
         if dest:
@@ -112,9 +125,7 @@ class RunCommand(Command):
 
         # check if the output is a valid file format
         if output not in ["mp3", "mp4"]:
-            raise Exception(
-                "Invalid output file format : Only supports mp3 and mp4"
-            )
+            raise Exception("Invalid output file format : Only supports mp3 and mp4")
 
         # check if the crop limit is a valid number
         try:
@@ -144,16 +155,16 @@ class RunCommand(Command):
         # strip items in the list
         video_list = [v.strip() for v in video_list]
 
-        # if prefix is set, add the prefix to the video list
-        if prefix:
-            video_list = [Audible.VIDEO_PREFIX + v for v in video_list]
+        # # if prefix is set, add the prefix to the video list
+        # if prefix:
+        #     video_list = [Audible.VIDEO_PREFIX + v for v in video_list]
 
-        # check video list
-        for v in video_list:
-            if not v.startswith(Audible.VIDEO_PREFIX):
-                raise AttributeError(
-                    f"Invalid youtube video url. Should be in the format '{Audible.VIDEO_PREFIX}', recieved : '{v}'\n Consier using the --search option to search for the video url or add the --prefix option to add the prefix to the video url."
-                )
+        # # check video list
+        # for v in video_list:
+        #     if not v.startswith(Audible.VIDEO_PREFIX):
+        #         raise AttributeError(
+        #             f"Invalid youtube video url. Should be in the format '{Audible.VIDEO_PREFIX}', recieved : '{v}'\n Consier using the --search option to search for the video url or add the --prefix option to add the prefix to the video url."
+        #         )
 
         self.line("Eh! I'm running the command")
         Audible(
@@ -161,6 +172,8 @@ class RunCommand(Command):
             dest=dest,
             file=file,
             output=output,
+            context=context,
+            prefix=prefix,
             search=search,
             asynchronous=asynchronous,
             crop_limit=crop_limit,
