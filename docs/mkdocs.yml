@@ -1,11 +1,11 @@
-site_name: Audible
+site_name: Awdible
 
 site_description:  Just a free version of Audible
 theme: readthedocs
 
-site_url: https://alexandregazagnes.github.io/audible/
-repo_name: 'AlexandreGazagnes/audible'
-repo_url: 'https://github.com/AlexandreGazagnes/audible'
+site_url: https://alexandregazagnes.github.io/awdible/
+repo_name: 'AlexandreGazagnes/awdible'
+repo_url: 'https://github.com/AlexandreGazagnes/awdible'
 edit_uri: 'edit/master/docs/docs'
 
 extra:

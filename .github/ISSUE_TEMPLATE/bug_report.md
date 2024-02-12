@@ -10,11 +10,11 @@ assignees: ""
 
 - **Operating System**:
 - **Python version**:
-- **audible version**:
+- **awdible version**:
 
 ## Acknowledgement
 
-- [ ] If I am on **Windows**, I read the [Troubleshooting page](https://alexandregazagnes.github.io/audible/troubleshooting/)
+- [ ] If I am on **Windows**, I read the [Troubleshooting page](https://alexandregazagnes.github.io/awdible/troubleshooting/)
       before writing a new bug report
 
 ## Bug description
@@ -27,6 +27,6 @@ _Write here the observed behavior_
 
 _Write here the expected behavior_
 
-## Minimal but working code sample to ease bug fix for `audible` team
+## Minimal but working code sample to ease bug fix for `awdible` team
 
-_Write here the minimal code sample to ease bug fix for `audible` team_
+_Write here the minimal code sample to ease bug fix for `awdible` team_

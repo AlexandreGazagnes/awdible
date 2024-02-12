@@ -48,7 +48,7 @@ jobs:
       - name: Publish documentation
         run: cd ./docs && poetry run mkdocs gh-deploy
         env:
-          PACKAGE_DIRECTORY: "./audible/"
+          PACKAGE_DIRECTORY: "./awdible/"
           PYTHON_VERSION: "3.10.12"
           ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PUBLISH_REGISTRY_PASSWORD: ${{ secrets.PUBLISH_REGISTRY_PASSWORD }}

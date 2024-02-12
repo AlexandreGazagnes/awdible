@@ -43,7 +43,7 @@ jobs:
         run: poetry install
 
       - name: Run tests with pytest
-        run: poetry run pytest --cov=./audible
+        run: poetry run pytest --cov=./awdible
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3

@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "audible"
+name = "awdible"
 version = "0.2.0"
 description = "Just a free version of Audible"
 license = "GPL-3.0"
@@ -7,9 +7,9 @@ authors = ["AlexandreGazagnes <alex@gazagnes.net>",]
 maintainers = ["AlexandreGazagnes <alex@gazagnes.net>",]
 readme = "README.md"
 
-homepage = "https://alexandregazagnes.github.io/audible/"
-repository = "https://github.com/AlexandreGazagnes/audible/"
-documentation = "https://alexandregazagnes.github.io/audible/"
+homepage = "https://alexandregazagnes.github.io/awdible/"
+repository = "https://github.com/AlexandreGazagnes/awdible/"
+documentation = "https://alexandregazagnes.github.io/awdible/"
 
 keywords=["python", "music", "tool", "utils", "youtube"]
 classifiers = [
@@ -27,20 +27,20 @@ classifiers = [
 ]
 
 
-packages = [{include = "audible"}]
+packages = [{include = "awdible"}]
 include = ["docs/docs/CHANGELOG.md", "LICENCE"]
 
 [tool.poetry.urls]
-"Homepage" = "https://alexandregazagnes.github.io/audible/"
-"Documentation" = "https://alexandregazagnes.github.io/audible/"
-"Repository" = "https://github.com/AlexandreGazagnes/audible/tree/main"
-# "Code" = "https://github.com/AlexandreGazagnes/audible/tree/main"
-"Issues" = "https://github.com/AlexandreGazagnes/audible/issues"
-"Changelog" = "https://alexandregazagnes.github.io/audible/CHANGELOG/"
+"Homepage" = "https://alexandregazagnes.github.io/awdible/"
+"Documentation" = "https://alexandregazagnes.github.io/awdible/"
+"Repository" = "https://github.com/AlexandreGazagnes/awdible/tree/main"
+# "Code" = "https://github.com/AlexandreGazagnes/awdible/tree/main"
+"Issues" = "https://github.com/AlexandreGazagnes/awdible/issues"
+"Changelog" = "https://alexandregazagnes.github.io/awdible/CHANGELOG/"
 
 
 [tool.poetry.scripts]
-poetry = "audible.console.application:main"
+poetry = "awdible.console.application:main"
 
 
 [tool.poetry.dependencies]

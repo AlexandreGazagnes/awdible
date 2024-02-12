@@ -3,23 +3,23 @@ import os
 from cleo.commands.command import Command
 from cleo.helpers import argument, option
 
-from audible.core.audible import Audible
-from audible.logger import logger
+from awdible.core.awdible import Awdible
+from awdible.logger import logger
 
 
 class RunCommand(Command):
-    """Run Audible session"""
+    """Run Awdible session"""
 
     name = "run"
 
-    description = "Run Audible session"
+    description = "Run Awdible session"
 
     arguments = [
         argument(
             "video",
             description="The video url to download from youtube. \nIf you want to input a search query, use the --search option",
             optional=True,
-            default=Audible.DEFAULT_VIDEO_URL,
+            default=Awdible.DEFAULT_VIDEO_URL,
         )
     ]
     options = [
@@ -28,7 +28,7 @@ class RunCommand(Command):
             "d",
             description="The destination directory of the file",
             flag=False,
-            default=Audible.DEFAULT_DEST,
+            default=Awdible.DEFAULT_DEST,
         ),
         option(
             "file",
@@ -41,21 +41,21 @@ class RunCommand(Command):
             "o",
             description="The output file name",
             flag=False,
-            default=Audible.DEFAULT_OUTPUT,
+            default=Awdible.DEFAULT_OUTPUT,
         ),
         option(
             "crop_limit",
             "l",
             description="The limit of duration of the video to download. If the video is longer than the limit, it will be cropped into smaller parts.",
             flag=False,
-            default=Audible.DEFAULT_CROP_LIMIT,
+            default=Awdible.DEFAULT_CROP_LIMIT,
         ),
         option(
             "context",
             "c",
             description="The context of the search query. Can be 'fr' or 'en'",
             flag=False,
-            default=Audible.DEFAULT_CONTEXT,
+            default=Awdible.DEFAULT_CONTEXT,
         ),
         option(
             "search",
@@ -66,14 +66,14 @@ class RunCommand(Command):
         option(
             "prefix",
             "p",
-            description=f"If set, can ommit the url prefix '{Audible.VIDEO_PREFIX}' when passing the video url.",
+            description=f"If set, can ommit the url prefix '{Awdible.VIDEO_PREFIX}' when passing the video url.",
             flag=True,
         ),
         option(
             "asynchronous",
             "a",
             description="If set, the download will be asynchronous.",
-            # This means that the download will be done in the background and the command will return immediately. The download progress can be checked using the `audible progress` command.
+            # This means that the download will be done in the background and the command will return immediately. The download progress can be checked using the `awdible progress` command.
             flag=True,
         ),
     ]
@@ -139,7 +139,7 @@ class RunCommand(Command):
 
         # check incompatible options video args and file otions are not passed together
         # unless default video is passed
-        if (video and file) and (video != Audible.DEFAULT_VIDEO_URL):
+        if (video and file) and (video != Awdible.DEFAULT_VIDEO_URL):
             raise AttributeError(
                 "You can only pass either a video url or a file with list of urls"
             )
@@ -159,17 +159,17 @@ class RunCommand(Command):
 
         # # if prefix is set, add the prefix to the video list
         # if prefix:
-        #     video_list = [Audible.VIDEO_PREFIX + v for v in video_list]
+        #     video_list = [Awdible.VIDEO_PREFIX + v for v in video_list]
 
         # # check video list
         # for v in video_list:
-        #     if not v.startswith(Audible.VIDEO_PREFIX):
+        #     if not v.startswith(Awdible.VIDEO_PREFIX):
         #         raise AttributeError(
-        #             f"Invalid youtube video url. Should be in the format '{Audible.VIDEO_PREFIX}', recieved : '{v}'\n Consier using the --search option to search for the video url or add the --prefix option to add the prefix to the video url."
+        #             f"Invalid youtube video url. Should be in the format '{Awdible.VIDEO_PREFIX}', recieved : '{v}'\n Consier using the --search option to search for the video url or add the --prefix option to add the prefix to the video url."
         #         )
 
         self.line("Eh! I'm running the command")
-        Audible(
+        Awdible(
             video=video_list,
             dest=dest,
             file=file,

@@ -2,7 +2,7 @@ import os
 
 import ffmpeg
 
-from audible.logger import logger
+from awdible.logger import logger
 
 
 class Convert:

@@ -7,5 +7,5 @@ assignees: ''
 
 ---
 
-**Please write here what feature `audible` is missing:**
-*Example: A new `audible` API which is not (yet) supported by now.*
+**Please write here what feature `awdible` is missing:**
+*Example: A new `awdible` API which is not (yet) supported by now.*

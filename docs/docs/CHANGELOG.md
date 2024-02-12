@@ -1,12 +1,20 @@
 # Changelog
 
-## 2024-01-11 - 0.2.0 - 2nd release
+## 2024-01-1 - 0.2.0 - 2nd release
 
 ### Updates
+- rename awdible from audible
+- reshape all app 
+- reshape Awdible class
 
 ### Added
+- add true cli suport 
+- add tets
+- add console 
 
 ### Todo
+- manage crop video 
+- fix dict error
 
 ## 2024-01-11 - 0.1.2 - Fix Streamlit 
 
