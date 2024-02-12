@@ -24,10 +24,20 @@ from .defaults import (
     DEFAULT_STREAMLIT,
     DEFAULT_TEST_MODE,
     DEFAULT_TMP,
+    DEFAULT_LOG,
     DEFAULT_VIDEO_ID,
     DEFAULT_VIDEO_URL,
     VIDEO_PREFIX,
     DEFAULT_CONFIG,
+)
+
+from .validators import (
+    Dir,
+    File,
+    Output,
+    # Config,
+    Context,
+    Bool,
 )
 from .search import Search
 from .video import Video
@@ -77,6 +87,7 @@ class Audible:
     DEFAULT_PREFIX = DEFAULT_PREFIX
 
     DEFAULT_TMP = DEFAULT_TMP
+    DEFAULT_LOG = DEFAULT_LOG
 
     DEFAULT_STREAMLIT = DEFAULT_STREAMLIT
     DEFAULT_PORT = DEFAULT_PORT
@@ -84,6 +95,18 @@ class Audible:
     DEFAULT_TEST_MODE = DEFAULT_TEST_MODE
 
     DEFAULT_CONFIG = DEFAULT_CONFIG
+
+    dest = Dir()
+    file = File()
+    output = Output()
+    crop_limit = Crop()
+    context = Context()
+    search = Bool()
+    prefix = Bool()
+    asynchronous = Bool()
+    streamlit = Bool()
+    test_mode = Bool()
+    # config = Config()
 
     def __init__(
         self,
@@ -131,7 +154,18 @@ class Audible:
             if not os.path.exists(self.DEFAULT_TMP):
                 os.makedirs(self.DEFAULT_TMP)
 
-            self.dest = self.DEFAULT_TMP
+        if not os.path.exists(self.DEFAULT_LOG):
+            os.makedirs(self.DEFAULT_LOG)
+
+        self.dest = self.DEFAULT_TMP
+        self.log = self.DEFAULT_LOG
+
+        if self.asynchronous:
+            outs = self.run_asynch()
+        else:
+            outs = self.run_synch()
+
+    def run_synch(self):
 
         outs = [self.run_one(video) for video in self.video_list]
 
@@ -139,6 +173,10 @@ class Audible:
             return outs[0]
 
         return outs
+
+    def run_asynch(self):
+
+        raise NotImplementedError("Sorry Bro! ")
 
     def run_one(self, video: str):
         """Run the audible session for one video"""

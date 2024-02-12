@@ -155,6 +155,7 @@ class RunCommand(Command):
         # strip items in the list
         video_list = [v.strip() for v in video_list]
         video_list = [v for v in video_list if v]
+        video_list = [v for v in video_list if not v.startswith("#")]
 
         # # if prefix is set, add the prefix to the video list
         # if prefix:
