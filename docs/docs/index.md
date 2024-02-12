@@ -13,7 +13,7 @@
 
 # Awdible
 
-## About 
+## About
 Awdible is a free and open-source software that allows you to download music from youtube and convert it to mp3.
 
 The idea is to provide a free version of awdible.
@@ -36,7 +36,7 @@ pip install awdible
 
 ## Usage
 
-### On line 
+### On line
 
 Please visit [Awdible on Streamlit]("https://awdible.streamlit.app/") web app
 
@@ -44,30 +44,28 @@ Please visit [Awdible on Streamlit]("https://awdible.streamlit.app/") web app
 ### Local
 
 
-As executable : 
+As executable :
 
 * ```awdible [youtube-url]``` standard usage
 
 * ```awdible -o mp3 -d my/dest [youtube-url]``` standard usage
 
-* ```aubible -f my_file.txt -o mp3 -d my/dest``` specify a file list of **youtube urls** and output format and destination folder
-  
-* ```aubible -f my_file.txt -o mp3 -r -d my/dest``` specify a file list ***song names** and output format and destination folder
+* ```awdible -f my_file.txt -o mp3 -d my/dest``` specify a file list of **youtube urls** and output format and destination folder
+
+* ```awdible -f my_file.txt -o mp3 -s -d my/dest``` specify a file list ***song names** and output format and destination folder
 
 
 
-As library : 
+As library :
 
 ```python
 from awdible import Awdible
 Awdible.download("https://www.youtube.com/watch?v=3y5A4paFOb4")
 ```
 
-As web app : 
+As web app :
 
-
-
-* ```awdible gui``` : lunch local streamlit 
+* ```awdible gui``` : lunch local streamlit
 
 
 
@@ -88,5 +86,3 @@ Please visit [Troubleshooting](https://alexandregazagnes.github.io/awdible/TROUB
 ## Contributing
 
 Please visit [Contributing](https://alexandregazagnes.github.io/awdible/CONTRIBUTING/) page.
-
-
