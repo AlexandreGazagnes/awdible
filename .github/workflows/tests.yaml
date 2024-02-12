@@ -50,7 +50,7 @@ jobs:
         env:
           SUPER_SECRET: ${{ secrets.tests }}
 
-      # - name: Run tests with pytest
-      #   run: poetry run pytest ./tests/integration/ -vv
-      #   env: # Or as an environment variable
-      #     super_secret: ${{ secrets.tests }}
+      - name: Run tests with pytest
+        run: poetry run pytest -vvx --capture=tee-sys --log-cli-level=INFO tests/integration/
+        env: # Or as an environment variable
+          super_secret: ${{ secrets.tests }}
