@@ -47,3 +47,5 @@ jobs:
 
       - name: Run tests with pytest
         run: poetry run pytest
+        env: # Or as an environment variable
+          super_secret: ${{ secrets.SuperSecret }}
