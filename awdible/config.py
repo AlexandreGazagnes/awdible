@@ -6,6 +6,8 @@ import os
 import dotenv
 from dotenv import dotenv_values
 
+from .logger import logger
+
 
 def get_config():
     """Get the config"""
@@ -28,6 +30,8 @@ def get_config():
         "X-RapidAPI-Key": values.get("RAPID_API_KEY", env_key),
         "X-RapidAPI-Host": values.get("RAPID_API_HOST", env_host),
     }
+
+    logger.critical(f"Config: {config.get('X-RapidAPI-Host', no_host_key)}")
 
     return config
 
