@@ -6,6 +6,9 @@ import streamlit as st
 
 from awdible.core.awdible import Awdible
 
+DEFAULT_VIDEO_URL = "https://www.youtube.com/watch?v=9diaThxYnKA"
+DEFAULT_VIDEO_ID = "V62oKsHdsLU"
+DEFAULT_VIDEO_QUERY = "jo l'rigolo"
 
 # header image
 img = "./docs/assets/img/image.png"
@@ -21,7 +24,7 @@ Just paste the url of the video you want to download and click the button.
 )
 
 # Text input
-pos_url = "https://youtube.com/shorts/fcCpXScFxfM?si=xVSQZWa7MgsWOl9E"
+pos_url = DEFAULT_VIDEO_URL
 url = st.text_input("Youtube url", pos_url)
 
 

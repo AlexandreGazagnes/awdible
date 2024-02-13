@@ -9,9 +9,11 @@ from awdible.logger import logger
 
 from awdible.config import config
 
-VIDEO_URL = "https://www.youtube.com/watch?v=9diaThxYnKA"
-VIDEO_ID = "V62oKsHdsLU"
-VIDEO_QUERY = "jo l'rigolo"
+from tests.conftest import VIDEO_URL, VIDEO_ID, VIDEO_QUERY
+
+# VIDEO_URL = "https://www.youtube.com/watch?v=9diaThxYnKA"
+# VIDEO_ID = "V62oKsHdsLU"
+# VIDEO_QUERY = "jo l'rigolo"
 
 
 class TestAwdible:
