@@ -1,9 +1,28 @@
 # Changelog
 
 
+### As a reminder please notes that the package is named `awdible` AND NOT `audible` ANYMORE
+
+### Please not that the `-s` option requires a valid [youtube rapid api key](https://rapidapi.com/herosAPI/api/youtube-data8).
+More info in the documentation.
+
+## 2024-01-15 - 0.2.5 - Minor ops and docs updates
+
+### Updates
+- Fix streamlit problem for [#14](https://github.com/AlexandreGazagnes/awdible/issues/14)
+- Disable support for streamlit.io free web app
+- Enable automation for the documentation index page update for [#19](https://github.com/AlexandreGazagnes/awdible/issues/19)
+- Fix mkdocs.yaml for [#20](https://github.com/AlexandreGazagnes/awdible/issues/20)
+
+### Added
+- Add support for rapid api youtube data8 in `README.md`, `index.md` and `usage.md` for [#12](https://github.com/AlexandreGazagnes/awdible/issues/12)
+
+### To do
+- Please have a look to the [github issues page](https://github.com/AlexandreGazagnes/awdible/issues) and the [github project page](https://github.com/users/AlexandreGazagnes/projects/3) for more info.
+
+
 ## 2024-01-13 - 0.2.4 - Fix ci / cd
 
-## BE CAREFUL, THE PACKAGE IS NOW NAMED `awdible` AND NOT `audible` ANYMORE
 
 ### Updates
 - Fix ci / cd
@@ -11,16 +30,6 @@
 - fix and changes config call
 - add doctring to all module / submodules
 - delete useless files and code
-
-### Todo
-- manage crop video
-- fix dict error
-- fix list random error (option -f)
-- clean files
-- drop useless comments
-- upgrade test policy
-- use ruff
-- align .pre-commit-config.yaml with ci cd
 
 
 ## 2024-01-12 - 0.2.3 - Fix readme and docs
