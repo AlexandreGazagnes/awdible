@@ -56,4 +56,5 @@ jobs:
       - name: Run tests with pytest
         run: poetry run pytest -vvx --capture=tee-sys --log-cli-level=INFO tests/integration/
         env: # Or as an environment variable
-          super_secret: ${{ secrets.tests }}
+          RAPID_API_KEY: ${{ secrets.RAPID_API_KEY }}
+          RAPID_API_HOST: ${{ secrets.RAPID_API_HOST }}
