@@ -43,7 +43,6 @@ url = st.text_input("Youtube url", pos_url)
 
 # Button
 if st.button("Submit"):
-
     # init the Awdible class
     awdible = Awdible(video=url, test_mode=True, streamlit=True)
 
