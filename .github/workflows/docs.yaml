@@ -37,11 +37,8 @@ jobs:
           restore-keys: |
             mkdocs-material-
 
-      - run: pip install mkdocs-material
-
-      # - run: pwd
-      # - run: cd ./docs/
-      # - run: pwd
+      - name: Install mkdocs
+        run: pip install mkdocs-material
 
       - name: deploy docs
         working-directory: ./docs/

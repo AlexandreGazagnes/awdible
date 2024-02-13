@@ -1,7 +1,7 @@
 # Changelog
 
 
-## -- NOT RELEASED -- 2024-01-13 - 0.2.4 - Fix ci / cd
+## 2024-01-13 - 0.2.4 - Fix ci / cd
 
 ## BE CAREFUL, THE PACKAGE IS NOW NAMED `awdible` AND NOT `audible` ANYMORE
 
@@ -15,7 +15,7 @@
 ### Todo
 - manage crop video
 - fix dict error
-- fix list random error
+- fix list random error (option -f)
 - clean files
 - drop useless comments
 - upgrade test policy

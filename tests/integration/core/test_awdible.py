@@ -23,8 +23,8 @@ class TestAwdible:
     def test_three(self):
         """Test the Awdible class."""
 
-        print(config)
-        logger.warning(config)
+        # print(config)
+        # logger.warning(config)
 
         video = VIDEO_QUERY
 
