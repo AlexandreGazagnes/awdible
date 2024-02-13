@@ -11,18 +11,19 @@
 ![Pypi](https://github.com/AlexandreGazagnes/awdible/actions/workflows/publish.yaml/badge.svg)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/AlexandreGazagnes/awdible)
 
-# Awdible
+# Awdible - Just the best free version of audible
 
 ## About
-Awdible is a free and open-source software that allows you to download music from youtube and convert it to mp3.
+Awdible is a free and open-source software, app and python package that allows you to download music from youtube and convert it to mp3.
 
 The idea is to provide a free version of awdible.
 
 ## Key Features
 
-* Download music from youtube
+* Download music / audiobook from youtube
 * Convert music to mp3
-* Find music from a list of songs names
+* Find music from a list of songs / audiobook names : Waka Waka, Happy, Harry potter and the philosopher's stone, ...
+* Crop a long audio file to a specific duration
 
 ## Installation
 
@@ -36,37 +37,80 @@ pip install awdible
 
 ## Usage
 
-### On line
 
-Please visit [Awdible on Streamlit]("https://awdible.streamlit.app/") web app
 
 
 ### Local
 
 
-As executable :
+#### As executable :
 
-* ```awdible [youtube-url]``` standard usage
+In a terminal :
+* ```awdible [youtube-url] ``` standard usage : download and convert to mp3
 
-* ```awdible -o mp3 -d my/dest [youtube-url]``` standard usage
+* ```awdible -d my/dest [youtube-url] ``` specify a destination folder
 
-* ```awdible -f my_file.txt -o mp3 -d my/dest``` specify a file list of **youtube urls** and output format and destination folder
+* ```awdible -f my_file.txt -d my/dest ``` specify a file list song  / audibooks **urls** and specify destination folder
 
-* ```awdible -f my_file.txt -o mp3 -s -d my/dest``` specify a file list ***song names** and output format and destination folder
+The my_file.txt file must contain one youtube url per line.
+my_file.txt example :
+```
+https://www.youtube.com/watch?v=3y5A4paFOb4
+https://www.youtube.com/watch?v=3y5A4paFOb4
+https://www.youtube.com/watch?v=3y5A4paFOb4
+```
+* ```awdible -f my_file.txt -d my/dest -p ``` specify a file list song  / audibooks **ids** and specify destination folder
+
+The my_file.txt file must contain one youtube id per line.
+my_file.txt example :
+```
+3y5A4paFOb4
+3y5A4paFOb4
+3y5A4paFOb4
+```
+* ```awdible -f my_file.txt -s -d my/dest``` specify a file list song / audioobks **names** (not just yourube url) and specify destination folder.
+
+**WARNING**:
+- Please note that for the `-s` option, you must have a set up your **[youtube rapid api](https://rapidapi.com/herosAPI/api/youtube-data8)** account. You need to add in your environment variables or export directly from a terminal the following :
+
+```bash
+export RAPID_API_KEY="*********"
+export RAPID_API_HOST="youtube-data8.p.rapidapi.com"
+```
 
 
+#### As library
 
-As library :
+In a python file :
 
 ```python
 from awdible import Awdible
-Awdible.download("https://www.youtube.com/watch?v=3y5A4paFOb4")
+
+url = "https://www.youtube.com/watch?v=3y5A4paFOb4"
+awdible = Awdible(url)
+awdible.run()
+
+# or
+
+urls = [
+    "https://www.youtube.com/watch?v=3y5A4paFOb4",
+    "https://www.youtube.com/watch?v=3y5A4paFOb4",
+    "https://www.youtube.com/watch?v=3y5A4paFOb4"
+    ]
+
+awdible = Awdible(urls)
+awdible.run()
 ```
 
-As web app :
+#### As web app
 
-* ```awdible gui``` : lunch local streamlit
+In a terminal :
 
+* ```awdible gui ``` launch local streamlit
+
+### On line
+
+* The on line web app is temporarily unavailable. It will be available in the `0.2.5` release.
 
 
 ## Documentation
@@ -78,11 +122,19 @@ Please visit [Documentation](https://alexandregazagnes.github.io/awdible/) page.
 
 Please visit [Changelog, Roadmap and Releases](https://alexandregazagnes.github.io/awdible/CHANGELOG/) page.
 
-## Troubleshooting
+<!-- ## Troubleshooting
 
-Please visit [Troubleshooting](https://alexandregazagnes.github.io/awdible/TROUBLESHOOTING/) page.
+Please visit [Troubleshooting](https://alexandregazagnes.github.io/awdible/TROUBLESHOOTING/) page. -->
 
 
 ## Contributing
+
+Awdible is an open-source project and we are always looking for more people to contribute to its development.
+
+It could be by adding new features, fixing bugs, improving the documentation, or any other way you see fit.
+
+Any help is welcome, and we will do our best to help you get started.
+
+Any feedback is also welcome.
 
 Please visit [Contributing](https://alexandregazagnes.github.io/awdible/CONTRIBUTING/) page.
