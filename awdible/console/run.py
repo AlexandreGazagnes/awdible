@@ -1,3 +1,7 @@
+"""
+Run command
+"""
+
 import os
 
 from cleo.commands.command import Command
