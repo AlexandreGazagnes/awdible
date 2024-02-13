@@ -9,6 +9,11 @@ import pytest
 from awdible.core.awdible import Awdible
 
 
+VIDEO_URL = "https://www.youtube.com/watch?v=9diaThxYnKA"
+VIDEO_ID = "V62oKsHdsLU"
+VIDEO_QUERY = "jo l'rigolo"
+
+
 @pytest.fixture
 def awdible() -> Awdible:
     """Lod an Awdible instance"""

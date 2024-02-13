@@ -166,6 +166,8 @@ class Awdible:
         else:
             outs = self.run_synch()
 
+        return outs
+
     def run_synch(self):
         outs = [self.run_one(video) for video in self.video_list]
 
