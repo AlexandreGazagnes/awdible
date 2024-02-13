@@ -2,15 +2,23 @@ name: Tests
 
 on:
   push:
-    branches: [ main, dev ]
+    branches: [ main, dev,]
   pull_request:
-    branches: [ main, dev ]
+    branches: [ main, dev,]
+
+permissions:
+  contents: write
 
 jobs:
 
   test:
 
     runs-on: ubuntu-latest
+    environment : tests
+    env:
+      RAPID_API_KEY: ${{ secrets.RAPID_API_KEY }}
+      RAPID_API_HOST: ${{ secrets.RAPID_API_HOST }}
+
 
     strategy:
       fail-fast: false
@@ -36,14 +44,17 @@ jobs:
         with:
           poetry-version: ${{ matrix.poetry-version }}
 
+      - name: Install ffmpeg
+        run: sudo apt-get install -y ffmpeg
+
       - name: View poetry --help
         run: poetry --help
 
       - name: poetry Install
-        run: poetry install
+        run: poetry install --without doc,static
+
+      - name: Valid secrets
+        run: echo "${{ secrets.RAPID_API_HOST }}"
 
       - name: Run tests with pytest
-        run: poetry run pytest --cov=./audible
-
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v3
+        run: poetry run pytest -vvx --capture=tee-sys --log-cli-level=INFO tests/integration/

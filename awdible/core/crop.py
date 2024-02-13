@@ -1,6 +1,10 @@
+"""
+Crop the audio
+"""
+
 import ffmpeg
 
-from audible.logger import logger
+from awdible.logger import logger
 
 
 class Crop:

@@ -1,6 +1,10 @@
+"""
+Streamlit front-end for the Awdible app.
+"""
+
 import streamlit as st
 
-from audible.core.audible import Audible
+from awdible.core.awdible import Awdible
 
 
 # header image
@@ -9,7 +13,7 @@ st.image(img)  # caption="Thanks to DALL-E for the image ;) "
 
 
 # title
-st.title("The Best Free Audible App Ever Made")
+st.title("The Best Free Awdible App Ever Made")
 st.write(
     """
 Just paste the url of the video you want to download and click the button.
@@ -23,7 +27,7 @@ url = st.text_input("Youtube url", pos_url)
 
 # Button
 if st.button("Submit"):
-    audible = Audible(video=url, test_mode=False, streamlit=True)
-    out = audible.run()
+    awdible = Awdible(video=url, test_mode=False, streamlit=True)
+    out = awdible.run()
     with open(out, "rb") as f:
         st.download_button("Download", f, file_name=out)  # mime="audio/mp4"

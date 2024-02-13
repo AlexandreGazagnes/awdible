@@ -3,13 +3,13 @@ Module for validators and decorators
 """
 
 import os
-from audible.logger import logger
+from awdible.logger import logger
 
 # import logging
 from abc import ABC, abstractmethod
 
 
-from audible.core.defaults import DEFAULT_CONFIG
+from awdible.core.defaults import DEFAULT_CONFIG
 
 
 class Validator(ABC):

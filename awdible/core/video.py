@@ -1,10 +1,14 @@
+"""
+Get the audio from the video
+"""
+
 import logging
 import os
 import secrets
 
 from pytube import YouTube
 
-from audible.core.defaults import DEFAULT_VIDEO_URL, VIDEO_PREFIX
+from awdible.core.defaults import DEFAULT_VIDEO_URL, VIDEO_PREFIX
 
 
 class Video:

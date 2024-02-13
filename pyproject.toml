@@ -1,21 +1,21 @@
 [tool.poetry]
-name = "audible"
-version = "0.2.0"
+name = "awdible"
+version = "0.2.4"
 description = "Just a free version of Audible"
 license = "GPL-3.0"
 authors = ["AlexandreGazagnes <alex@gazagnes.net>",]
 maintainers = ["AlexandreGazagnes <alex@gazagnes.net>",]
 readme = "README.md"
 
-homepage = "https://alexandregazagnes.github.io/audible/"
-repository = "https://github.com/AlexandreGazagnes/audible/"
-documentation = "https://alexandregazagnes.github.io/audible/"
+homepage = "https://alexandregazagnes.github.io/awdible/"
+repository = "https://github.com/AlexandreGazagnes/awdible/"
+documentation = "https://alexandregazagnes.github.io/awdible/"
 
 keywords=["python", "music", "tool", "utils", "youtube"]
 classifiers = [
     "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
     "Intended Audience :: Developers",
-    "Intended Audience :: Education", 
+    "Intended Audience :: Education",
     "Intended Audience :: Information Technology",
     "Environment :: Other Environment",
     "Development Status :: 5 - Production/Stable",
@@ -27,36 +27,34 @@ classifiers = [
 ]
 
 
-packages = [{include = "audible"}]
+packages = [{include = "awdible"}]
 include = ["docs/docs/CHANGELOG.md", "LICENCE"]
 
 [tool.poetry.urls]
-"Homepage" = "https://alexandregazagnes.github.io/audible/"
-"Documentation" = "https://alexandregazagnes.github.io/audible/"
-"Repository" = "https://github.com/AlexandreGazagnes/audible/tree/main"
-# "Code" = "https://github.com/AlexandreGazagnes/audible/tree/main"
-"Issues" = "https://github.com/AlexandreGazagnes/audible/issues"
-"Changelog" = "https://alexandregazagnes.github.io/audible/CHANGELOG/"
+"Homepage" = "https://alexandregazagnes.github.io/awdible/"
+"Documentation" = "https://alexandregazagnes.github.io/awdible/"
+"Repository" = "https://github.com/AlexandreGazagnes/awdible/tree/main"
+# "Code" = "https://github.com/AlexandreGazagnes/awdible/tree/main"
+"Issues" = "https://github.com/AlexandreGazagnes/awdible/issues"
+"Changelog" = "https://alexandregazagnes.github.io/awdible/CHANGELOG/"
 
 
 [tool.poetry.scripts]
-poetry = "audible.console.application:main"
+poetry = "awdible.console.application:main"
 
 
 [tool.poetry.dependencies]
-# python = ">=3.9,<3.9.7 || >3.9.7,<4"
-python = "3.10.12"
+python = ">=3.9,<3.9.7 || >3.9.7,<4"
+# python = "3.10.12"
 cleo = "^2.1.0"
 requests = "^2.31.0"
 pytube = "^15.0.0"
 beautifulsoup4 = "^4.12.2"
 ffmpeg-python = "^0.2.0"
+python-dotenv = "^1.0.1"
 
 
 # [tool.poetry.group.core.dependencies]
-# youtube-transcript-api = "^0.6.2"
-# # pandas = ">=1.4.0"
-python-dotenv = "^1.0.1"
 
 
 [tool.poetry.group.front.dependencies]
@@ -82,7 +80,7 @@ pre-commit = "^3.6.0"
 # jupyter-contrib-nbextensions = "^0.7.0"
 
 
-[tool.poetry.group.qa.dependencies]
+[tool.poetry.group.static.dependencies]
 black = {extras = ["jupyter"], version = "^23.12.1"}
 mypy = "^1.8.0"
 flake8 = "^7.0.0"
@@ -91,6 +89,8 @@ pylint = "^3.0.2"
 pycln = "^2.4.0"
 bandit = "^1.7.7"
 isort = "^5.13.2"
+safety = "^3.0.1"
+
 # pycodestyle = "^2.11.1"
 # pydocstyle = "^6.3.0"
 # vulture = "^2.11"
@@ -106,6 +106,8 @@ coverage-badge = "^1.1.0"
 
 [tool.poetry.group.doc.dependencies]
 mkdocs = ">=1.5.3"
+mkdocs-material = "^9.5.9"
+
 
 
 [tool.black]

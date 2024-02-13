@@ -1,8 +1,12 @@
+"""
+Convert the video to mp3
+"""
+
 import os
 
 import ffmpeg
 
-from audible.logger import logger
+from awdible.logger import logger
 
 
 class Convert:
@@ -19,7 +23,11 @@ class Convert:
         # logger.debug(f"Destination: {dest}")
 
         # the command
-        cmd = {"q:a": 0, "map": "a"}
+        cmd = {
+            "q:a": 0,
+            "map": "a",
+            "loglevel": "quiet",
+        }
 
         # do the conversion
         ffmpeg.input(src).output(dest, **cmd).run()

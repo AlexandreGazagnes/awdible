@@ -217,3 +217,7 @@ build/
 
 
 list.py
+list.txt
+list.md
+
+.env*

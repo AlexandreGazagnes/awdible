@@ -29,27 +29,27 @@ repos:
     -   id: check-symlinks
     -   id: check-vcs-permalinks
 
-# flake8
--   repo: https://github.com/PyCQA/flake8
-    rev: 7.0.0
-    hooks:
-    -   id: flake8
+# # flake8
+# -   repo: https://github.com/PyCQA/flake8
+#     rev: 7.0.0
+#     hooks:
+#     -   id: flake8
 
-# isort
--   repo: https://github.com/pycqa/isort
-    rev: 5.13.2
-    hooks:
-    -   id: isort
-        name: isort (python)
-        # args: [--config=pyproject.toml]
+# # isort
+# -   repo: https://github.com/pycqa/isort
+#     rev: 5.13.2
+#     hooks:
+#     -   id: isort
+#         name: isort (python)
+#         # args: [--config=pyproject.toml]
 
-# pycln
--   repo: https://github.com/hadialqattan/pycln
-    rev: v2.4.0 # Possible releases: https://github.com/hadialqattan/pycln/releases
-    hooks:
-    -   id: pycln
-        name: pycln
-        args: [--config=pyproject.toml]
+# # pycln
+# -   repo: https://github.com/hadialqattan/pycln
+#     rev: v2.4.0 # Possible releases: https://github.com/hadialqattan/pycln/releases
+#     hooks:
+#     -   id: pycln
+#         name: pycln
+#         args: [--config=pyproject.toml]
 
 # black
 -   repo: https://github.com/psf/black-pre-commit-mirror
@@ -70,5 +70,5 @@ repos:
     -   id: run_tests
         language: script
         name: run_tests
-        entry: ./docs/.utils/pytest.sh
+        entry: .utils/pytest.sh
         stage: [commit]

@@ -57,4 +57,4 @@ Pull requests are welcome.
 
 For major changes, please open an issue first to discuss what you would like to change.
 
-For more information, please refer to the [contributing](https://alexandregazagnes.github.io/audible/CONTRIBUTING/) page.
+For more information, please refer to the [contributing](https://alexandregazagnes.github.io/awdible/CONTRIBUTING/) page.
