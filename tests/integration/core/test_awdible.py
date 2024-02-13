@@ -23,8 +23,10 @@ class TestAwdible:
     def test_three(self):
         """Test the Awdible class."""
 
-        # print(config)
-        # logger.warning(config)
+        print(f"About config : {config.get('X-RapidAPI-Host', 'No Key found')}")
+        logger.warning(
+            f"About config : {config.get('X-RapidAPI-Host', 'No Key found')}"
+        )
 
         video = VIDEO_QUERY
 
