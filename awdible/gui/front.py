@@ -1,3 +1,7 @@
+"""
+Streamlit front-end for the Awdible app.
+"""
+
 import streamlit as st
 
 from awdible.core.awdible import Awdible

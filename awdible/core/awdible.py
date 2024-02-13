@@ -1,4 +1,5 @@
 """
+Awidble is a package that allows you to download the audio from a youtube video. It can be used to download the audio from a single video or from a list of videos. It can also be used to download the audio from a video that is longer than a certain duration. It can also be used to download the audio from a video that is the result of a search query.
 """
 
 import os
@@ -166,7 +167,6 @@ class Awdible:
             outs = self.run_synch()
 
     def run_synch(self):
-
         outs = [self.run_one(video) for video in self.video_list]
 
         if len(outs) == 1:
@@ -175,7 +175,6 @@ class Awdible:
         return outs
 
     def run_asynch(self):
-
         raise NotImplementedError("Sorry Bro! ")
 
     def run_one(self, video: str):
