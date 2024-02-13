@@ -11,10 +11,10 @@
 ![Pypi](https://github.com/AlexandreGazagnes/awdible/actions/workflows/publish.yaml/badge.svg)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/AlexandreGazagnes/awdible)
 
-# Awdible
+# Awdible - Just the best free version of audible
 
 ## About
-Awdible is a free and open-source software that allows you to download music from youtube and convert it to mp3.
+Awdible - Just the best free version of audible, is a free and open-source software that allows you to download music from youtube and convert it to mp3.
 
 The idea is to provide a free version of awdible.
 
@@ -23,6 +23,10 @@ The idea is to provide a free version of awdible.
 * Download music from youtube
 * Convert music to mp3
 * Find music from a list of songs names
+
+### Description:
+Awdible, touted as *"Just the best free version of Audible,"* is a versatile and open-source software solution tailored for music enthusiasts. With Awdible, users can effortlessly download music from YouTube and seamlessly convert it to MP3 format, all without incurring any cost. Its key features include the ability to download music directly from YouTube, conversion to MP3 format, and even the capability to find music based on a list of song names. Awdible offers eas
+
 
 ## Installation
 

@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "awdible"
+name = "Awdible - Just the best free version of audible"
 version = "0.2.4"
 description = "Just a free version of Audible"
 license = "GPL-3.0"
