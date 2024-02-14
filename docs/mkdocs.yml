@@ -17,8 +17,10 @@ nav:
   - Installation : installation.md
   - Usage : usage.md
   # - API Reference : api-reference.md
-  - Contributing : CONTRIBUTING.md
-  - Changelog : CHANGELOG.md
+  - Contributing : contributing.md
+  - Changelog : changelog.md
+  - Security : security.md
+  - Code of Conduct : code_of_conduct.md
   # - Releases : releases.md
   # - Troubleshooting : troubleshooting.md
 
