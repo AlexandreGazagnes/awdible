@@ -69,7 +69,7 @@ def list_urls() -> list:
     logger.warning(f"pwd: {pwd}")
     logger.warning(f"ls: {os.listdir(pwd)}")
 
-    fn = "urls.txt"
+    fn = "list_urls.txt"
 
     return read_file(fn)
 
