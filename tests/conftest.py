@@ -21,6 +21,30 @@ def awdible() -> Awdible:
     return Awdible()
 
 
+@pytest.fixture
+def list_ids() -> list:
+    """List of video ids"""
+
+    with open("./assets/list_ids.txt", "r") as file:
+        return file.read().splitlines()
+
+
+@pytest.fixture
+def list_urls() -> list:
+    """List of video urls"""
+
+    with open("./assets/list_urls.txt", "r") as file:
+        return file.read().splitlines()
+
+
+@pytest.fixture
+def list_queries() -> list:
+    """List of video queries"""
+
+    with open("./assets/list_queries.txt", "r") as file:
+        return file.read().splitlines()
+
+
 def pytest_sessionstart(session):
     """
     Called after the Session object has been created and
