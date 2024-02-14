@@ -1,9 +1,9 @@
 # Changelog
 
 
-### As a reminder please notes that the package is named `awdible` AND NOT `audible` ANYMORE
+#### As a reminder please notes that the package is named `awdible` AND NOT `audible` ANYMORE
 
-### Please not that the `-s` option requires a valid [youtube rapid api key](https://rapidapi.com/herosAPI/api/youtube-data8).
+#### Please note that the `-s` option requires a valid [youtube rapid api key](https://rapidapi.com/herosAPI/api/youtube-data8).
 More info in the documentation.
 
 ## 2024-01-15 - 0.2.5 - Minor ops and docs updates
@@ -12,7 +12,8 @@ More info in the documentation.
 - Fix streamlit problem for [#14](https://github.com/AlexandreGazagnes/awdible/issues/14)
 - Disable support for streamlit.io free web app
 - Enable automation for the documentation index page update for [#19](https://github.com/AlexandreGazagnes/awdible/issues/19)
-- Fix mkdocs.yaml for [#20](https://github.com/AlexandreGazagnes/awdible/issues/20)
+- Doc general update [#12](https://github.com/AlexandreGazagnes/awdible/issues/12) [#19](https://github.com/AlexandreGazagnes/awdible/issues/19) [#20](https://github.com/AlexandreGazagnes/awdible/issues/20) [#33](https://github.com/AlexandreGazagnes/awdible/issues/33)
+- Fix duplicate url, id or kewords problem [#36](https://github.com/AlexandreGazagnes/awdible/issues/36)
 
 ### Added
 - Add support for rapid api youtube data8 in `README.md`, `index.md` and `usage.md` for [#12](https://github.com/AlexandreGazagnes/awdible/issues/12)

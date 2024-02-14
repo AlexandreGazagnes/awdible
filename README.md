@@ -118,7 +118,7 @@ Please visit [Documentation](https://alexandregazagnes.github.io/awdible/) page.
 
 ## Changelog, Roadmap and Releases
 
-Please visit [Changelog, Roadmap and Releases](https://alexandregazagnes.github.io/awdible/CHANGELOG/) page.
+Please visit [Changelog, Roadmap and Release](https://alexandregazagnes.github.io/awdible/CHANGELOG/) page.
 
 <!-- ## Troubleshooting
 
