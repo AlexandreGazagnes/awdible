@@ -6,6 +6,7 @@ import os
 
 import pytest
 
+from awdible.logger import logger
 from awdible.core.awdible import Awdible
 
 
@@ -25,6 +26,10 @@ def awdible() -> Awdible:
 def list_ids() -> list:
     """List of video ids"""
 
+    pwd = os.getcwd()
+    logger.warning(f"pwd: {pwd}")
+    logger.warning(f"ls: {os.listdir(pwd)}")
+
     with open("./assets/list_ids.txt", "r") as file:
         return file.read().splitlines()
 
@@ -33,6 +38,10 @@ def list_ids() -> list:
 def list_urls() -> list:
     """List of video urls"""
 
+    pwd = os.getcwd()
+    logger.warning(f"pwd: {pwd}")
+    logger.warning(f"ls: {os.listdir(pwd)}")
+
     with open("./assets/list_urls.txt", "r") as file:
         return file.read().splitlines()
 
@@ -40,6 +49,10 @@ def list_urls() -> list:
 @pytest.fixture
 def list_queries() -> list:
     """List of video queries"""
+
+    pwd = os.getcwd()
+    logger.warning(f"pwd: {pwd}")
+    logger.warning(f"ls: {os.listdir(pwd)}")
 
     with open("./assets/list_queries.txt", "r") as file:
         return file.read().splitlines()
