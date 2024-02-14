@@ -30,7 +30,7 @@ def list_ids() -> list:
     logger.warning(f"pwd: {pwd}")
     logger.warning(f"ls: {os.listdir(pwd)}")
 
-    with open("./assets/list_ids.txt", "r") as file:
+    with open("docs/assets/list_ids.txt", "r") as file:
         return file.read().splitlines()
 
 
@@ -42,7 +42,7 @@ def list_urls() -> list:
     logger.warning(f"pwd: {pwd}")
     logger.warning(f"ls: {os.listdir(pwd)}")
 
-    with open("./assets/list_urls.txt", "r") as file:
+    with open("docs/assets/list_urls.txt", "r") as file:
         return file.read().splitlines()
 
 
@@ -54,7 +54,7 @@ def list_queries() -> list:
     logger.warning(f"pwd: {pwd}")
     logger.warning(f"ls: {os.listdir(pwd)}")
 
-    with open("./assets/list_queries.txt", "r") as file:
+    with open("docs/assets/list_queries.txt", "r") as file:
         return file.read().splitlines()
 
 
