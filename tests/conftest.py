@@ -30,7 +30,14 @@ def list_ids() -> list:
     logger.warning(f"pwd: {pwd}")
     logger.warning(f"ls: {os.listdir(pwd)}")
 
-    with open("tests/assets/list_ids.txt", "r") as file:
+    fn = "list_ids.txt"
+
+    fn = os.path.join(pwd, fn)
+
+    if not os.path.exists(fn):
+        raise FileNotFoundError(f"File not found: {fn}")
+
+    with open(fn, "r") as file:
         return file.read().splitlines()
 
 
@@ -42,20 +49,27 @@ def list_urls() -> list:
     logger.warning(f"pwd: {pwd}")
     logger.warning(f"ls: {os.listdir(pwd)}")
 
-    with open("tests/assets/list_urls.txt", "r") as file:
+    fn = "list_urls.txt"
+
+    fn = os.path.join(pwd, fn)
+
+    if not os.path.exists(fn):
+        raise FileNotFoundError(f"File not found: {fn}")
+
+    with open(fn, "r") as file:
         return file.read().splitlines()
 
 
-@pytest.fixture
-def list_queries() -> list:
-    """List of video queries"""
+# @pytest.fixture
+# def list_queries() -> list:
+#     """List of video queries"""
 
-    pwd = os.getcwd()
-    logger.warning(f"pwd: {pwd}")
-    logger.warning(f"ls: {os.listdir(pwd)}")
+#     pwd = os.getcwd()
+#     logger.warning(f"pwd: {pwd}")
+#     logger.warning(f"ls: {os.listdir(pwd)}")
 
-    with open("tests/assets/list_queries.txt", "r") as file:
-        return file.read().splitlines()
+#     with open("tests/assets/list_queries.txt", "r") as file:
+#         return file.read().splitlines()
 
 
 def pytest_sessionstart(session):
