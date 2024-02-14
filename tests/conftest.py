@@ -15,6 +15,32 @@ VIDEO_ID = "V62oKsHdsLU"
 VIDEO_QUERY = "jo l'rigolo"
 
 
+def read_file(fn: str) -> str:
+    """Read a fn"""
+
+    base = "tests/assets"
+
+    pwd = os.getcwd()
+    logger.warning(f"pwd: {pwd}")
+    logger.warning(f"ls: {os.listdir(pwd)}")
+
+    _fn = os.path.join(pwd, base, fn)
+
+    if not os.path.exists(_fn):
+        raise FileNotFoundError(f"File not found: {_fn}")
+
+    with open(_fn, "r") as _fn:
+        out = _fn.readlines()
+
+    if not isinstance(out, list):
+        raise ValueError(f"Expected list, got {type(out)}")
+
+    if not len(out):
+        raise ValueError(f"Empty file: {_fn}")
+
+    return out
+
+
 @pytest.fixture
 def awdible() -> Awdible:
     """Lod an Awdible instance"""
@@ -32,13 +58,7 @@ def list_ids() -> list:
 
     fn = "list_ids.txt"
 
-    fn = os.path.join(pwd, fn)
-
-    if not os.path.exists(fn):
-        raise FileNotFoundError(f"File not found: {fn}")
-
-    with open(fn, "r") as file:
-        return file.read().splitlines()
+    return read_file(fn)
 
 
 @pytest.fixture
@@ -49,27 +69,18 @@ def list_urls() -> list:
     logger.warning(f"pwd: {pwd}")
     logger.warning(f"ls: {os.listdir(pwd)}")
 
-    fn = "list_urls.txt"
+    fn = "urls.txt"
 
-    fn = os.path.join(pwd, fn)
-
-    if not os.path.exists(fn):
-        raise FileNotFoundError(f"File not found: {fn}")
-
-    with open(fn, "r") as file:
-        return file.read().splitlines()
+    return read_file(fn)
 
 
 # @pytest.fixture
 # def list_queries() -> list:
 #     """List of video queries"""
 
-#     pwd = os.getcwd()
-#     logger.warning(f"pwd: {pwd}")
-#     logger.warning(f"ls: {os.listdir(pwd)}")
+# fn = "list_queries.txt"
 
-#     with open("tests/assets/list_queries.txt", "r") as file:
-#         return file.read().splitlines()
+# return read_file(fn)
 
 
 def pytest_sessionstart(session):
