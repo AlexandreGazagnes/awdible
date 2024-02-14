@@ -18,7 +18,7 @@ VIDEO_QUERY = "jo l'rigolo"
 def read_file(fn: str) -> str:
     """Read a fn"""
 
-    base = "tests/assets"
+    base = "docs/assets/tests"
 
     pwd = os.getcwd()
     logger.warning(f"pwd: {pwd}")
