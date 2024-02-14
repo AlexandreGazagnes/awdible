@@ -128,7 +128,8 @@ class Awdible:
         """Init the Awdible class"""
         self._awdible = None
         self.video = video
-        self.video_list = video if isinstance(video, list) else [video]
+        _video_list = video if isinstance(video, list) else [video]
+        self.video_list = list(set(_video_list))
         self.dest = dest
         self.file = file
         self.output = output
