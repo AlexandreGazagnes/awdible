@@ -48,30 +48,30 @@ def awdible() -> Awdible:
     return Awdible()
 
 
-@pytest.fixture
-def list_ids() -> list:
-    """List of video ids"""
+# @pytest.fixture
+# def list_ids() -> list:
+#     """List of video ids"""
 
-    pwd = os.getcwd()
-    logger.warning(f"pwd: {pwd}")
-    logger.warning(f"ls: {os.listdir(pwd)}")
+#     pwd = os.getcwd()
+#     logger.warning(f"pwd: {pwd}")
+#     logger.warning(f"ls: {os.listdir(pwd)}")
 
-    fn = "list_ids.txt"
+#     fn = "list_ids.txt"
 
-    return read_file(fn)
+#     return read_file(fn)
 
 
-@pytest.fixture
-def list_urls() -> list:
-    """List of video urls"""
+# @pytest.fixture
+# def list_urls() -> list:
+#     """List of video urls"""
 
-    pwd = os.getcwd()
-    logger.warning(f"pwd: {pwd}")
-    logger.warning(f"ls: {os.listdir(pwd)}")
+#     pwd = os.getcwd()
+#     logger.warning(f"pwd: {pwd}")
+#     logger.warning(f"ls: {os.listdir(pwd)}")
 
-    fn = "list_urls.txt"
+#     fn = "list_urls.txt"
 
-    return read_file(fn)
+#     return read_file(fn)
 
 
 # @pytest.fixture

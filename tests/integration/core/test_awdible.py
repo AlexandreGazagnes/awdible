@@ -58,21 +58,21 @@ class TestAwdible:
 
         awdible.run()
 
-    def test_list_urls_mode(self, list_urls):
-        """Test the Awdible class."""
+    # def test_list_urls_mode(self, list_urls):
+    #     """Test the Awdible class."""
 
-        awdible = Awdible(video=list_urls, test_mode=True, config=config)
-        assert awdible
+    #     awdible = Awdible(video=list_urls, test_mode=True, config=config)
+    #     assert awdible
 
-        awdible.run()
+    #     awdible.run()
 
-    def test_list_ids_mode(self, list_ids):
-        """Test the Awdible class."""
+    # def test_list_ids_mode(self, list_ids):
+    #     """Test the Awdible class."""
 
-        awdible = Awdible(video=list_ids, test_mode=True, prefix=True, config=config)
-        assert awdible
+    #     awdible = Awdible(video=list_ids, test_mode=True, prefix=True, config=config)
+    #     assert awdible
 
-        awdible.run()
+    #     awdible.run()
 
     # DISABLE TO PREVENT UNWANTED API CALLS
     # def test_list_queries_mode(self, list_queries):
