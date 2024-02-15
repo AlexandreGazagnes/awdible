@@ -14,7 +14,7 @@
 # Awdible
 
 ## About
-Awdible is a free and open-source software that allows you to download music from YouTube and convert it to an mp3.
+Awdible is a free and open-source software that allows you to download music from YouTube and convert it to an MP3.
 
 The idea is to provide a free version of Audible.
 
