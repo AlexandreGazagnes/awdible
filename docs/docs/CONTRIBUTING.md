@@ -53,8 +53,10 @@ using:
 
 ## Contributing
 
-Pull requests are welcome.
+Awdible is an open-source project and is far from perfect. We are constantly aiming to improve, so contribution and feedback from developers with any level of experience is greatly appreciated! Issues are marked with various tag, some of which are good first issues, making it a great place for beginners and new open-source contributors to start. Areas that you could look to contribute towards may range from adding or suggesting new app features, debugging, and documentation revision. Feedback and testing regarding any of the features will help our overall development process, so feel free to suggest anything that you can think of.
 
-For major changes, please open an issue first to discuss what you would like to change.
+If you have any questions about the project or don't know where to start, feel free to reach out and we'll help you get started! Otherwise, you can check out the Issues tab to see the open issues that currently need to be fixed. If you find any bugs or would like to request new features, you can click on "New Issue" and note the deatils accordingly. If there is a bug, please describe the bug in the issue and the steps that are needed to replicate it so that it can be fixed in a timely manner.
+
+For major changes and new requests, please open an issue first so that we can reach out and discuss the changes before implementing it into the project. In the future, we may create other forms of communication through apps such as Slack or Discord, but for now please refer to the Issues tab for project communication purposes. 
 
 For more information, please refer to the [contributing](https://alexandregazagnes.github.io/awdible/CONTRIBUTING/) page.
