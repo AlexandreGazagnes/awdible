@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "awdible"
 version = "0.2.4"
-description = "Just a free version of Audible"
+description = "Awdible - Just the best free version of audible"
 license = "GPL-3.0"
 authors = ["AlexandreGazagnes <alex@gazagnes.net>",]
 maintainers = ["AlexandreGazagnes <alex@gazagnes.net>",]
