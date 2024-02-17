@@ -101,6 +101,7 @@ This is a great way to ensure that you are always working with the latest versio
 
 
 ## Issues
+
 ### Reading issues
 
 Please read the [issues page](https://alexandregazagnes.github.io/awdible/issues/) before creating a new issue : 
@@ -128,7 +129,7 @@ Feel free to create a new issue if you have any question, suggestion, or if you 
 
 ### Creating a new branch
 
-⚠️ **WARNING** ⚠️ : 
+⚠️ **WARNING** ⚠️ 
 * Read carefully the following instructions before creating a new branch.
 
 
@@ -141,7 +142,7 @@ Find bellow the **exact** process to work on a feature :
 
 
 ### Creating a pull request
-⚠️ **WARNING** ⚠️ : 
+⚠️ **WARNING** ⚠️ 
 * Read carefully the following instructions before creating a Pull Request.
 
 
