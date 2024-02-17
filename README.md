@@ -16,13 +16,13 @@
 ## About
 Awdible is a free and open-source software, app and python package that allows you to download music from youtube and convert it to mp3.
 
-The idea is to provide a free version of awdible.
+The idea is to provide a free version of audible.
 
 ## Key Features
 
 * Download music / audiobook from youtube
-* Convert music to mp3
-* Find music from a list of songs / audiobook names : Waka Waka, Happy, Harry potter and the philosopher's stone, ...
+* Convert music / audiobook to mp3
+* Find music / audiobook from a list of songs / audiobook names : Waka Waka, Happy, Harry potter and the philosopher's stone, ...
 * Crop a long audio file to a specific duration
 
 ## Installation
@@ -41,14 +41,23 @@ pip install awdible
 ### Local
 
 
-#### As executable :
+#### As executable
 
-In a terminal :
-* ```awdible [youtube-url] ``` standard usage : download and convert to mp3
 
-* ```awdible -d my/dest [youtube-url] ``` specify a destination folder
+Standard usage, download and convert to mp3 :
 
-* ```awdible -f my_file.txt -d my/dest ``` specify a file list song  / audibooks **urls** and specify destination folder
+```shell
+awdible [youtube-url] 
+``` 
+
+Specify a destination folder : 
+```shell
+awdible -d my/dest [youtube-url]
+``` 
+Specify a file list song  / audibooks **urls** and specify destination folder : 
+```shell
+awdible -f my_file.txt -d my/dest
+``` 
 
 The my_file.txt file must contain one youtube url per line.
 my_file.txt example :
@@ -57,19 +66,35 @@ https://www.youtube.com/watch?v=3y5A4paFOb4
 https://www.youtube.com/watch?v=3y5A4paFOb4
 https://www.youtube.com/watch?v=3y5A4paFOb4
 ```
-* ```awdible -f my_file.txt -d my/dest -p ``` specify a file list song  / audibooks **ids** and specify destination folder
+Specify a file list song  / audibooks **ids** and specify destination folder : 
+```shell
+awdible -f my_file.txt -d my/dest -p
+``` 
+The my_file.txt file must contain one youtube id per line.
+my_file.txt example :
+```shell
+3y5A4paFOb4
+3y5A4paFOb4
+3y5A4paFOb4
+```
+Specify a file list song / audiooks **names** (not just yourube url) and specify destination folder :
+```shell
+awdible -f my_file.txt -s -d my/dest
+``` 
 
 The my_file.txt file must contain one youtube id per line.
 my_file.txt example :
+```shell
+waka waka shakira
+Stand by me
+Somewhere over the rainbow
 ```
-3y5A4paFOb4
-3y5A4paFOb4
-3y5A4paFOb4
-```
-* ```awdible -f my_file.txt -s -d my/dest``` specify a file list song / audioobks **names** (not just yourube url) and specify destination folder.
 
-**WARNING**:
-- Please note that for the `-s` option, you must have a set up your **[youtube rapid api](https://rapidapi.com/herosAPI/api/youtube-data8)** account. You need to add in your environment variables or export directly from a terminal the following :
+⚠️ **WARNING** ⚠️
+
+Please note that for the `-s` option, you must have a set up your **[youtube rapid api](https://rapidapi.com/herosAPI/api/youtube-data8)** account. 
+
+You need to add in your environment variables or export directly from a terminal the following :
 
 ```bash
 export RAPID_API_KEY="*********"
@@ -79,7 +104,6 @@ export RAPID_API_HOST="youtube-data8.p.rapidapi.com"
 
 #### As library
 
-In a python file :
 
 ```python
 from awdible import Awdible
@@ -102,13 +126,17 @@ awdible.run()
 
 #### As web app
 
-In a terminal :
+Launch local streamlit : 
 
-* ```awdible gui ``` launch local streamlit
+```shell
+awdible gui 
+``` 
 
 ### On line
 
-* The on line web app is temporarily unavailable. It will be available in the `0.2.5` release.
+The on line web app is temporarily unavailable. 
+
+It will be available in the `0.2.5` release.
 
 
 ## Documentation
@@ -116,13 +144,17 @@ In a terminal :
 Please visit [Documentation](https://alexandregazagnes.github.io/awdible/) page.
 
 
-## Changelog, Roadmap and Releases
+## Updates
 
-Please visit [Changelog, Roadmap and Release](https://alexandregazagnes.github.io/awdible/CHANGELOG/) page.
 
-<!-- ## Troubleshooting
+Please visit the : 
+- [Changelog](https://alexandregazagnes.github.io/awdible/changelog) page 
+- [Roadmap](https://github.com/AlexandreGazagnes/awdible/projects?query=is%3Aopen) page
+- [Release](https://github.com/AlexandreGazagnes/awdible/releases) page
+- [Issues](https://github.com/AlexandreGazagnes/awdible/issues) page
 
-Please visit [Troubleshooting](https://alexandregazagnes.github.io/awdible/TROUBLESHOOTING/) page. -->
+
+
 
 
 ## Contributing
@@ -135,4 +167,4 @@ Any help is welcome, and we will do our best to help you get started.
 
 Any feedback is also welcome.
 
-Please visit [Contributing](https://alexandregazagnes.github.io/awdible/CONTRIBUTING/) page.
+Please visit [Contributing](https://alexandregazagnes.github.io/awdible/contributing/) page.
