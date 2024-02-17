@@ -32,6 +32,8 @@ from .defaults import (
     DEFAULT_CONFIG,
 )
 
+import asyncio
+
 from .validators import (
     Dir,
     File,
@@ -177,8 +179,12 @@ class Awdible:
 
         return outs
 
-    def run_asynch(self):
-        raise NotImplementedError("Sorry Bro! ")
+    async def run_asynch(self):
+
+        # out = await asyncio.gather(
+        # raise NotImplementedError("Sorry Bro! ")
+
+        pass
 
     def run_one(self, video: str):
         """Run the awdible session for one video"""
