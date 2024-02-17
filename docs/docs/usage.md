@@ -4,14 +4,23 @@
 ## Local
 
 
-## As executable :
+### As executable
 
-In a terminal :
-* ```awdible [youtube-url] ``` standard usage : download and convert to mp3
 
-* ```awdible -d my/dest [youtube-url] ``` specify a destination folder
+Standard usage, download and convert to mp3 :
 
-* ```awdible -f my_file.txt -d my/dest ``` specify a file list song  / audibooks **urls** and specify destination folder
+```shell
+awdible [youtube-url] 
+``` 
+
+Specify a destination folder : 
+```shell
+awdible -d my/dest [youtube-url]
+``` 
+Specify a file list song  / audibooks **urls** and specify destination folder : 
+```shell
+awdible -f my_file.txt -d my/dest
+``` 
 
 The my_file.txt file must contain one youtube url per line.
 my_file.txt example :
@@ -20,19 +29,35 @@ https://www.youtube.com/watch?v=3y5A4paFOb4
 https://www.youtube.com/watch?v=3y5A4paFOb4
 https://www.youtube.com/watch?v=3y5A4paFOb4
 ```
-* ```awdible -f my_file.txt -d my/dest -p ``` specify a file list song  / audibooks **ids** and specify destination folder
+Specify a file list song  / audibooks **ids** and specify destination folder : 
+```shell
+awdible -f my_file.txt -d my/dest -p
+``` 
+The my_file.txt file must contain one youtube id per line.
+my_file.txt example :
+```shell
+3y5A4paFOb4
+3y5A4paFOb4
+3y5A4paFOb4
+```
+Specify a file list song / audiooks **names** (not just yourube url) and specify destination folder :
+```shell
+awdible -f my_file.txt -s -d my/dest
+``` 
 
 The my_file.txt file must contain one youtube id per line.
 my_file.txt example :
+```shell
+waka waka shakira
+Stand by me
+Somewhere over the rainbow
 ```
-3y5A4paFOb4
-3y5A4paFOb4
-3y5A4paFOb4
-```
-* ```awdible -f my_file.txt -s -d my/dest``` specify a file list song / audioobks **names** (not just yourube url) and specify destination folder.
 
-**WARNING**:
-- Please note that for the `-s` option, you must have a set up your **[youtube rapid api](https://rapidapi.com/herosAPI/api/youtube-data8)** account. You need to add in your environment variables or export directly from a terminal the following :
+⚠️ **WARNING** ⚠️
+
+Please note that for the `-s` option, you must have a set up your **[youtube rapid api](https://rapidapi.com/herosAPI/api/youtube-data8)** account. 
+
+You need to add in your environment variables or export directly from a terminal the following :
 
 ```bash
 export RAPID_API_KEY="*********"
@@ -40,9 +65,8 @@ export RAPID_API_HOST="youtube-data8.p.rapidapi.com"
 ```
 
 
-## As library
+### As library
 
-In a python file :
 
 ```python
 from awdible import Awdible
@@ -63,15 +87,21 @@ awdible = Awdible(urls)
 awdible.run()
 ```
 
-## As web app
+### As web app
 
-In a terminal :
+Launch local streamlit : 
 
-* ```awdible gui ``` launch local streamlit
+```shell
+awdible gui 
+``` 
 
 ## On line
 
-* The on line web app is temporarily unavailable. It will be available in the `0.2.5` release.
+The on line web app is temporarily unavailable. 
+
+It will be available in the `0.2.5` release.
+
+
 
 ## New features
 
@@ -83,4 +113,4 @@ Any help is welcome, and we will do our best to help you get started.
 
 Any feedback is also welcome.
 
-Please visit [Contributing](https://alexandregazagnes.github.io/awdible/CONTRIBUTING/) page.
+Please visit [Contributing](https://alexandregazagnes.github.io/awdible/contributing/) page.
