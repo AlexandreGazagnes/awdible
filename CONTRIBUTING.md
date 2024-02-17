@@ -50,6 +50,54 @@ With the environment activated you can run all of the tests
 using:
 `pytest tests`
 
+### Setting up pre-commit
+
+We strongly recommend you to use [pre-commit](https://pre-commit.com/) to manage your hooks.
+
+Here is the description of the tool from the official documentation :
+
+ > Git hook scripts are useful for identifying simple issues before submission to code review. We run our hooks on every commit to automatically point out issues in code such as missing semicolons, trailing whitespace, and debug statements. 
+ 
+ > By pointing these issues out before code review, this allows a code reviewer to focus on the architecture of a change while not wasting time with trivial style nitpicks.
+
+ Please install it using the following command :
+
+```bash
+pre-commit install
+```
+
+```pre-commit ``` will now run on every commit. If you want to run it manually, you can use the following command :
+
+```bash
+pre-commit run --all-files
+```
+
+**```pre-commit``` is not mandatory but it is highly recommended.** 
+
+It is a great tool to ensure that your code is clean and that you are not introducing any new issues. 
+
+It is also a great way to ensure that your code is compliant with the project's standards, and that your pull request will be accepted.
+
+
+
+### Using zsh to auto fetch 
+
+If you are using ```zsh``` and ```ohmyzsh```, you can install ```git-auto-fetch``` to automatically fetch the latest changes from the remote repository.
+
+Here an example of a ```.zshrc``` file with the plugin :
+```shell
+plugins=(git python git-auto-fetch git-prompt vscode)
+GIT_AUTO_FETCH_INTERVAL=1200 # in seconds
+source $ZSH/oh-my-zsh.sh
+```
+
+Find more information on the [official repository](https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/git-auto-fetch/git-auto-fetch.plugin.zsh)
+
+This is a great way to ensure that you are always working with the latest version of the code.
+
+**Like pre-commit, it is not mandatory but it is highly recommended.**
+
+
 
 
 ## Issues
