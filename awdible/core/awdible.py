@@ -128,10 +128,14 @@ class Awdible:
         config: dict = config,
     ):
         """Init the Awdible class"""
+
         self._awdible = None
+
         self.video = video
+
         _video_list = video if isinstance(video, list) else [video]
         self.video_list = list(set(_video_list))
+
         self.dest = dest
         self.file = file
         self.output = output
@@ -149,25 +153,23 @@ class Awdible:
 
         self.config = config
 
+        self.log = self.DEFAULT_LOG
+        self.tmp = self.DEFAULT_TMP
+
     def run(self):
         """Run the awdible session"""
 
-        # ugly but works
-        # TODO CLEAN THIS => ISSUE => Branch etc
-        os.makedirs(self.DEFAULT_TMP)
-        os.makedirs(self.DEFAULT_LOG)
-        os.makedirs(self.DEFAULT_DEST)
+        if self.file:
+            self._clean_file()
 
-        # check default tmp do exist
-        if self.test_mode or self.streamlit:
-            if not os.path.exists(self.DEFAULT_TMP):
-                os.makedirs(self.DEFAULT_TMP)
+        if not os.path.exists(self.DEFAULT_TMP):
+            os.makedirs(self.DEFAULT_TMP)
 
         if not os.path.exists(self.DEFAULT_LOG):
             os.makedirs(self.DEFAULT_LOG)
 
-        self.dest = self.DEFAULT_TMP
-        self.log = self.DEFAULT_LOG
+        if not os.path.exists(self.DEFAULT_DEST):
+            os.makedirs(self.DEFAULT_DEST)
 
         if self.asynchronous:
             outs = self.run_asynch()
@@ -177,6 +179,8 @@ class Awdible:
         return outs
 
     def run_synch(self):
+        """Run the awdible session synchronously"""
+
         outs = [self.run_one(video) for video in self.video_list]
 
         if len(outs) == 1:
@@ -185,19 +189,15 @@ class Awdible:
         return outs
 
     async def run_asynch(self):
+        """Run the awdible session asynchronously"""
 
         # out = await asyncio.gather(
-        # raise NotImplementedError("Sorry Bro! ")
-
-        pass
+        raise NotImplementedError("Sorry Bro! ")
 
     def run_one(self, video: str):
         """Run the awdible session for one video"""
 
         out = ""
-
-        if self.file:
-            self._clean_file()
 
         # good case
         if video.startswith(self.VIDEO_PREFIX):
@@ -303,11 +303,14 @@ class Awdible:
             lines = sorted(lines)
 
             hastag = [line for line in lines if line.startswith("#")]
+            self.video_list = hastag
             not_hastag = [line for line in lines if not line.startswith("#")]
 
             # TODO :  CLEAN éà typo errors "  " or  "- " etc
 
-            final = hastag + not_hastag
+            final = not_hastag + hastag
 
         with open(self.file, "w") as f:
+            final = [f"{line}\n" for line in final]
+            final = [i for i in final if i.strip()]
             f.writelines(final)
