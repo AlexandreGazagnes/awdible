@@ -89,6 +89,7 @@ class Awdible:
     DEFAULT_ASYNCHRONOUS = DEFAULT_ASYNCHRONOUS
     DEFAULT_PREFIX = DEFAULT_PREFIX
 
+    DEFAULT_FORCE = DEFAULT_FORCE
     DEFAULT_TMP = DEFAULT_TMP
     DEFAULT_LOG = DEFAULT_LOG
 
@@ -117,6 +118,7 @@ class Awdible:
         dest: str = DEFAULT_DEST,
         file: str = DEFAULT_FILE,
         output: str = DEFAULT_OUTPUT,
+        force: bool = DEFAULT_FORCE,
         crop_limit: int = DEFAULT_CROP_LIMIT,
         context: str = DEFAULT_CONTEXT,
         search: bool = DEFAULT_SEARCH,
@@ -155,6 +157,12 @@ class Awdible:
 
         self.log = self.DEFAULT_LOG
         self.tmp = self.DEFAULT_TMP
+
+        self.force = force
+        self.ffmpeg_installed = self._is_ffmpeg_installed()
+
+        if not self.ffmpeg_installed:
+            self._manage_ffmpeg()
 
     def run(self):
         """Run the awdible session"""
@@ -314,3 +322,27 @@ class Awdible:
             final = [f"{line}\n" for line in final]
             final = [i for i in final if i.strip()]
             f.writelines(final)
+
+    def _is_ffmpeg_installed(self) -> bool:
+        """Check if ffmpeg is installed"""
+
+        try:
+            r = os.system("ffmpeg -version")
+        except Exception as e:
+            logger.error(f"Error: {e}")
+            return False
+        else:
+            if not r:
+                return True
+            else:
+                return False
+
+    def _manage_ffmpeg(self):
+
+        if self.force:
+            logger.warning("ffmpeg is not installed, output will be in mp4 format")
+
+        else:
+            raise AttributeError(
+                "ffmpeg is not installed - pass the --force option to continue adn force the download in mp4 format."
+            )
