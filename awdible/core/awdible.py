@@ -152,8 +152,13 @@ class Awdible:
     def run(self):
         """Run the awdible session"""
 
-        # check default tmp do exist
+        # ugly but works
+        # TODO CLEAN THIS => ISSUE => Branch etc
+        os.makedirs(self.DEFAULT_TMP)
+        os.makedirs(self.DEFAULT_LOG)
+        os.makedirs(self.DEFAULT_DEST)
 
+        # check default tmp do exist
         if self.test_mode or self.streamlit:
             if not os.path.exists(self.DEFAULT_TMP):
                 os.makedirs(self.DEFAULT_TMP)
