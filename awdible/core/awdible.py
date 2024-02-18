@@ -196,6 +196,9 @@ class Awdible:
 
         out = ""
 
+        if self.file:
+            self._clean_file()
+
         # good case
         if video.startswith(self.VIDEO_PREFIX):
             out = self._get_stream_save_convert(video)
@@ -289,3 +292,22 @@ class Awdible:
 
         dest = Convert.to_mp3(src)
         return dest
+
+    def _clean_file(self):
+        """Clean the file"""
+
+        with open(self.file, "r") as f:
+            lines = f.readlines()
+            lines = [line.strip() for line in lines if line]
+            lines = list(set(lines))
+            lines = sorted(lines)
+
+            hastag = [line for line in lines if line.startswith("#")]
+            not_hastag = [line for line in lines if not line.startswith("#")]
+
+            # TODO :  CLEAN éà typo errors "  " or  "- " etc
+
+            final = hastag + not_hastag
+
+        with open(self.file, "w") as f:
+            f.writelines(final)
