@@ -14,6 +14,11 @@ More info in the documentation.
 - Enable automation for the documentation index page update for [#19](https://github.com/AlexandreGazagnes/awdible/issues/19)
 - Doc general update [#12](https://github.com/AlexandreGazagnes/awdible/issues/12) [#19](https://github.com/AlexandreGazagnes/awdible/issues/19) [#20](https://github.com/AlexandreGazagnes/awdible/issues/20) [#33](https://github.com/AlexandreGazagnes/awdible/issues/33)
 - Fix duplicate url, id or kewords problem [#36](https://github.com/AlexandreGazagnes/awdible/issues/36)
+- Restrcuration of core app with Io and prequires modules
+- Fix #55, #54, #53, #52 by removing ffmpeg-python and using subprocess with #69
+- Add internet check #27 with #69
+- Fake #10 and #7 : force unit tests to pass but do add placeholder for future tests with #69
+- Major update of the documentation with #69
 
 ### Added
 - Add support for rapid api youtube data8 in `README.md`, `index.md` and `usage.md` for [#12](https://github.com/AlexandreGazagnes/awdible/issues/12)
