@@ -10,9 +10,11 @@ from awdible.logger import logger
 from awdible.core.awdible import Awdible
 
 
-VIDEO_URL = "https://www.youtube.com/watch?v=9diaThxYnKA"
-VIDEO_ID = "V62oKsHdsLU"
-VIDEO_QUERY = "jo l'rigolo"
+VIDEO_URL_ONE = "https://www.youtube.com/watch?v=9diaThxYnKA"
+VIDEO_ID_ONE = "V62oKsHdsLU"
+
+VIDEO_QUERY_ONE = "jo l'rigolo"
+VIDEO_QUERY_LIST = ["jo l'rigolo", "c'est de la merde kaamelott"]
 
 
 def read_file(fn: str) -> str:
