@@ -290,7 +290,7 @@ class Awdible:
 
         logger.info(f"Video list: {self.video_list}")
         logger.warning(f"OK video list: {self.ok_video_list}")
-        logger.error(f"KO video list: {self.ko_video_list}")
+        logger.warning(f"KO video list: {self.ko_video_list}")
 
         # TODO : add an io method to clean dest from .mp4 ONLY if 2 different files type
         # if only mp4, keep the files => maybe ffmpeg is not installed and --force option activated
