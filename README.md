@@ -86,7 +86,7 @@ export RAPID_API_HOST="youtube-data8.p.rapidapi.com"
 
 ### 🌎 Internet connection
 
-Last but not least, Please not that a valid internet connection is required to use Awdible.
+Last but not least, Please not that a valid internet connection is required to use ```Awdible```.
 
 
 ## 🎒 Usage
@@ -191,7 +191,7 @@ awdible gui
 
 The on line web app is temporarily unavailable. 
 
-It will be available in the `0.2.5` release.
+It will be available in the `0.3.0` release.
 
 
 ## 📕 Documentation
