@@ -46,15 +46,16 @@ poetry = "awdible.console.application:main"
 [tool.poetry.dependencies]
 python = ">=3.9,<3.9.7 || >3.9.7,<4"
 # python = "3.10.12"
+
+
+
+[tool.poetry.group.core.dependencies]
 cleo = "^2.1.0"
 requests = "^2.31.0"
 pytube = "^15.0.0"
 beautifulsoup4 = "^4.12.2"
-ffmpeg-python = "^0.2.0"
 python-dotenv = "^1.0.1"
-
-
-# [tool.poetry.group.core.dependencies]
+# ffmpeg-python = "^0.2.0"
 
 
 [tool.poetry.group.front.dependencies]
