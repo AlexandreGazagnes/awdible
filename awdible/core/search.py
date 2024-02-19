@@ -113,7 +113,7 @@ class Search:
             videos = [x.get("video", None) for x in contents]
         except AttributeError as e:
             logger.error(f"Error in parsing the json with get('video') : {e}")
-            logger.error(f"contents is : {contents}")
+            # logger.error(f"contents is : {contents}")
             if not silent_mode:
                 raise e
 
@@ -124,7 +124,7 @@ class Search:
 
         except Exception as e:
             logger.error(f"Error in parsing the json with 'title' and 'ID') : {e}")
-            logger.error(f"contents is : {contents}")
+            # logger.error(f"contents is : {contents}")
             if not silent_mode:
                 raise e
 

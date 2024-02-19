@@ -77,6 +77,7 @@ class Io:
             lines = f.readlines()
 
         # clean the file
+        lines = [line for line in lines if line]
         lines = [line.strip() for line in lines if line]
         lines = list(set(lines))
 
@@ -84,13 +85,13 @@ class Io:
         lines = sorted(lines) if sort else lines
 
         # sep of hastag and not hastag
+        not_hastag = [line for line in lines if not line.startswith("#")]
         hastag = [line for line in lines if not line.startswith("#")]
-        not_hastag = [line.strip() for line in lines if not line.startswith("#")]
 
         # final
         final = not_hastag + hastag
-        final = [i for i in final if i.strip()]
-        final = list(set(final))
+        # final = [i for i in final if i.strip()]
+        # final = list(set(final))
         final = [f"{line}\n" for line in final]
 
         # rewrite the file

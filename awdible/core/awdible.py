@@ -205,14 +205,18 @@ class Awdible:
 
         # manage if file
         if self.file:
-            self.video_list = Io.clean_list_videos(self.file)
+            self.video_list = Io.clean_list_videos(
+                self.file,
+                sort=True,
+                rewrite=True,
+            )
 
-        # last clean
-        self.video_list = [
-            v for v in self.video_list if (v and (not v.startswith("#")))
-        ]
-        self.video_list = [v.strip() for v in self.video_list if v.strip()]
-        self.video_list = list(set(self.video_list))
+        # # last clean
+        # self.video_list = [
+        #     v for v in self.video_list if (v and (not v.startswith("#")))
+        # ]
+        # self.video_list = [v.strip() for v in self.video_list if v.strip()]
+        # self.video_list = list(set(self.video_list))
 
     def run(self):
         """Run the awdible session"""
@@ -248,7 +252,8 @@ class Awdible:
             # sleep
             time.sleep(self.sleeper)
 
-        return self._outro(outs)
+        outs = self._outro(outs)
+        return outs
 
     def _outro(self, outs=None):
         """Outro of the awdible session"""
@@ -275,14 +280,18 @@ class Awdible:
                 return fn
             except Exception as e:
                 logger.error(f"Error: {e}")
-                self._outro()
+                # self._outro()
                 return None
 
         # if not valid and search is True:
         elif (not video.startswith(self.VIDEO_PREFIX)) and self.search:
             # get urls from search
             urls = self._find_parse(video, n_results=5)
+
+            # manage if no urls
             logger.info(f"Urls found : {urls}")
+            if not urls:
+                return None
 
             for url in urls:
                 logger.info(f"Trying to download from url : {url}")
@@ -291,7 +300,8 @@ class Awdible:
                     return fn
                 except Exception as e:
                     logger.error(f"Error: {e}")
-                    self._outro()
+                    time.sleep(3)
+
             return None
 
         # if not valid and search is True:
@@ -307,7 +317,7 @@ class Awdible:
                 return fn
             except Exception as e:
                 logger.error(f"Error: {e}")
-                self._outro()
+                # self._outro()
                 return None
 
         else:  # and self.default_prefix
@@ -332,19 +342,37 @@ class Awdible:
         self,
         keywords: str,
         n_results=5,
+        retry=5,
     ) -> list[str]:
         """Find and parse the video"""
 
-        urls = Search.find_parse(
-            keywords,
-            config=self.config,
-            context=self.context,
-            n_results=n_results,
-            lang=self.lang,
-            silent_mode=False,
-        )
+        urls = []
 
-        return urls
+        logger.warning(f"Searching for video with keywords : {keywords}")
+
+        for _ in range(retry):
+            try:
+                urls = Search.find_parse(
+                    keywords,
+                    config=self.config,
+                    context=self.context,
+                    n_results=n_results,
+                    lang=self.lang,
+                    silent_mode=False,
+                )
+
+                logger.info(f"Urls found : {urls}")
+
+                if urls:
+                    return urls
+
+            except Exception as e:
+                logger.error(f"Error: {e}")
+
+            time.sleep(3)
+            logger.warning(f"Retry...")
+
+        return []
 
     def _convert(
         self,
@@ -355,6 +383,10 @@ class Awdible:
         """Convert the video to mp3"""
 
         # convert
-        fn = Convert.to_mp3(src, overwrite=True, remove_src=True)
+        fn = Convert.to_mp3(
+            src,
+            overwrite=True,
+            remove_src=True,
+        )
 
         return fn

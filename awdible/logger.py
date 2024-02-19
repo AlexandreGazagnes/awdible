@@ -9,7 +9,7 @@ import logging
 # LOG_LEVEL = logging.INFO
 
 
-def get_logger(name, log_folder="logs", log_level="INFO"):
+def get_logger(name, log_folder="logs", log_level="WARNING"):
     """Get the logger."""
 
     # create formatter
