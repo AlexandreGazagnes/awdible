@@ -44,8 +44,11 @@ jobs:
         with:
           poetry-version: ${{ matrix.poetry-version }}
 
+      - name: Install dependencies
+        run: sudo apt update -y
+
       - name: Install ffmpeg
-        run: sudo apt-get install -y ffmpeg
+        run: sudo apt-get install ffmpeg -y --fix-missing
 
       - name: View poetry --help
         run: poetry --help
