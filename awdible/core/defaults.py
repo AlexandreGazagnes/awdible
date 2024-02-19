@@ -30,3 +30,6 @@ DEFAULT_CONFIG = {
     "X-RapidAPI-Key": "No API Key Found sush as 'X-RapidAPI-Key' found in the environment variables or in .env file",
     "X-RapidAPI-Host": "No API Host Found as 'X-RapidAPI-Host' found in the environment variables or in .env file",
 }
+
+
+DEFAULT_FORCE = False

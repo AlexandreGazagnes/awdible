@@ -2,6 +2,7 @@
 Awidble is a package that allows you to download the audio from a youtube video. It can be used to download the audio from a single video or from a list of videos. It can also be used to download the audio from a video that is longer than a certain duration. It can also be used to download the audio from a video that is the result of a search query.
 """
 
+import subprocess
 import os
 
 import requests
@@ -30,6 +31,7 @@ from .defaults import (
     DEFAULT_VIDEO_URL,
     VIDEO_PREFIX,
     DEFAULT_CONFIG,
+    DEFAULT_FORCE,
 )
 
 import asyncio
@@ -167,8 +169,12 @@ class Awdible:
     def run(self):
         """Run the awdible session"""
 
+        logger.info(f"Before celanfille")
+
         if self.file:
             self._clean_file()
+
+        logger.info(f"After celanfille")
 
         if not os.path.exists(self.DEFAULT_TMP):
             os.makedirs(self.DEFAULT_TMP)
@@ -189,7 +195,17 @@ class Awdible:
     def run_synch(self):
         """Run the awdible session synchronously"""
 
+        logger.info("Ok Here")
+
+        self.video_list = [
+            video for video in self.video_list if (video and not video.startswith("#"))
+        ]
+
+        logger.warning(f"Video list: {self.video_list}")
+
         outs = [self.run_one(video) for video in self.video_list]
+
+        logger.info("12345")
 
         if len(outs) == 1:
             return outs[0]
@@ -298,7 +314,7 @@ class Awdible:
     def _convert_to_mp3(self, src: str) -> str:
         """Convert the video to mp3"""
 
-        dest = Convert.to_mp3(src)
+        dest = Convert.to_mp3(src, self.ffmpeg_installed)
         return dest
 
     def _clean_file(self):
@@ -306,36 +322,35 @@ class Awdible:
 
         with open(self.file, "r") as f:
             lines = f.readlines()
-            lines = [line.strip() for line in lines if line]
-            lines = list(set(lines))
-            lines = sorted(lines)
 
-            hastag = [line for line in lines if line.startswith("#")]
-            self.video_list = hastag
-            not_hastag = [line for line in lines if not line.startswith("#")]
+        lines = [line.strip() for line in lines if line]
+        lines = list(set(lines))
+        lines = sorted(lines)
 
-            # TODO :  CLEAN éà typo errors "  " or  "- " etc
+        hastag = [line for line in lines if not line.startswith("#")]
+        self.video_list = hastag
+        not_hastag = [line for line in lines if not line.startswith("#")]
 
-            final = not_hastag + hastag
+        # TODO :  CLEAN éà typo errors "  " or  "- " etc
+
+        final = not_hastag + hastag
+        final = [f"{line}\n" for line in final]
+        final = [i for i in final if i.strip()]
 
         with open(self.file, "w") as f:
-            final = [f"{line}\n" for line in final]
-            final = [i for i in final if i.strip()]
             f.writelines(final)
 
     def _is_ffmpeg_installed(self) -> bool:
         """Check if ffmpeg is installed"""
 
         try:
-            r = os.system("ffmpeg -version")
+            out = subprocess.run(["ffmpeg", "-version"], capture_output=True)
+            # r = os.system("ffmpeg -version")
         except Exception as e:
             logger.error(f"Error: {e}")
             return False
         else:
-            if not r:
-                return True
-            else:
-                return False
+            return True if not int(out.returncode) else False
 
     def _manage_ffmpeg(self):
 

@@ -73,12 +73,12 @@ class Bool(Validator):
             raise TypeError(
                 f"Expected {self.private_name[1:]} to be a bool : received {type(value)} for {value}"
             )
-        try:
-            bool(value)
-        except Exception as e:
-            raise ValueError(
-                f"Impossible to cast {self.private_name[1:]} to bool received {type(value)} for {value} : {e}"
-            )
+        # try:
+        #     bool(value)
+        # except Exception as e:
+        #     raise ValueError(
+        #         f"Impossible to cast {self.private_name[1:]} to bool received {type(value)} for {value} : {e}"
+        #     )
 
 
 class File(Validator):
@@ -91,10 +91,10 @@ class File(Validator):
                 f"Expected {self.private_name[1:]} to be a str : received {type(value)} for {value}"
             )
 
-        if value and (not os.path.isfile(value)):
-            raise ValueError(
-                f"Expected {self.private_name[1:]} to be a valid file path : received {value}"
-            )
+        # if value and (not os.path.isfile(value)):
+        #     raise ValueError(
+        #         f"Expected {self.private_name[1:]} to be a valid file path : received {value}"
+        #     )
 
 
 class Dir(Validator):
@@ -106,10 +106,10 @@ class Dir(Validator):
                 f"Expected {self.private_name[1:]} to be a str : received {type(value)} for {value}"
             )
 
-        if not os.path.isdir(value):
-            raise ValueError(
-                f"Expected {self.private_name[1:]} to be a valid directory path : received {value}"
-            )
+        # if not os.path.isdir(value):
+        #     raise ValueError(
+        #         f"Expected {self.private_name[1:]} to be a valid directory path : received {value}"
+        #     )
 
 
 class Output(Validator):
@@ -121,10 +121,10 @@ class Output(Validator):
                 f"Expected {self.private_name[1:]} to be a str : received {type(value)} for {value}"
             )
 
-        if value not in ["mp3", "mp4"]:
-            raise ValueError(
-                f"Expected {self.private_name[1:]} to be a valid file format : received {value}"
-            )
+        # if value not in ["mp3", "mp4"]:
+        #     raise ValueError(
+        #         f"Expected {self.private_name[1:]} to be a valid file format : received {value}"
+        #     )
 
 
 class Context(Validator):
@@ -138,10 +138,10 @@ class Context(Validator):
 
         value = value.lower()
 
-        if value not in ["fr", "en"]:
-            raise ValueError(
-                f"Expected {self.private_name[1:]} to be a valid context : received {value}"
-            )
+        # if value not in ["fr", "en"]:
+        #     raise ValueError(
+        #         f"Expected {self.private_name[1:]} to be a valid context : received {value}"
+        #     )
 
 
 # class Config(Validator):
