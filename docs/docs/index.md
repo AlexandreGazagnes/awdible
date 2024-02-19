@@ -21,9 +21,11 @@ The idea is to provide a free version of audible.
 ## Key Features
 
 * Download music / audiobook from youtube
-* Convert music / audiobook to mp3
-* Find music / audiobook from a list of songs / audiobook names : Waka Waka, Happy, Harry potter and the philosopher's stone, ...
-* Crop a long audio file to a specific duration
+* Convert music / audiobook to mp3 / wave / flac (...) *need ffmpeg installed*
+* Automaticly crop a long audio file to a specific duration ie 60 minutes
+* Find music / audiobook from a list of songs / audiobook names : Waka Waka, Happy, Harry potter and the philosopher's stone, (...) *need specific api keys*
+* Add specfic context about a file such as live, album, or title
+
 
 ## Installation
 
@@ -35,10 +37,63 @@ source .venv/bin/activate
 pip install awdible
 ```
 
+
+## Third party dependencies
+
+### FFmpeg
+
+Please note that you should to have [ffmpeg](https://ffmpeg.org/) installed on your system to use certain features of Awdible.
+
+On Ubuntu, Debian, Linux Mint (...) you can install it with the following command :
+```bash
+sudo apt update
+sudo apt install ffmpeg -y 
+```
+
+On fedora, Red Hat, CentOS (...) you can install it with the following command :
+```bash
+sudo dnf install ffmpeg
+```
+
+On MacOs, you can install it with the following command :
+```bash
+brew install ffmpeg
+```
+
+Please check that the ffmpeg command is available in your terminal.
+
+```bash
+ffmpeg -version
+```
+
+If you have any issues with ffmpeg, please visit the [ffmpeg](https://ffmpeg.org/) website.
+
+**It is possible not to have ffmpeg installed** but in such case, you will not be able to convert the downloaded files to mp3, wave, flac, etc.
+
+### External api
+
+Some features of Awdible require external api keys, specially the `-s` option.
+
+
+you must have a set up your **[youtube rapid api](https://rapidapi.com/herosAPI/api/youtube-data8)** account. 
+
+You need to add in your environment variables or export directly from a terminal the following :
+
+```bash
+export RAPID_API_KEY="*********"
+export RAPID_API_HOST="youtube-data8.p.rapidapi.com"
+```
+
+### Internet connection
+
+Last but not least, Please not that a valid internet connection is required to use ```Awdible```.
+
+
 ## Usage
 
 
 ### Local
+
 
 
 #### As executable
@@ -136,7 +191,7 @@ awdible gui
 
 The on line web app is temporarily unavailable. 
 
-It will be available in the `0.2.5` release.
+It will be available in the `0.3.0` release.
 
 
 ## Documentation
@@ -152,8 +207,6 @@ Please visit the :
 - [Roadmap](https://github.com/AlexandreGazagnes/awdible/projects?query=is%3Aopen) page
 - [Release](https://github.com/AlexandreGazagnes/awdible/releases) page
 - [Issues](https://github.com/AlexandreGazagnes/awdible/issues) page
-
-
 
 
 
