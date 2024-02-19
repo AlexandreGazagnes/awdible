@@ -174,6 +174,8 @@ class Awdible:
         self.ffmpeg_installed = Prerequires.has_ffmpeg()
         self.connection = Prerequires.has_connection()
 
+        logger.warning(f"\n\n\n---NEW INIT---\n\n\n")
+
     def _pre_run(self):
         """Perform the pre run checks"""
 
@@ -237,6 +239,11 @@ class Awdible:
             else:
                 self.ko_video_list.append([video, out])
 
+        return self._outro(outs)
+
+    def _outro(self, outs=None):
+        """Outro of the awdible session"""
+
         logger.info(f"Video list: {self.video_list}")
         logger.warning(f"OK video list: {self.ok_video_list}")
         logger.error(f"KO video list: {self.ko_video_list}")
@@ -259,6 +266,7 @@ class Awdible:
                 return fn
             except Exception as e:
                 logger.error(f"Error: {e}")
+                self._outro()
                 return None
 
         # if not valid and search is True:
@@ -274,6 +282,7 @@ class Awdible:
                     return fn
                 except Exception as e:
                     logger.error(f"Error: {e}")
+                    self._outro()
             return None
 
         # if not valid and search is True:
@@ -289,6 +298,7 @@ class Awdible:
                 return fn
             except Exception as e:
                 logger.error(f"Error: {e}")
+                self._outro()
                 return None
 
         else:  # and self.default_prefix

@@ -90,6 +90,7 @@ class Io:
         # final
         final = not_hastag + hastag
         final = [i for i in final if i.strip()]
+        final = list(set(final))
         final = [f"{line}\n" for line in final]
 
         # rewrite the file

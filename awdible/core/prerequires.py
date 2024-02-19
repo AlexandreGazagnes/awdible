@@ -15,12 +15,14 @@ class Prerequires:
         """Check if the connection is available"""
 
         try:
-            requests.get("https://www.google.com")
-            requests.raise_for_status()
+            resp = requests.get("https://www.google.com")
+            resp.raise_for_status()
+            logger.info("Connection available")
             return True
 
         except Exception as e:
             logger.error(f"Error: {e}")
+            logger.warning("Connection not available")
             if not silent_mode:
                 raise e
             return False
