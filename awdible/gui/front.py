@@ -5,7 +5,6 @@ Streamlit front-end for the Awdible app.
 import streamlit as st
 
 from awdible.core.awdible import Awdible
-
 from awdible.helpers import asciize
 
 DEFAULT_VIDEO_URL = "https://www.youtube.com/watch?v=9diaThxYnKA"

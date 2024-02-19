@@ -6,13 +6,14 @@ import os
 
 import pytest
 
-from awdible.logger import logger
 from awdible.core.awdible import Awdible
+from awdible.logger import logger
 
+VIDEO_URL_ONE = "https://www.youtube.com/watch?v=9diaThxYnKA"
+VIDEO_ID_ONE = "V62oKsHdsLU"
 
-VIDEO_URL = "https://www.youtube.com/watch?v=9diaThxYnKA"
-VIDEO_ID = "V62oKsHdsLU"
-VIDEO_QUERY = "jo l'rigolo"
+VIDEO_QUERY_ONE = "jo l'rigolo"
+VIDEO_QUERY_LIST = ["jo l'rigolo", "c'est de la merde kaamelott"]
 
 
 def read_file(fn: str) -> str:
@@ -48,46 +49,8 @@ def awdible() -> Awdible:
     return Awdible()
 
 
-# @pytest.fixture
-# def list_ids() -> list:
-#     """List of video ids"""
-
-#     pwd = os.getcwd()
-#     logger.warning(f"pwd: {pwd}")
-#     logger.warning(f"ls: {os.listdir(pwd)}")
-
-#     fn = "list_ids.txt"
-
-#     return read_file(fn)
-
-
-# @pytest.fixture
-# def list_urls() -> list:
-#     """List of video urls"""
-
-#     pwd = os.getcwd()
-#     logger.warning(f"pwd: {pwd}")
-#     logger.warning(f"ls: {os.listdir(pwd)}")
-
-#     fn = "list_urls.txt"
-
-#     return read_file(fn)
-
-
-# @pytest.fixture
-# def list_queries() -> list:
-#     """List of video queries"""
-
-# fn = "list_queries.txt"
-
-# return read_file(fn)
-
-
-def pytest_sessionstart(session):
-    """
-    Called after the Session object has been created and
-    before performing collection and entering the run test loop.
-    """
+def clean_tmp():
+    """Clean the tmp folder"""
 
     if os.path.exists(Awdible.DEFAULT_TMP):
         for file in os.listdir(Awdible.DEFAULT_TMP):
@@ -96,3 +59,10 @@ def pytest_sessionstart(session):
 
     if not os.path.exists(Awdible.DEFAULT_TMP):
         os.makedirs(Awdible.DEFAULT_TMP)
+
+
+def pytest_sessionstart(session):
+    """Code executed at the start of the session"""
+
+    clean_tmp()
+    logger.warning("Session started")

@@ -6,6 +6,6 @@ __VERSION__ = "0.2.4"
 __DESCRIPTION__ = "Awdible - Just the best free version of audible"
 __AUTHOR__ = "Alexandre Gazagnes"
 
-from .core import Awdible
+# from .core import Awdible
 
-__all__ = ["Awdible"]
+# __all__ = ["Awdible"]
