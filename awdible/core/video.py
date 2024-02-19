@@ -14,8 +14,6 @@ from awdible.logger import logger
 class Video:
     """Get the audio from the video"""
 
-    DEST = "./tmp/"
-
     @classmethod
     def _get(
         cls,
