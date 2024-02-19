@@ -4,7 +4,7 @@ Awidble is a package that allows you to download the audio from a youtube video.
 
 import subprocess
 import os
-
+import time
 import requests
 from bs4 import BeautifulSoup
 from pytube import YouTube
@@ -33,6 +33,7 @@ from .defaults import (
     VIDEO_PREFIX,
     DEFAULT_CONFIG,
     DEFAULT_FORCE,
+    DEFAULT_SLEEPER,
 )
 
 # import asyncio
@@ -105,6 +106,8 @@ class Awdible:
 
     DEFAULT_CONFIG = DEFAULT_CONFIG
 
+    DEFAULT_SLEEPER = DEFAULT_SLEEPER
+
     # dest = Dir()
     # file = File()
     # output = Output()
@@ -134,6 +137,7 @@ class Awdible:
         port: int = DEFAULT_PORT,
         test_mode: bool = DEFAULT_TEST_MODE,
         config: dict = config,
+        sleeper=DEFAULT_SLEEPER,
     ):
         """Init the Awdible class"""
 
@@ -170,6 +174,8 @@ class Awdible:
 
         self.log = self.DEFAULT_LOG
         self.tmp = self.DEFAULT_TMP
+
+        self.sleeper = sleeper
 
         self.ffmpeg_installed = Prerequires.has_ffmpeg()
         self.connection = Prerequires.has_connection()
@@ -238,6 +244,9 @@ class Awdible:
                 self.ok_video_list.append([video, out])
             else:
                 self.ko_video_list.append([video, out])
+
+            # sleep
+            time.sleep(self.sleeper)
 
         return self._outro(outs)
 
