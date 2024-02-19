@@ -221,3 +221,8 @@ list.txt
 list.md
 
 .env*
+
+
+logs/
+data/
+tmp/
