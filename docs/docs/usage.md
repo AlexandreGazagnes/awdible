@@ -1,6 +1,6 @@
 # Usage
 
-## 🏠 Local
+## Local
 
 
 
@@ -95,7 +95,7 @@ Launch local streamlit :
 awdible gui 
 ``` 
 
-## 🌏 On line
+## On line
 
 The on line web app is temporarily unavailable. 
 

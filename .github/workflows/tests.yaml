@@ -54,7 +54,7 @@ jobs:
         run: poetry --help
 
       - name: poetry Install
-        run: poetry install --without doc,static
+        run: poetry install --without doc,static,front
 
       - name: Valid secrets
         run: echo "${{ secrets.RAPID_API_HOST }}"

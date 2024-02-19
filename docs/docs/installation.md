@@ -1,7 +1,7 @@
 # Installation
 
 
-## 🎠 Using regular pip and venv tools
+## Using regular pip and venv tools
 
 Creating a virtual environment :
 
@@ -19,7 +19,7 @@ pip install awdible [--upgrade] [--user]
 
 ```
 
-## 🌂 Using poetry or pipenv
+## Using poetry or pipenv
 
 It is recommended to use a virtual environment to install the package.
 
@@ -31,7 +31,7 @@ poetry add awdible
 
 
 
-## 🍀 Check the installation
+## Check the installation
 
 You can check the installation by running the following command :
 
@@ -52,9 +52,9 @@ pip list | grep awdible
 ```
 
 
-## ⚠️ Third party dependencies
+## Third party dependencies
 
-### 📼 FFmpeg
+### FFmpeg
 
 Please note that you should to have [ffmpeg](https://ffmpeg.org/) installed on your system to use certain features of Awdible.
 
@@ -98,6 +98,6 @@ export RAPID_API_KEY="*********"
 export RAPID_API_HOST="youtube-data8.p.rapidapi.com"
 ```
 
-### 🌎 Internet connection
+### Internet connection
 
 Last but not least, Please not that a valid internet connection is required to use ```Awdible```.

@@ -13,12 +13,12 @@
 
 # Awdible - Just the best free version of audible
 
-## ✳️ About
+## About
 Awdible is a free and open-source software, app and python package that allows you to download music from youtube and convert it to mp3.
 
 The idea is to provide a free version of audible.
 
-## 🔊 Key Features
+## Key Features
 
 * Download music / audiobook from youtube
 * Convert music / audiobook to mp3 / wave / flac (...) *need ffmpeg installed*
@@ -27,7 +27,7 @@ The idea is to provide a free version of audible.
 * Add specfic context about a file such as live, album, or title
 
 
-## ⤵️ Installation
+## Installation
 
 Using regular pip and venv tools :
 
@@ -38,9 +38,9 @@ pip install awdible
 ```
 
 
-## ⚠️ Third party dependencies
+## Third party dependencies
 
-### 📼 FFmpeg
+### FFmpeg
 
 Please note that you should to have [ffmpeg](https://ffmpeg.org/) installed on your system to use certain features of Awdible.
 
@@ -70,7 +70,7 @@ If you have any issues with ffmpeg, please visit the [ffmpeg](https://ffmpeg.org
 
 **It is possible not to have ffmpeg installed** but in such case, you will not be able to convert the downloaded files to mp3, wave, flac, etc.
 
-### ⚛️ External api
+### External api
 
 Some features of Awdible require external api keys, specially the `-s` option.
 
@@ -84,15 +84,15 @@ export RAPID_API_KEY="*********"
 export RAPID_API_HOST="youtube-data8.p.rapidapi.com"
 ```
 
-### 🌎 Internet connection
+### Internet connection
 
 Last but not least, Please not that a valid internet connection is required to use ```Awdible```.
 
 
-## 🎒 Usage
+## Usage
 
 
-### 🏠 Local
+### Local
 
 
 
@@ -187,19 +187,19 @@ Launch local streamlit :
 awdible gui 
 ``` 
 
-### 🌏 On line
+### On line
 
 The on line web app is temporarily unavailable. 
 
 It will be available in the `0.3.0` release.
 
 
-## 📕 Documentation
+## Documentation
 
 Please visit [Documentation](https://alexandregazagnes.github.io/awdible/) page.
 
 
-## 📢 Updates
+## Updates
 
 
 Please visit the : 
@@ -210,9 +210,7 @@ Please visit the :
 
 
 
-
-
-## 🤟 Contributing
+## Contributing
 
 Awdible is an open-source project and we are always looking for more people to contribute to its development.
 
