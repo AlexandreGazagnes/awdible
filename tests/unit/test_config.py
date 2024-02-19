@@ -2,7 +2,6 @@
 """
 
 from awdible.config import get_config
-
 from awdible.core.defaults import DEFAULT_CONFIG
 
 

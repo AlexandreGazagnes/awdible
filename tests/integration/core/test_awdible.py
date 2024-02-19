@@ -4,16 +4,14 @@ Test the Awdible class.
 
 import pytest
 
+from awdible.config import config
 from awdible.core.awdible import Awdible
 from awdible.logger import logger
-
-from awdible.config import config
-
 from tests.conftest import (
-    VIDEO_URL_ONE,
     VIDEO_ID_ONE,
-    VIDEO_QUERY_ONE,
     VIDEO_QUERY_LIST,
+    VIDEO_QUERY_ONE,
+    VIDEO_URL_ONE,
 )
 
 # VIDEO_URL = "https://www.youtube.com/watch?v=9diaThxYnKA"

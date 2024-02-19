@@ -3,8 +3,8 @@ Module for validators and decorators
 """
 
 import os
-from awdible.logger import logger
 
+from awdible.logger import logger
 from awdible.validators import Validator
 
 # class Number(Validator):

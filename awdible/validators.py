@@ -3,10 +3,11 @@ Module for validators and decorators
 """
 
 import os
-from awdible.logger import logger
 
 # import logging
 from abc import ABC, abstractmethod
+
+from awdible.logger import logger
 
 
 class Validator(ABC):

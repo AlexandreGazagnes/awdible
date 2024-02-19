@@ -6,9 +6,8 @@ import os
 
 import pytest
 
-from awdible.logger import logger
 from awdible.core.awdible import Awdible
-
+from awdible.logger import logger
 
 VIDEO_URL_ONE = "https://www.youtube.com/watch?v=9diaThxYnKA"
 VIDEO_ID_ONE = "V62oKsHdsLU"

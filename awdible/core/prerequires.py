@@ -2,8 +2,9 @@
 Pre-requirements module
 """
 
-import requests
 import subprocess
+
+import requests
 
 from awdible.logger import logger
 

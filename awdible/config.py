@@ -3,6 +3,7 @@ Configurations for the app
 """
 
 import os
+
 import dotenv
 from dotenv import dotenv_values
 

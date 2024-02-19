@@ -2,9 +2,8 @@
 Logger module to log the messages
 """
 
-import os
 import logging
-
+import os
 
 # LOG_LEVEL = logging.INFO
 

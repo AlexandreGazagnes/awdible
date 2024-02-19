@@ -3,10 +3,9 @@ Convert module
 """
 
 import os
+import subprocess
 
 from awdible.logger import logger
-
-import subprocess
 
 
 class Convert:

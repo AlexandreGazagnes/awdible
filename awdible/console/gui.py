@@ -4,10 +4,9 @@ GUI Command
 
 import os
 
+import streamlit.web.cli as cli
 from cleo.commands.command import Command
 from cleo.helpers import argument, option
-
-import streamlit.web.cli as cli
 
 # from ..gui.front import front
 
