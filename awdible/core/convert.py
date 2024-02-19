@@ -4,9 +4,11 @@ Convert the video to mp3
 
 import os
 
-# import ffmpeg
+import ffmpeg
 
 from awdible.logger import logger
+
+import subprocess
 
 
 class Convert:
@@ -16,39 +18,49 @@ class Convert:
     def to_mp3(
         cls,
         src: str,
-        is_ffmpeg_installed: bool,
+        overwrite: bool = False,
+        remove_src: bool = True,
+        silent_mode: False = False,
     ) -> str:
         """Convert the video to mp3"""
 
-        if not is_ffmpeg_installed:
-            logger.warning("ffmpeg is not installed")
+        if not os.path.exists(src):
+            logger.error(f"File not found: {src}")
+            if not silent_mode:
+                raise FileNotFoundError(f"File not found: {src}")
 
-        logger.debug(f"Converting {src} to mp3")
+        # if not is_ffmpeg_installed:
+        #     logger.warning("ffmpeg is not installed")
 
         # get the destination
         dest = src.split(".")[:-1]
         dest = ".".join(dest) + ".mp3"
 
-        # logger.debug(f"Destination: {dest}")
+        logger.info(f"Converting  src : {src} to mp3 with dest : {dest}")
 
-        ############## Old method ################
-        # the command
-        # cmd = {
-        #     "q:a": 0,
-        #     "map": "a",
-        #     "loglevel": "quiet",
-        # }
+        # creating cmd
+        cmd = f"ffmpeg -i {src} -q:a 0 -loglevel error -map a {dest}"
+        if overwrite:
+            cmd += " -y"
 
-        # do the conversion
-        # ffmpeg.input(src).output(dest, **cmd).run()
+        # run the command
+        logger.info(f"Running the command : cmd : {cmd}")
+        # out = os.system(cmd)
+        prc = subprocess.run(cmd.split(" "), capture_output=True)
 
-        ############## New method ################
-        cmd = f"ffmpeg -i {src} -q:a 0 -loglevel error -map a {dest} -y"
-        out = os.system(cmd)
+        # manage the output
+        if prc.returncode:
+            logger.warning(
+                f"Subprocess  : returncode : {prc.returncode} => stdout : {prc.stdout} = > stderr : {prc.stderr}"
+            )
+            # raise an error if not silent mode
+            if not silent_mode:
+                raise ValueError(f"Error in the conversion : {prc.stderr}")
 
-        # subprocess.run(["ls", "-l", "/dev/null"], capture_output=True)
+        logger.info(f"Conversion successful : {prc.stdout}")
 
-        # del  old file
-        os.remove(src)
+        if remove_src:
+            logger.info(f"Removing the source file : {src}")
+            os.remove(src)
 
         return dest

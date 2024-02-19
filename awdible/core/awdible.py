@@ -9,9 +9,10 @@ import requests
 from bs4 import BeautifulSoup
 from pytube import YouTube
 
-from awdible.logger import logger
-from awdible.config import config
+from ..logger import logger
+from ..config import config
 from .convert import Convert
+
 from .crop import Crop
 from .defaults import (
     DEFAULT_ASYNCHRONOUS,
@@ -34,18 +35,20 @@ from .defaults import (
     DEFAULT_FORCE,
 )
 
-import asyncio
+# import asyncio
 
-from .validators import (
-    Dir,
-    File,
-    Output,
-    # Config,
-    Context,
-    Bool,
-)
+# from .validators import (
+#     Dir,
+#     File,
+#     Output,
+#     # Config,
+#     Context,
+#     Bool,
+# )
 from .search import Search
 from .video import Video
+from .io import Io
+from .prerequires import Prerequires
 
 # import logging
 
@@ -102,17 +105,17 @@ class Awdible:
 
     DEFAULT_CONFIG = DEFAULT_CONFIG
 
-    dest = Dir()
-    file = File()
-    output = Output()
-    crop_limit = Crop()
-    context = Context()
-    search = Bool()
-    prefix = Bool()
-    asynchronous = Bool()
-    streamlit = Bool()
-    test_mode = Bool()
-    # config = Config()
+    # dest = Dir()
+    # file = File()
+    # output = Output()
+    # crop_limit = Crop()
+    # context = Context()
+    # search = Bool()
+    # prefix = Bool()
+    # asynchronous = Bool()
+    # streamlit = Bool()
+    # test_mode = Bool()
+    # # config = Config()
 
     def __init__(
         self,
@@ -123,6 +126,7 @@ class Awdible:
         force: bool = DEFAULT_FORCE,
         crop_limit: int = DEFAULT_CROP_LIMIT,
         context: str = DEFAULT_CONTEXT,
+        lang: str = "NotImplemented",
         search: bool = DEFAULT_SEARCH,
         prefix: bool = DEFAULT_PREFIX,
         asynchronous: bool = DEFAULT_ASYNCHRONOUS,
@@ -136,15 +140,22 @@ class Awdible:
         self._awdible = None
 
         self.video = video
-
         _video_list = video if isinstance(video, list) else [video]
         self.video_list = list(set(_video_list))
+
+        self.ok_video_list = []
+        self.ko_video_list = []
 
         self.dest = dest
         self.file = file
         self.output = output
         self.crop_limit = crop_limit
+        self.force = force
+        # TODO : Change context to "song" / "video" "audiobook" "podcast" "live"
+        # TODO : enabla lang isntead of context en "fr" "es" or None
+        # TODO add auto context and lang detection
         self.context = context
+        self.lang = lang
 
         self.search = search
         self.prefix = prefix
@@ -160,55 +171,75 @@ class Awdible:
         self.log = self.DEFAULT_LOG
         self.tmp = self.DEFAULT_TMP
 
-        self.force = force
-        self.ffmpeg_installed = self._is_ffmpeg_installed()
+        self.ffmpeg_installed = Prerequires.has_ffmpeg()
+        self.connection = Prerequires.has_connection()
 
-        if not self.ffmpeg_installed:
-            self._manage_ffmpeg()
+    def _pre_run(self):
+        """Perform the pre run checks"""
+
+        # manage if not ffmpeg installed
+        if (not self.ffmpeg_installed) and self.force:
+            logger.warning("ffmpeg is not installed BUT force option activated")
+
+        if (not self.ffmpeg_installed) and (not self.force):
+            logger.error(f"ffmpeg is not installed and --force option not activated")
+            logger.error(f"consider installing ffmpeg or using --force option")
+            raise AttributeError(
+                "ffmpeg is not installed => Install ffmpeg or use --force option"
+            )
+
+        # manage if not connection
+        if not self.connection:
+            raise ConnectionError("No internet connection found")
+
+        # manage if not not folders
+        Io.build_folders([self.dest, self.tmp, self.log], create=True)
+
+        # manage if file
+        if self.file:
+            self.video_list = Io.clean_list_videos(self.file)
+
+        # last clean
+        self.video_list = [
+            v for v in self.video_list if (v and (not v.startswith("#")))
+        ]
+        self.video_list = [v.strip() for v in self.video_list if v.strip()]
+        self.video_list = list(set(self.video_list))
 
     def run(self):
         """Run the awdible session"""
 
-        logger.info(f"Before celanfille")
+        # pre run checks
+        self._pre_run()
 
-        if self.file:
-            self._clean_file()
-
-        logger.info(f"After celanfille")
-
-        if not os.path.exists(self.DEFAULT_TMP):
-            os.makedirs(self.DEFAULT_TMP)
-
-        if not os.path.exists(self.DEFAULT_LOG):
-            os.makedirs(self.DEFAULT_LOG)
-
-        if not os.path.exists(self.DEFAULT_DEST):
-            os.makedirs(self.DEFAULT_DEST)
-
+        # manage synch vs asynch
         if self.asynchronous:
             outs = self.run_asynch()
         else:
             outs = self.run_synch()
 
-        return outs
+        logger.info(f"Outs : {outs}")
 
     def run_synch(self):
         """Run the awdible session synchronously"""
 
-        logger.info("Ok Here")
+        outs = []
 
-        self.video_list = [
-            video for video in self.video_list if (video and not video.startswith("#"))
-        ]
+        # loop over the video list
+        for video in self.video_list:
+            # run one
+            out = self.run_one_synch(video)
+            outs.append(out)
 
-        logger.warning(f"Video list: {self.video_list}")
+            # add to relevant list
+            if out:
+                self.ok_video_list.append([video, out])
+            else:
+                self.ko_video_list.append([video, out])
 
-        outs = [self.run_one(video) for video in self.video_list]
-
-        logger.info("12345")
-
-        if len(outs) == 1:
-            return outs[0]
+        logger.info(f"Video list: {self.video_list}")
+        logger.warning(f"OK video list: {self.ok_video_list}")
+        logger.error(f"KO video list: {self.ko_video_list}")
 
         return outs
 
@@ -218,146 +249,93 @@ class Awdible:
         # out = await asyncio.gather(
         raise NotImplementedError("Sorry Bro! ")
 
-    def run_one(self, video: str):
+    def run_one_synch(self, video: str):
         """Run the awdible session for one video"""
-
-        out = ""
 
         # good case
         if video.startswith(self.VIDEO_PREFIX):
-            out = self._get_stream_save_convert(video)
+            try:
+                fn = self._get_stream_save_convert(video)
+                return fn
+            except Exception as e:
+                logger.error(f"Error: {e}")
+                return None
 
         # if not valid and search is True:
         elif (not video.startswith(self.VIDEO_PREFIX)) and self.search:
-            url = self._find_parse(video)[0]
-            out = self._get_stream_save_convert(url)
+            # get urls from search
+            urls = self._find_parse(video, n_results=5)
+            logger.info(f"Urls found : {urls}")
+
+            for url in urls:
+                logger.info(f"Trying to download from url : {url}")
+                try:
+                    fn = self._get_stream_save_convert(url)
+                    return fn
+                except Exception as e:
+                    logger.error(f"Error: {e}")
+            return None
 
         # if not valid and search is True:
         elif (not video.startswith(self.VIDEO_PREFIX)) and self.prefix:
-            video = self.VIDEO_PREFIX + video
-            out = self._get_stream_save_convert(video)
+            VIDEO_PREFIX = (
+                self.VIDEO_PREFIX
+                if self.VIDEO_PREFIX.endswith("/")
+                else self.VIDEO_PREFIX + "/"
+            )
+            video = VIDEO_PREFIX + video
+            try:
+                fn = self._get_stream_save_convert(video)
+                return fn
+            except Exception as e:
+                logger.error(f"Error: {e}")
+                return None
 
-        # try  adding the prefix
         else:  # and self.default_prefix
-            video = self.VIDEO_PREFIX + video
-
-            try:
-                out = self._get_stream_save_convert(video)
-            except Exception as e:
-                logger.error(f"Error: {e}")
-
-            try:
-                url = self._find_parse(video)[0]
-                out = self._get_stream_save_convert(url)
-            except Exception as e:
-                logger.error(f"Error: {e}")
-
-        logger.warning(f"Downloaded  OK: {out}")
-
-        return out
-
-    def _get(self, url: str) -> tuple:
-        """Get the audio from the video"""
-
-        return Video.get(url)
-
-    def _stream(self, yt: YouTube) -> tuple:
-        """Get the audio from the video"""
-
-        return Video.stream(yt)
-
-    def _save(self, title: str, media: YouTube) -> str:
-        """Save the audio from the video"""
-
-        return Video.save(title, media, self.dest)
-
-    def _get_stream(self, url: str) -> tuple:
-        """Get the audio from the video"""
-
-        yt = self._get(url)
-        title, media = self._stream(yt)
-        return title, media
+            raise AttributeError("Sorry Bro! ")
 
     def _get_stream_save(self, url):
         """Get the audio from the video and save it"""
 
-        title, media = self._get_stream(url)
-        out = self._save(title, media)
-        return out
+        fn = Video.get_stream_save(url, self.dest)
+
+        return fn
 
     def _get_stream_save_convert(self, url):
         """Get the audio from the video and save it"""
 
-        src = self._get_stream_save(url)
-        out = self._convert_to_mp3(src)
-        return out
+        fn = Video.get_stream_save(url, self.dest)
+        fn = self._convert(fn)
 
-    def _find(self, keywords: str) -> list[str]:
-        """Find the video"""
+        return fn
 
-        json = Search.find(keywords, context=self.context, config=self.config)
-        return json
-
-    def _parse(self, json: str) -> list[str]:
-        """Parse the video"""
-
-        href_list = Search.parse(json)
-        return href_list
-
-    def _find_parse(self, keywords: str) -> list[str]:
+    def _find_parse(
+        self,
+        keywords: str,
+        n_results=5,
+    ) -> list[str]:
         """Find and parse the video"""
 
-        json = self._find(keywords)
-        href_list = self._parse(json)
-        return href_list
+        urls = Search.find_parse(
+            keywords,
+            config=self.config,
+            context=self.context,
+            n_results=n_results,
+            lang=self.lang,
+            silent_mode=False,
+        )
 
-    def _convert_to_mp3(self, src: str) -> str:
+        return urls
+
+    def _convert(
+        self,
+        src: str,
+        overwrite=True,
+        remove_src=True,
+    ) -> str:
         """Convert the video to mp3"""
 
-        dest = Convert.to_mp3(src, self.ffmpeg_installed)
-        return dest
+        # convert
+        fn = Convert.to_mp3(src, overwrite=True, remove_src=True)
 
-    def _clean_file(self):
-        """Clean the file"""
-
-        with open(self.file, "r") as f:
-            lines = f.readlines()
-
-        lines = [line.strip() for line in lines if line]
-        lines = list(set(lines))
-        lines = sorted(lines)
-
-        hastag = [line for line in lines if not line.startswith("#")]
-        self.video_list = hastag
-        not_hastag = [line for line in lines if not line.startswith("#")]
-
-        # TODO :  CLEAN éà typo errors "  " or  "- " etc
-
-        final = not_hastag + hastag
-        final = [f"{line}\n" for line in final]
-        final = [i for i in final if i.strip()]
-
-        with open(self.file, "w") as f:
-            f.writelines(final)
-
-    def _is_ffmpeg_installed(self) -> bool:
-        """Check if ffmpeg is installed"""
-
-        try:
-            out = subprocess.run(["ffmpeg", "-version"], capture_output=True)
-            # r = os.system("ffmpeg -version")
-        except Exception as e:
-            logger.error(f"Error: {e}")
-            return False
-        else:
-            return True if not int(out.returncode) else False
-
-    def _manage_ffmpeg(self):
-
-        if self.force:
-            logger.warning("ffmpeg is not installed, output will be in mp4 format")
-
-        else:
-            raise AttributeError(
-                "ffmpeg is not installed - pass the --force option to continue adn force the download in mp4 format."
-            )
+        return fn

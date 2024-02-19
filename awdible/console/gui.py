@@ -9,7 +9,7 @@ from cleo.helpers import argument, option
 
 import streamlit.web.cli as cli
 
-from awdible.gui.front import *
+# from ..gui.front import front
 
 
 class GuiCommand(Command):
