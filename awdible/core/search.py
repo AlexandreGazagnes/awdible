@@ -3,7 +3,6 @@ Search module
 """
 
 import requests
-from bs4 import BeautifulSoup
 
 from awdible.core.defaults import QUERY_PREFIX, VIDEO_PREFIX
 from awdible.logger import logger

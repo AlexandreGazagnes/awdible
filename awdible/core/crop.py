@@ -2,8 +2,6 @@
 Crop the audio
 """
 
-# import ffmpeg
-
 from awdible.logger import logger
 
 

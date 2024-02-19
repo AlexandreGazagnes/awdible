@@ -3,7 +3,6 @@ Video module
 """
 
 import os
-import secrets
 
 from pytube import YouTube
 
