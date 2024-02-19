@@ -1,5 +1,5 @@
 """
-Unit tests for the awdible.helpers module.
+Unit tests for the helpers module.
 """
 
 from awdible.helpers import asciize

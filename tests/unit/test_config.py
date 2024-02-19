@@ -1,4 +1,5 @@
 """
+Unit Test the config.
 """
 
 from awdible.config import get_config

@@ -22,6 +22,11 @@ from tests.conftest import (
 class TestAwdible:
     """Test the Awdible class."""
 
+    def test_force_raise(self):
+        """Test the Awdible class."""
+
+        raise NotImplementedError("Test not implemented.")
+
     def test___init__(self):
         Awdible(test_mode=True)
 
