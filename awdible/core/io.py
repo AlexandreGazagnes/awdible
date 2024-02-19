@@ -16,7 +16,7 @@ class Io:
         create=True,
         silent_mode=True,
     ) -> list:
-        """Build the folders"""
+        """Check / Build the folders"""
 
         folders = [folders] if isinstance(folders, str) else folders
 
@@ -38,7 +38,7 @@ class Io:
         create=False,
         silent_mode=True,
     ) -> list:
-        """Build the files"""
+        """Check / Build the files"""
 
         files = [files] if isinstance(files, str) else files
 
@@ -64,6 +64,10 @@ class Io:
         silent_mode=False,
     ):
         """Clean the list of videos"""
+
+        # TODO : this function is so broken!
+        # TODO : an issue is opened for this
+        # TODO : this issue is a bug and should be fixed asap
 
         # build the file if needed
         cls.build_files(

@@ -8,7 +8,7 @@ from awdible.logger import logger
 
 
 class Crop:
-    """Crop the audio"""
+    """Crop the audio if needed"""
 
     pass
 

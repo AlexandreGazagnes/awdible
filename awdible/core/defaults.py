@@ -43,7 +43,10 @@ CONTEXT_OPTIONS = [
 
 # Searc: perform an api search to find video ID
 DEFAULT_SEARCH = False
-DEFAULT_SEARCH_TOP_RESULTS = 1
+DEFAULT_SEARCH_NUMBER = 1
+MAX_SEARCH_NUMBER = 3
+
+# DEFAULT_SEARCH_TOP_RESULTS = 1
 # SEARCH_OPTIONS = [
 #     True,
 #     False,

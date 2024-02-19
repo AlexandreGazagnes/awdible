@@ -1,5 +1,5 @@
 """
-Search for the video
+Search module
 """
 
 import requests
@@ -12,7 +12,7 @@ from awdible.logger import logger
 
 
 class Search:
-    """Search for the video"""
+    """Search for the video with a specific query"""
 
     QUERY_PREFIX = QUERY_PREFIX
     VIDEO_PREFIX = VIDEO_PREFIX
@@ -26,7 +26,7 @@ class Search:
         lang: str = "NotImplemented",
         silent_mode: bool = False,
     ) -> list[str]:
-        """Get the list of videos"""
+        """Get the list of videos for a specific query"""
 
         # params
         params = {"q": keywords}
@@ -91,7 +91,7 @@ class Search:
         n_results=5,
         silent_mode=False,
     ) -> list[str]:
-        """Parse the video"""
+        """Parse the json response to get the video id and title"""
 
         contents = json["contents"]
 

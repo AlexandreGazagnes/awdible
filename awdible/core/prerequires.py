@@ -1,14 +1,15 @@
 """
-Pre-requirements for the application
+Pre-requirements module
 """
 
 import requests
-from awdible.logger import logger
 import subprocess
+
+from awdible.logger import logger
 
 
 class Prerequires:
-    """Check the prerequires"""
+    """Check the prerequires such as connection and ffmpeg availability"""
 
     @classmethod
     def has_connection(cls, silent_mode=False):

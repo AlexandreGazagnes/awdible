@@ -1,5 +1,5 @@
 """
-Get the audio from the video
+Video module
 """
 
 import os
@@ -7,12 +7,12 @@ import secrets
 
 from pytube import YouTube
 
-from awdible.core.defaults import DEFAULT_VIDEO_URL, VIDEO_PREFIX
+from awdible.core.defaults import VIDEO_PREFIX
 from awdible.logger import logger
 
 
 class Video:
-    """Get the audio from the video"""
+    """Get the video from Youtube, extract audio from the video and save it"""
 
     @classmethod
     def _get(
@@ -20,7 +20,7 @@ class Video:
         url: str,
         silent_mode=False,
     ) -> tuple:
-        """Get the audio from the video"""
+        """Get the audio from the url with Youtube"""
 
         # MANAGE URL PROBLEM
         # TODO : better tot raise an error
@@ -45,9 +45,8 @@ class Video:
         url: str,
         silent_mode=False,
     ) -> tuple:
-        """Get the audio from the video"""
+        """Get the audio from the stream from the video"""
 
-        # manage stream
         try:
             media = yt.streams.filter(only_audio=True).first()
             title = yt.title.replace(" ", "_")
@@ -76,7 +75,7 @@ class Video:
         #  download
         out = media.download(dest)
 
-        # add asciz to the title
+        # TODO : ascize the title
         # title = ascize(title)
 
         # addd the extension
@@ -99,7 +98,7 @@ class Video:
 
     @classmethod
     def get_stream_save(cls, url, dest, silent_mode=False):
-        """ """
+        """Get and stream and save"""
 
         yt = cls._get(url, silent_mode=silent_mode)
         title, media = cls._stream(yt, url, silent_mode=silent_mode)

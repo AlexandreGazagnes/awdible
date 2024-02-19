@@ -1,5 +1,5 @@
 """
-Awidble is a package that allows you to download the audio from a youtube video. It can be used to download the audio from a single video or from a list of videos. It can also be used to download the audio from a video that is longer than a certain duration. It can also be used to download the audio from a video that is the result of a search query.
+Awdible module
 """
 
 import subprocess
@@ -34,50 +34,95 @@ from .defaults import (
     DEFAULT_CONFIG,
     DEFAULT_FORCE,
     DEFAULT_SLEEPER,
+    DEFAULT_SEARCH_NUMBER,
+    MAX_SEARCH_NUMBER,
 )
 
-# import asyncio
-
-# from .validators import (
-#     Dir,
-#     File,
-#     Output,
-#     # Config,
-#     Context,
-#     Bool,
-# )
 from .search import Search
 from .video import Video
 from .io import Io
 from .prerequires import Prerequires
 
-# import logging
-
-
-# import logging
-
 
 class Awdible:
-    """The Awdible class is the core of the awdible package. It is the main class that
-    is used to download the audio from a youtube video. It can be used to download
+    """
+    Awidble is a package that allows you to download the audio from a youtube video.
+    It can be used to download the audio from a single video or from a list of videos.
+    It can also be used to download the audio from a video that is longer than a certain duration.
+    It can also be used to download the audio from a video that is the result of a search query.
+
+    ----
+
+    The Awdible class is the core of the awdible package.
 
     Agrs :
 
-    video : str | list : The video url to download from youtube. If you want to input a search query, use the --search option
+        video : str | list | None :
+            The video url / list of videos to download from youtube. If you want to input a search query, use the --search option
+            This attribute can be null only if the search option is set to True.
 
-    dest : str : The destination directory of the file
-    file : str : The input file With list of urls/videos
-    output : str : The output file name
-    crop_limit : int : The limit of duration of the video to download. If the video is longer than the limit, it will be cropped into smaller parts.
+        dest : str :
+            The destination directory of the file to download
 
-    search : bool : If set, the video argument will be treated as a search query and the first result will be downloaded.
-    prefix : bool : If set, can ommit the url prefix 'https://www.youtube.com/watch?v=' when passing the video url.
-    asynchronous : bool : If set, the download will be asynchronous.
+        file : str | None :
+            The input filewWith list of urls/videos. Default is None.
+            If set, the video argument will be ignored.
+            If not set and video not set, an error sound be raised.
 
-    streamlit : bool : If set, the download will be asynchronous.
-    port : int : The port of the streamlit web app.
+        output : str :
+            The output format of the file to download. Default is mp3.
+            No other format is supported for now.
 
-    test_mode : bool : If set, the download will be asynchronous.
+        crop_limit : int :
+            The limit of duration of the video to download. If the video is longer than the limit, it will be cropped into smaller parts.
+            This feature is not yet implemented.
+
+        force : bool :
+            If set, the download will be forced even if the ffmpeg is not installed.
+            If not set and ffmpeg is not installed, an error will be raised.
+
+        context: str :
+            The language context of the video to download. Default is "en".
+            This feature is not yet implemented.
+            DEPRECIATION WARNING : This feature will be changed in the future.
+            Context will be "song" / "video" "audiobook" "podcast" "live" and "en" "fr" "es" or None
+
+        lang: str :
+            This feature is not yet implemented.
+            DEPRECIATION WARNING : This feature will be overlap the context feature in the future.
+
+        search : bool :
+            If set, the video argument will be treated as a search query and the first result will be downloaded.
+
+        search_number : int :
+            The number of results to download from the search query, if the search option is set to True.
+            ie : search_number=5 will download the first 5 results from the search query.
+            default is 1.
+            MAX_SEARCH_NUMBER = 5
+
+        prefix : bool :
+            If set, can ommit the url prefix 'https://www.youtube.com/watch?v=' when passing the video url.
+            DEPRECIATION WARNING : This feature will be removed in the future.
+
+        asynchronous : bool :
+            If set, the download will be asynchronous.
+            This feature is not yet implemented.
+
+        streamlit : bool :
+            If set, a streamlit session should be launched.
+
+        port : int :
+            The port of the streamlit web app.
+
+        test_mode : bool :
+            If set, the test mode will be activated.
+
+        config : dict :
+            The config of the awdible package.
+            Most important is the RAPID_API_KEY and RAPID_API_HOST for the youtube search allowed with the --search option.
+
+        sleeper : int :
+            The time to sleep between two downloads.
     """
 
     VIDEO_PREFIX = VIDEO_PREFIX
@@ -92,6 +137,9 @@ class Awdible:
     DEFAULT_CONTEXT = DEFAULT_CONTEXT
 
     DEFAULT_SEARCH = DEFAULT_SEARCH
+    DEFAULT_SEARCH_NUMBER = DEFAULT_SEARCH_NUMBER
+    MAX_SEARCH_NUMBER = MAX_SEARCH_NUMBER
+
     DEFAULT_ASYNCHRONOUS = DEFAULT_ASYNCHRONOUS
     DEFAULT_PREFIX = DEFAULT_PREFIX
 
@@ -108,18 +156,6 @@ class Awdible:
 
     DEFAULT_SLEEPER = DEFAULT_SLEEPER
 
-    # dest = Dir()
-    # file = File()
-    # output = Output()
-    # crop_limit = Crop()
-    # context = Context()
-    # search = Bool()
-    # prefix = Bool()
-    # asynchronous = Bool()
-    # streamlit = Bool()
-    # test_mode = Bool()
-    # # config = Config()
-
     def __init__(
         self,
         video: str | list = DEFAULT_VIDEO_URL,
@@ -131,6 +167,7 @@ class Awdible:
         context: str = DEFAULT_CONTEXT,
         lang: str = "NotImplemented",
         search: bool = DEFAULT_SEARCH,
+        search_number: int = DEFAULT_SEARCH_NUMBER,
         prefix: bool = DEFAULT_PREFIX,
         asynchronous: bool = DEFAULT_ASYNCHRONOUS,
         streamlit: bool = DEFAULT_STREAMLIT,
@@ -162,6 +199,11 @@ class Awdible:
         self.lang = lang
 
         self.search = search
+        self.search_number = search_number
+
+        # TODO ADD A VALIDATOR
+        if self.search_number > self.MAX_SEARCH_NUMBER:
+            self.search_number = self.MAX_SEARCH_NUMBER
         self.prefix = prefix
         self.asynchronous = asynchronous
 
@@ -211,13 +253,6 @@ class Awdible:
                 rewrite=True,
             )
 
-        # # last clean
-        # self.video_list = [
-        #     v for v in self.video_list if (v and (not v.startswith("#")))
-        # ]
-        # self.video_list = [v.strip() for v in self.video_list if v.strip()]
-        # self.video_list = list(set(self.video_list))
-
     def run(self):
         """Run the awdible session"""
 
@@ -262,12 +297,14 @@ class Awdible:
         logger.warning(f"OK video list: {self.ok_video_list}")
         logger.error(f"KO video list: {self.ko_video_list}")
 
+        # TODO : add an io method to clean dest from .mp4 ONLY if 2 different files type
+        # if only mp4, keep the files => maybe ffmpeg is not installed and --force option activated
+
         return outs
 
     async def run_asynch(self):
         """Run the awdible session asynchronously"""
 
-        # out = await asyncio.gather(
         raise NotImplementedError("Sorry Bro! ")
 
     def run_one_synch(self, video: str):
@@ -293,7 +330,11 @@ class Awdible:
             if not urls:
                 return None
 
-            for url in urls:
+            # TODO to really enable this possibility of dowloading the first n results
+            # TODO of the search we need, at least, to have a return [fn]
+            # TODO and to manage the run_one out management of our attributes
+
+            for url in urls[: self.search_number]:
                 logger.info(f"Trying to download from url : {url}")
                 try:
                     fn = self._get_stream_save_convert(url)
@@ -350,7 +391,7 @@ class Awdible:
 
         logger.warning(f"Searching for video with keywords : {keywords}")
 
-        for _ in range(retry):
+        for i in range(retry):
             try:
                 urls = Search.find_parse(
                     keywords,
@@ -370,7 +411,9 @@ class Awdible:
                 logger.error(f"Error: {e}")
 
             time.sleep(3)
-            logger.warning(f"Retry...")
+            logger.warning(
+                f"Retry... {i+1} / {retry} for keywords : {keywords}, context : {self.context}, lang : {self.lang}"
+            )
 
         return []
 
@@ -385,8 +428,8 @@ class Awdible:
         # convert
         fn = Convert.to_mp3(
             src,
-            overwrite=True,
-            remove_src=True,
+            overwrite=overwrite,
+            remove_src=remove_src,
         )
 
         return fn

@@ -1,10 +1,8 @@
 """
-Convert the video to mp3
+Convert module 
 """
 
 import os
-
-import ffmpeg
 
 from awdible.logger import logger
 
@@ -12,7 +10,7 @@ import subprocess
 
 
 class Convert:
-    """Convert the video to mp3"""
+    """Convert the video in various formats"""
 
     @classmethod
     def to_mp3(
@@ -29,9 +27,6 @@ class Convert:
             if not silent_mode:
                 raise FileNotFoundError(f"File not found: {src}")
 
-        # if not is_ffmpeg_installed:
-        #     logger.warning("ffmpeg is not installed")
-
         # get the destination
         dest = src.split(".")[:-1]
         dest = ".".join(dest) + ".mp3"
@@ -45,13 +40,12 @@ class Convert:
 
         # run the command
         logger.info(f"Running the command : cmd : {cmd}")
-        # out = os.system(cmd)
         prc = subprocess.run(cmd.split(" "), capture_output=True)
 
         # manage the output
         if prc.returncode:
             logger.warning(
-                f"Subprocess  : returncode : {prc.returncode} => stdout : {prc.stdout} = > stderr : {prc.stderr}"
+                f"Subprocess  : code : {prc.returncode}, stdout : {prc.stdout} = > stderr : {prc.stderr}"
             )
             # raise an error if not silent mode
             if not silent_mode:
