@@ -13,19 +13,21 @@
 
 # Awdible - Just the best free version of audible
 
-## About
+## ✳️ About
 Awdible is a free and open-source software, app and python package that allows you to download music from youtube and convert it to mp3.
 
 The idea is to provide a free version of audible.
 
-## Key Features
+## 🔊 Key Features
 
 * Download music / audiobook from youtube
-* Convert music / audiobook to mp3
-* Find music / audiobook from a list of songs / audiobook names : Waka Waka, Happy, Harry potter and the philosopher's stone, ...
-* Crop a long audio file to a specific duration
+* Convert music / audiobook to mp3 / wave / flac (...) *need ffmpeg installed*
+* Automaticly crop a long audio file to a specific duration ie 60 minutes
+* Find music / audiobook from a list of songs / audiobook names : Waka Waka, Happy, Harry potter and the philosopher's stone, (...) *need specific api keys*
+* Add specfic context about a file such as live, album, or title
 
-## Installation
+
+## ⤵️ Installation
 
 Using regular pip and venv tools :
 
@@ -35,10 +37,63 @@ source .venv/bin/activate
 pip install awdible
 ```
 
-## Usage
+
+## ⚠️ Third party dependencies
+
+### 📼 FFmpeg
+
+Please note that you should to have [ffmpeg](https://ffmpeg.org/) installed on your system to use certain features of Awdible.
+
+On Ubuntu, Debian, Linux Mint (...) you can install it with the following command :
+```bash
+sudo apt update
+sudo apt install ffmpeg -y 
+```
+
+On fedora, Red Hat, CentOS (...) you can install it with the following command :
+```bash
+sudo dnf install ffmpeg
+```
+
+On MacOs, you can install it with the following command :
+```bash
+brew install ffmpeg
+```
+
+Please check that the ffmpeg command is available in your terminal.
+
+```bash
+ffmpeg -version
+```
+
+If you have any issues with ffmpeg, please visit the [ffmpeg](https://ffmpeg.org/) website.
+
+**It is possible not to have ffmpeg installed** but in such case, you will not be able to convert the downloaded files to mp3, wave, flac, etc.
+
+### ⚛️ External api
+
+Some features of Awdible require external api keys, specially the `-s` option.
 
 
-### Local
+you must have a set up your **[youtube rapid api](https://rapidapi.com/herosAPI/api/youtube-data8)** account. 
+
+You need to add in your environment variables or export directly from a terminal the following :
+
+```bash
+export RAPID_API_KEY="*********"
+export RAPID_API_HOST="youtube-data8.p.rapidapi.com"
+```
+
+### 🌎 Internet connection
+
+Last but not least, Please not that a valid internet connection is required to use Awdible.
+
+
+## 🎒 Usage
+
+
+### 🏠 Local
+
 
 
 #### As executable
@@ -132,19 +187,19 @@ Launch local streamlit :
 awdible gui 
 ``` 
 
-### On line
+### 🌏 On line
 
 The on line web app is temporarily unavailable. 
 
 It will be available in the `0.2.5` release.
 
 
-## Documentation
+## 📕 Documentation
 
 Please visit [Documentation](https://alexandregazagnes.github.io/awdible/) page.
 
 
-## Updates
+## 📢 Updates
 
 
 Please visit the : 
@@ -157,7 +212,7 @@ Please visit the :
 
 
 
-## Contributing
+## 🤟 Contributing
 
 Awdible is an open-source project and we are always looking for more people to contribute to its development.
 
