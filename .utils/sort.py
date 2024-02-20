@@ -4,7 +4,8 @@ Most simple but usefull programm in the world
 
 import os
 import sys
-import string
+
+# import string
 
 
 def _clean(txt: str, capitalize: bool = True) -> str:
