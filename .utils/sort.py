@@ -8,7 +8,6 @@ import string
 
 
 def _clean(txt: str, capitalize: bool = True) -> str:
-
     # spaces
     txt = txt.replace("  ", " ").replace("  ", " ").replace("  ", " ")
     txt = txt.replace("  ", " ").replace("  ", " ").replace("  ", " ")
