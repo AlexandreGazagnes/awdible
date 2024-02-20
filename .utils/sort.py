@@ -57,11 +57,15 @@ def main():
 
     # basic ops
     lines = [i for i in lines]
-    lines = sorted(lines)
     lines = list(set(lines))
+    lines = sorted(lines)
 
     # clean
     lines = [_clean(i) for i in lines]
+
+    # last
+    lines = [i.strip() for i in lines if i.strip() != ""]
+    lines = [i + "\n" for i in lines]
 
     # load
     with open(fn, "w") as f:
