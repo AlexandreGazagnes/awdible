@@ -1,5 +1,5 @@
 """
-just take a file with a list of strings and sort it, removing duplicates and cleaning the strings.
+just take a file with a list of url and sort it, removing duplicates and cleaning the strings.
 """
 
 import os
@@ -9,26 +9,8 @@ import sys
 
 
 def _clean(txt: str, capitalize: bool = True) -> str:
-    # spaces
-    txt = txt.replace("  ", " ").replace("  ", " ").replace("  ", " ")
-    txt = txt.replace("  ", " ").replace("  ", " ").replace("  ", " ")
 
-    # punct
-    punct_list = "!\"#$%&'()*+,-/:;<=>?@[\\]^`{|}~"  # not . and _
-    for punct in punct_list:
-        txt = txt.replace(punct, "_")
-
-    # double underscore
-    txt = txt.replace("__", "_").replace("__", "_").replace("__", "_")
-    txt = txt.replace("__", "_").replace("__", "_").replace("__", "_")
-    txt = txt.replace("__", "_").replace("__", "_").replace("__", "_")
-
-    # strip
-    txt = txt.strip()
-
-    # cap
-    if capitalize:
-        txt = txt.capitalize()
+    txt = txt.split("&")[0]
 
     return txt
 
