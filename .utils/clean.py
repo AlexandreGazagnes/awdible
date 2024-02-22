@@ -9,7 +9,6 @@ import sys
 
 
 def _clean(txt: str, capitalize: bool = True) -> str:
-
     txt = txt.split("&")[0]
 
     return txt
