@@ -105,12 +105,14 @@ This is a great way to ensure that you are always working with the latest versio
 ### Reading issues
 
 Please read the [issues page](https://alexandregazagnes.github.io/awdible/issues/) before creating a new issue : 
+
 * Find a new issue to work on in the page. 
 * If you want to work on an issue, please comment on the issue to let others know that you are working on it.
 
 ### Creating a new issue
 
 Feel free to create a new issue if you have any question, suggestion, or if you want to report a bug : 
+
 * You will find a template to fill in when creating a new issue.
 * We have carefully crafted the template to help you provide the information we need to help you.
 * We will add relevant labels to your issue to help us keep track of it.
@@ -130,10 +132,12 @@ Feel free to create a new issue if you have any question, suggestion, or if you 
 ### Creating a new branch
 
 ⚠️ **WARNING** ⚠️ 
+
 * Read carefully the following instructions before creating a new branch.
 
 
 Find bellow the **exact** process to work on a feature : 
+
 * Any feature, bug fix, or improvement should come from an issue.
 * When you are ready to start working on an issue, **please create a new branch directly from the issue page**. You will find a button to create a new branch on the right side of the issue page.
 * Please **choose `dev` as the base branch** and not `main`. If not you will not be able to create a pull request.
@@ -143,10 +147,12 @@ Find bellow the **exact** process to work on a feature :
 
 ### Creating a pull request
 ⚠️ **WARNING** ⚠️ 
+
 * Read carefully the following instructions before creating a Pull Request.
 
 
 When you are ready to submit your work : 
+
 * Please create a pull request related to the issue you're working on
 * **Refers to the issue** in the pull request description : ie [#12]()
 * Fill up the PR template and **do not try to bypass the templat**e
@@ -154,6 +160,7 @@ When you are ready to submit your work :
 * We will review your pull request and give you feedback.
 
 After your pull request : 
+
 * A code review will be done by the maintainers.
 * Once your pull request is approved, we will merge it into the `dev` branch.
 * We will then close the issue and add the `merged` label to it.
