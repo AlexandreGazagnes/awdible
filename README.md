@@ -203,10 +203,10 @@ Please visit [Documentation](https://alexandregazagnes.github.io/awdible/) page.
 
 
 Please visit the : 
-- [Changelog](https://alexandregazagnes.github.io/awdible/changelog) page 
-- [Roadmap](https://github.com/AlexandreGazagnes/awdible/projects?query=is%3Aopen) page
-- [Release](https://github.com/AlexandreGazagnes/awdible/releases) page
-- [Issues](https://github.com/AlexandreGazagnes/awdible/issues) page
+* [Changelog](https://alexandregazagnes.github.io/awdible/changelog) page 
+* [Roadmap](https://github.com/AlexandreGazagnes/awdible/projects?query=is%3Aopen) page
+* [Release](https://github.com/AlexandreGazagnes/awdible/releases) page
+* [Issues](https://github.com/AlexandreGazagnes/awdible/issues) page
 
 
 
