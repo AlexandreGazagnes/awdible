@@ -6,7 +6,7 @@
 #### Please note that the `-s` option requires a valid [youtube rapid api key](https://rapidapi.com/herosAPI/api/youtube-data8).
 More info in the documentation.
 
-## 2024-01-15 - 0.2.5 - Minor ops and docs updates
+## 2024-01-19 - 0.2.5 - Minor ops and docs updates + major features add and bug fixes
 
 ### Updates
 - Fix streamlit problem for [#14](https://github.com/AlexandreGazagnes/awdible/issues/14)
