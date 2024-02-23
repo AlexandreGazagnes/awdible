@@ -7,3 +7,4 @@ cp CONTRIBUTING.md ./docs/docs/contributing.md
 cp CODE_OF_CONDUCT.md ./docs/docs/code_of_conduct.md
 cp SECURITY.md ./docs/docs/security.md
 cp CHANGELOG.md ./docs/docs/changelog.md
+cd ./docs && mkdocs gh-deploy

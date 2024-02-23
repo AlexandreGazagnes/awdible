@@ -1,4 +1,4 @@
-![image](https://github.com/AlexandreGazagnes/awdible/blob/master/docs/assets/img/image.png)
+![image](https://github.com/AlexandreGazagnes/awdible/blob/main/docs/assets/img/image.png?raw=true)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 ![Python](https://img.shields.io/badge/python-3.10.x-green.svg)
 ![Repo Size](https://img.shields.io/github/repo-size/AlexandreGazagnes/awdible)
