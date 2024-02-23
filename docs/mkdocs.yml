@@ -1,6 +1,6 @@
 site_name: Awdible
 
-site_description:  Just a free version of Audible
+site_description:  "Awdible : Just the best free version of audible"
 theme: readthedocs
 
 site_url: https://alexandregazagnes.github.io/awdible/
@@ -17,8 +17,10 @@ nav:
   - Installation : installation.md
   - Usage : usage.md
   # - API Reference : api-reference.md
-  - Contributing : CONTRIBUTING.md
-  - Changelog : CHANGELOG.md
+  - Contributing : contributing.md
+  - Changelog : changelog.md
+  - Code of Conduct : code_of_conduct.md
+  - Security : security.md
   # - Releases : releases.md
   # - Troubleshooting : troubleshooting.md
 

@@ -1,4 +1,4 @@
-![image](./docs/assets/img/image.png)
+![image](https://github.com/AlexandreGazagnes/awdible/blob/master/docs/assets/img/image.png)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 ![Python](https://img.shields.io/badge/python-3.10.x-green.svg)
 ![Repo Size](https://img.shields.io/github/repo-size/AlexandreGazagnes/awdible)
@@ -11,18 +11,21 @@
 ![Pypi](https://github.com/AlexandreGazagnes/awdible/actions/workflows/publish.yaml/badge.svg)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/AlexandreGazagnes/awdible)
 
-# Awdible
+# Awdible - Just the best free version of audible
 
 ## About
-Awdible is a free and open-source software that allows you to download music from youtube and convert it to mp3.
+Awdible is a free and open-source software, app and python package that allows you to download music from youtube and convert it to mp3.
 
-The idea is to provide a free version of awdible.
+The idea is to provide a free version of audible.
 
 ## Key Features
 
-* Download music from youtube
-* Convert music to mp3
-* Find music from a list of songs names
+* Download music / audiobook from youtube
+* Convert music / audiobook to mp3 / wave / flac (...) *need ffmpeg installed*
+* Automaticly crop a long audio file to a specific duration ie 60 minutes
+* Find music / audiobook from a list of songs / audiobook names : Waka Waka, Happy, Harry potter and the philosopher's stone, (...) *need specific api keys*
+* Add specfic context about a file such as live, album, or title
+
 
 ## Installation
 
@@ -34,39 +37,161 @@ source .venv/bin/activate
 pip install awdible
 ```
 
+
+## Third party dependencies
+
+### FFmpeg
+
+Please note that you should to have [ffmpeg](https://ffmpeg.org/) installed on your system to use certain features of Awdible.
+
+On Ubuntu, Debian, Linux Mint (...) you can install it with the following command :
+```bash
+sudo apt update
+sudo apt install ffmpeg -y 
+```
+
+On fedora, Red Hat, CentOS (...) you can install it with the following command :
+```bash
+sudo dnf install ffmpeg
+```
+
+On MacOs, you can install it with the following command :
+```bash
+brew install ffmpeg
+```
+
+Please check that the ffmpeg command is available in your terminal.
+
+```bash
+ffmpeg -version
+```
+
+If you have any issues with ffmpeg, please visit the [ffmpeg](https://ffmpeg.org/) website.
+
+**It is possible not to have ffmpeg installed** but in such case, you will not be able to convert the downloaded files to mp3, wave, flac, etc.
+
+### External api
+
+Some features of Awdible require external api keys, specially the `-s` option.
+
+
+you must have a set up your **[youtube rapid api](https://rapidapi.com/herosAPI/api/youtube-data8)** account. 
+
+You need to add in your environment variables or export directly from a terminal the following :
+
+```bash
+export RAPID_API_KEY="*********"
+export RAPID_API_HOST="youtube-data8.p.rapidapi.com"
+```
+
+### Internet connection
+
+Last but not least, Please not that a valid internet connection is required to use ```Awdible```.
+
+
 ## Usage
-
-### On line
-
-Please visit [Awdible on Streamlit]("https://awdible.streamlit.app/") web app
 
 
 ### Local
 
 
-As executable :
 
-* ```awdible [youtube-url]``` standard usage
-
-* ```awdible -o mp3 -d my/dest [youtube-url]``` standard usage
-
-* ```awdible -f my_file.txt -o mp3 -d my/dest``` specify a file list of **youtube urls** and output format and destination folder
-
-* ```awdible -f my_file.txt -o mp3 -s -d my/dest``` specify a file list ***song names** and output format and destination folder
+#### As executable
 
 
+Standard usage, download and convert to mp3 :
 
-As library :
+```shell
+awdible [youtube-url] 
+``` 
+
+Specify a destination folder : 
+```shell
+awdible -d my/dest [youtube-url]
+``` 
+Specify a file list song  / audibooks **urls** and specify destination folder : 
+```shell
+awdible -f my_file.txt -d my/dest
+``` 
+
+The my_file.txt file must contain one youtube url per line.
+my_file.txt example :
+```
+https://www.youtube.com/watch?v=3y5A4paFOb4
+https://www.youtube.com/watch?v=3y5A4paFOb4
+https://www.youtube.com/watch?v=3y5A4paFOb4
+```
+Specify a file list song  / audibooks **ids** and specify destination folder : 
+```shell
+awdible -f my_file.txt -d my/dest -p
+``` 
+The my_file.txt file must contain one youtube id per line.
+my_file.txt example :
+```shell
+3y5A4paFOb4
+3y5A4paFOb4
+3y5A4paFOb4
+```
+Specify a file list song / audiooks **names** (not just yourube url) and specify destination folder :
+```shell
+awdible -f my_file.txt -s -d my/dest
+``` 
+
+The my_file.txt file must contain one youtube id per line.
+my_file.txt example :
+```shell
+waka waka shakira
+Stand by me
+Somewhere over the rainbow
+```
+
+⚠️ **WARNING** ⚠️
+
+Please note that for the `-s` option, you must have a set up your **[youtube rapid api](https://rapidapi.com/herosAPI/api/youtube-data8)** account. 
+
+You need to add in your environment variables or export directly from a terminal the following :
+
+```bash
+export RAPID_API_KEY="*********"
+export RAPID_API_HOST="youtube-data8.p.rapidapi.com"
+```
+
+
+#### As library
+
 
 ```python
 from awdible import Awdible
-Awdible.download("https://www.youtube.com/watch?v=3y5A4paFOb4")
+
+url = "https://www.youtube.com/watch?v=3y5A4paFOb4"
+awdible = Awdible(url)
+awdible.run()
+
+# or
+
+urls = [
+    "https://www.youtube.com/watch?v=3y5A4paFOb4",
+    "https://www.youtube.com/watch?v=3y5A4paFOb4",
+    "https://www.youtube.com/watch?v=3y5A4paFOb4"
+    ]
+
+awdible = Awdible(urls)
+awdible.run()
 ```
 
-As web app :
+#### As web app
 
-* ```awdible gui``` : lunch local streamlit
+Launch local streamlit : 
 
+```shell
+awdible gui 
+``` 
+
+### On line
+
+The on line web app is temporarily unavailable. 
+
+It will be available in the `0.3.0` release.
 
 
 ## Documentation
@@ -74,15 +199,25 @@ As web app :
 Please visit [Documentation](https://alexandregazagnes.github.io/awdible/) page.
 
 
-## Changelog, Roadmap and Releases
+## Updates
 
-Please visit [Changelog, Roadmap and Releases](https://alexandregazagnes.github.io/awdible/CHANGELOG/) page.
 
-## Troubleshooting
+Please visit the : 
+- [Changelog](https://alexandregazagnes.github.io/awdible/changelog) page 
+- [Roadmap](https://github.com/AlexandreGazagnes/awdible/projects?query=is%3Aopen) page
+- [Release](https://github.com/AlexandreGazagnes/awdible/releases) page
+- [Issues](https://github.com/AlexandreGazagnes/awdible/issues) page
 
-Please visit [Troubleshooting](https://alexandregazagnes.github.io/awdible/TROUBLESHOOTING/) page.
 
 
 ## Contributing
 
-Please visit [Contributing](https://alexandregazagnes.github.io/awdible/CONTRIBUTING/) page.
+Awdible is an open-source project and we are always looking for more people to contribute to its development.
+
+It could be by adding new features, fixing bugs, improving the documentation, or any other way you see fit.
+
+Any help is welcome, and we will do our best to help you get started.
+
+Any feedback is also welcome.
+
+Please visit [Contributing](https://alexandregazagnes.github.io/awdible/contributing/) page.
